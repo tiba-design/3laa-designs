@@ -102,7 +102,7 @@
       gap: 2.75rem;
     }
 
-    /* Hero / Spiritual Welcome & Brand Showcase */
+    /* Hero */
     .hero-card {
       position: relative;
       background: linear-gradient(160deg, rgba(18, 32, 60, 0.95) 0%, rgba(10, 18, 34, 0.97) 100%);
@@ -1267,6 +1267,64 @@
       min-height: 1.2em;
     }
 
+    /* Current Client Session Orders */
+    .session-orders-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-xl);
+      padding: clamp(1.2rem, 3vw, 1.75rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .session-empty {
+      margin: 0;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-input);
+      border: 1px dashed var(--border-subtle);
+      color: var(--ink-muted);
+      text-align: center;
+    }
+
+    .session-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .session-order-card {
+      background: var(--bg-input);
+      border: 1px solid rgba(34, 181, 115, 0.5);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .session-order-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .session-order-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--emerald-bright);
+    }
+
+    .session-order-meta {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--ink-secondary);
+    }
+
     /* Footer */
     .footer-card {
       text-align: center;
@@ -1374,7 +1432,7 @@
           <span class="section-step">الخطوة الأولى</span>
           <h2 id="prep-heading" class="section-title">المطلوب منك تحضيره قبل البدء</h2>
           <p class="section-desc">
-            لضمان سلاسة التنفيذ وإخراج المذكرة بأفضل جودة ممكنة، يُرجى مراجعة وتجهيز العناصر الأربعة التالية قبل إرسال الطلب:
+            اختياراتك هنا خاصة بجلستك الحالية فقط؛ وعند دخول الصفحة من جديد تبدأ الصفحة من الأول بالكامل.
           </p>
         </div>
         <div id="readiness-pill" class="progress-chip" aria-live="polite">
@@ -1490,7 +1548,7 @@
           <span class="section-step">الخطوة الثانية</span>
           <h2 id="order-heading" class="section-title">نموذج تقديم طلب مشروع جديد</h2>
           <p class="section-desc">
-            املأ بياناتك وتفاصيل المذكرة أدناه ليتم إرسال طلبك والملفات إلى Gmail وتجهيز رسالة الواتساب على <bdi dir="ltr">+20 115 162 0464</bdi>.
+            املأ بياناتك وتفاصيل المذكرة أدناه ليتم حفظها في طلبات جلستك الحالية وتجهيز رسالة الواتساب على <bdi dir="ltr">+20 115 162 0464</bdi>.
           </p>
         </div>
       </div>
@@ -1580,8 +1638,8 @@
                     <span class="pkg-name">أساسية</span>
                     <span class="pkg-desc">تنسيق مرتب وواضح + جولة تعديلات واحدة.</span>
                   </label>
-                  <label class="pkg-card is-selected" id="pkg-card-pro">
-                    <input type="radio" name="selectedPackage" value="الباقة المتوسطة" checked onchange="onPackageChange()">
+                  <label class="pkg-card" id="pkg-card-pro">
+                    <input type="radio" name="selectedPackage" value="الباقة المتوسطة" onchange="onPackageChange()">
                     <span class="pkg-name">متوسطة</span>
                     <span class="pkg-desc">تنسيق متكامل + هيدر وفوتر + جولتا تعديلات.</span>
                   </label>
@@ -1596,12 +1654,12 @@
               <div class="field-group field-group--wide">
                 <span class="field-label">الخدمات المطلوبة <span class="opt">(اختر كل ما ينطبق)</span></span>
                 <div class="services-grid">
-                  <label class="service-item is-selected">
-                    <input type="checkbox" name="services" value="تنسيق صفحات النصوص والدروس" checked onchange="onServicesChange()">
+                  <label class="service-item">
+                    <input type="checkbox" name="services" value="تنسيق صفحات النصوص والدروس" onchange="onServicesChange()">
                     <span>تنسيق صفحات النصوص والدروس</span>
                   </label>
-                  <label class="service-item is-selected">
-                    <input type="checkbox" name="services" value="تصميم ورقة داخلية A4 (ترويسة وتذييل)" checked onchange="onServicesChange()">
+                  <label class="service-item">
+                    <input type="checkbox" name="services" value="تصميم ورقة داخلية A4 (ترويسة وتذييل)" onchange="onServicesChange()">
                     <span>تصميم ورقة داخلية <bdi dir="ltr">A4</bdi></span>
                   </label>
                   <label class="service-item">
@@ -1709,7 +1767,7 @@
             </div>
 
             <div class="info-strip">
-              ملاحظة تقنية: تُدرج أسماء الملفات المختارة هنا تلقائياً في نص طلبك وتُرسل مع الطلب إلى Gmail، ويُرجى إرفاق الملفات الفعلية داخل محادثة الواتساب لضمان وصولها بدقتها الكاملة.
+              يُرجى إرفاق ملفات الـ Word واللوجو والصور مباشرة داخل محادثة الواتساب لضمان وصولها بدقتها الكاملة.
             </div>
 
             <div id="prep-reminder-note" class="warn-strip" role="note">
@@ -1734,7 +1792,7 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                 </svg>
-                إرسال الطلب (Gmail + واتساب)
+                حفظ في طلباتي وإرسال عبر الواتساب
               </button>
               <button type="button" class="btn-ghost-action" id="reset-form-btn" onclick="resetOrderForm(this)">
                 مسح النموذج
@@ -1747,7 +1805,7 @@
         <!-- Live Preview Panel -->
         <aside class="preview-card" aria-labelledby="summary-heading">
           <div class="preview-head">
-            <h3 id="summary-heading" class="preview-title">معاينة رسالة الطلب</h3>
+            <h3 id="summary-heading" class="preview-title">معاينة اختياراتك الحالية</h3>
             <span class="preview-count" id="completion-badge">0 / 7 مكتمل</span>
           </div>
 
@@ -1758,7 +1816,7 @@
             </div>
             <div class="stat-box">
               <span class="stat-label">الباقة والصفحات</span>
-              <span class="stat-value" id="stat-package">الباقة المتوسطة</span>
+              <span class="stat-value" id="stat-package">لم تُحدَّد بعد</span>
             </div>
           </div>
 
@@ -1777,6 +1835,20 @@
       </div>
     </section>
 
+    <!-- Section 3: Current Client Session Orders -->
+    <section id="session-orders-section" class="session-orders-panel" aria-labelledby="session-orders-heading">
+      <div class="section-head" style="padding-bottom: 0.75rem;">
+        <div>
+          <span class="section-step">اختياراتك في هذه الجلسة فقط</span>
+          <h2 id="session-orders-heading" class="section-title">طلبات العميل الحالية على الصفحة</h2>
+        </div>
+        <span class="progress-chip is-complete" id="session-orders-count">0 طلب محفوظ</span>
+      </div>
+      <div id="session-orders-container">
+        <p class="session-empty">لا توجد طلبات محفوظة بعد في جلستك الحالية؛ عند إرسال طلب سيظهر هنا خاصاً بك خلال هذه الجلسة فقط.</p>
+      </div>
+    </section>
+
     <footer class="footer-card">
       <p style="margin: 0;"><strong><bdi dir="ltr">3laa Designs</bdi></strong> — تصميم وتنسيق الملازم والكتب التعليمية باحترافية</p>
       <p style="margin: 0;">واتساب استقبال الطلبات: <bdi dir="ltr">+20 115 162 0464</bdi> · <bdi dir="ltr">wa.me/201151620464</bdi></p>
@@ -1787,9 +1859,9 @@
   <script>
     const WHATSAPP_NUMBER_INTL = `201151620464`;
     const WHATSAPP_DISPLAY = `+20 115 162 0464`;
-    const GMAIL_FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/alaa.ali133445@gmail.com`;
 
-    let appState = {
+    // حالة الجلسة الحالية فقط — تبدأ نظيفة من الصفر عند كل دخول جديد للصفحة
+    let sessionState = {
       prepChecks: { 1: false, 2: false, 3: false, 4: false },
       fields: {
         teacherName: ``,
@@ -1799,8 +1871,8 @@
         academicYear: ``,
         bookletTitle: ``,
         pageCount: ``,
-        selectedPackage: `الباقة المتوسطة`,
-        services: [`تنسيق صفحات النصوص والدروس`, `تصميم ورقة داخلية A4 (ترويسة وتذييل)`],
+        selectedPackage: ``,
+        services: [],
         preferredColors: ``,
         pageOrientation: `عمودي (Portrait - A4)`,
         specialNotes: ``,
@@ -1810,7 +1882,8 @@
         word: [],
         logo: [],
         images: []
-      }
+      },
+      clientOrders: []
     };
 
     function formatBytesToKB(bytes) {
@@ -1829,7 +1902,7 @@
     function getCheckedPrepCount() {
       let count = 0;
       for (let i = 1; i <= 4; i++) {
-        if (appState.prepChecks[i]) count++;
+        if (sessionState.prepChecks[i]) count++;
       }
       return count;
     }
@@ -1843,15 +1916,14 @@
 
     function togglePrepItem(num) {
       const key = Number(num);
-      appState.prepChecks[key] = !Boolean(appState.prepChecks[key]);
+      sessionState.prepChecks[key] = !Boolean(sessionState.prepChecks[key]);
       renderPrepState();
-      persistState();
     }
 
     function renderPrepState() {
       const count = getCheckedPrepCount();
       for (let i = 1; i <= 4; i++) {
-        const checked = Boolean(appState.prepChecks[i]);
+        const checked = Boolean(sessionState.prepChecks[i]);
         const card = document.getElementById(`prep-card-${i}`);
         const btn = document.getElementById(`prep-btn-${i}`);
         if (card) card.classList.toggle(`is-checked`, checked);
@@ -1873,23 +1945,23 @@
         return el ? el.value.trim() : ``;
       };
 
-      appState.fields.teacherName = getVal(`teacherName`);
-      appState.fields.whatsappNumber = getVal(`whatsappNumber`);
-      appState.fields.subject = getVal(`subject`);
-      appState.fields.grade = getVal(`grade`);
-      appState.fields.academicYear = getVal(`academicYear`);
-      appState.fields.bookletTitle = getVal(`bookletTitle`);
-      appState.fields.pageCount = getVal(`pageCount`);
-      appState.fields.preferredColors = getVal(`preferredColors`);
+      sessionState.fields.teacherName = getVal(`teacherName`);
+      sessionState.fields.whatsappNumber = getVal(`whatsappNumber`);
+      sessionState.fields.subject = getVal(`subject`);
+      sessionState.fields.grade = getVal(`grade`);
+      sessionState.fields.academicYear = getVal(`academicYear`);
+      sessionState.fields.bookletTitle = getVal(`bookletTitle`);
+      sessionState.fields.pageCount = getVal(`pageCount`);
+      sessionState.fields.preferredColors = getVal(`preferredColors`);
 
       const orientEl = document.getElementById(`pageOrientation`);
-      if (orientEl) appState.fields.pageOrientation = orientEl.value;
+      if (orientEl) sessionState.fields.pageOrientation = orientEl.value;
 
       const notesEl = document.getElementById(`specialNotes`);
-      if (notesEl) appState.fields.specialNotes = notesEl.value.trim();
+      if (notesEl) sessionState.fields.specialNotes = notesEl.value.trim();
 
       const pkgChecked = document.querySelector(`input[name="selectedPackage"]:checked`);
-      if (pkgChecked) appState.fields.selectedPackage = pkgChecked.value;
+      sessionState.fields.selectedPackage = pkgChecked ? pkgChecked.value : ``;
 
       const serviceInputs = document.querySelectorAll(`input[name="services"]`);
       const selectedServices = [];
@@ -1898,12 +1970,12 @@
         if (cb.checked) selectedServices.push(cb.value);
         if (label) label.classList.toggle(`is-selected`, cb.checked);
       });
-      appState.fields.services = selectedServices;
+      sessionState.fields.services = selectedServices;
 
       const termsEl = document.getElementById(`termsAccepted`);
       const termsCard = document.getElementById(`wrap-terms`);
-      appState.fields.termsAccepted = termsEl ? termsEl.checked : false;
-      if (termsCard) termsCard.classList.toggle(`is-accepted`, appState.fields.termsAccepted);
+      sessionState.fields.termsAccepted = termsEl ? termsEl.checked : false;
+      if (termsCard) termsCard.classList.toggle(`is-accepted`, sessionState.fields.termsAccepted);
     }
 
     function applyStateToDOM() {
@@ -1912,26 +1984,26 @@
         if (el && typeof val === `string`) el.value = val;
       };
 
-      setVal(`teacherName`, appState.fields.teacherName);
-      setVal(`whatsappNumber`, appState.fields.whatsappNumber);
-      setVal(`subject`, appState.fields.subject);
-      setVal(`grade`, appState.fields.grade);
-      setVal(`academicYear`, appState.fields.academicYear);
-      setVal(`bookletTitle`, appState.fields.bookletTitle);
-      setVal(`pageCount`, appState.fields.pageCount);
-      setVal(`preferredColors`, appState.fields.preferredColors);
-      setVal(`pageOrientation`, appState.fields.pageOrientation || `عمودي (Portrait - A4)`);
-      setVal(`specialNotes`, appState.fields.specialNotes);
+      setVal(`teacherName`, sessionState.fields.teacherName);
+      setVal(`whatsappNumber`, sessionState.fields.whatsappNumber);
+      setVal(`subject`, sessionState.fields.subject);
+      setVal(`grade`, sessionState.fields.grade);
+      setVal(`academicYear`, sessionState.fields.academicYear);
+      setVal(`bookletTitle`, sessionState.fields.bookletTitle);
+      setVal(`pageCount`, sessionState.fields.pageCount);
+      setVal(`preferredColors`, sessionState.fields.preferredColors);
+      setVal(`pageOrientation`, sessionState.fields.pageOrientation || `عمودي (Portrait - A4)`);
+      setVal(`specialNotes`, sessionState.fields.specialNotes);
 
       const pkgRadios = document.querySelectorAll(`input[name="selectedPackage"]`);
       pkgRadios.forEach(function (radio) {
-        radio.checked = radio.value === appState.fields.selectedPackage;
+        radio.checked = radio.value === sessionState.fields.selectedPackage;
         const card = radio.closest(`.pkg-card`);
         if (card) card.classList.toggle(`is-selected`, radio.checked);
       });
 
       const serviceInputs = document.querySelectorAll(`input[name="services"]`);
-      const activeServices = Array.isArray(appState.fields.services) ? appState.fields.services : [];
+      const activeServices = Array.isArray(sessionState.fields.services) ? sessionState.fields.services : [];
       serviceInputs.forEach(function (cb) {
         cb.checked = activeServices.includes(cb.value);
         const label = cb.closest(`.service-item`);
@@ -1940,21 +2012,21 @@
 
       const termsEl = document.getElementById(`termsAccepted`);
       const termsCard = document.getElementById(`wrap-terms`);
-      if (termsEl) termsEl.checked = Boolean(appState.fields.termsAccepted);
-      if (termsCard) termsCard.classList.toggle(`is-accepted`, Boolean(appState.fields.termsAccepted));
+      if (termsEl) termsEl.checked = Boolean(sessionState.fields.termsAccepted);
+      if (termsCard) termsCard.classList.toggle(`is-accepted`, Boolean(sessionState.fields.termsAccepted));
 
       renderPrepState();
       renderFilesMeta(`word`);
       renderFilesMeta(`logo`);
       renderFilesMeta(`images`);
       renderSummary();
+      renderSessionOrders();
     }
 
     function onFormChange() {
       syncFieldsFromDOM();
       clearFieldErrors();
       renderSummary();
-      persistState();
     }
 
     function onPackageChange() {
@@ -1986,32 +2058,30 @@
         };
       });
       if (category === `images`) {
-        appState.filesMeta.images = appState.filesMeta.images.concat(picked);
+        sessionState.filesMeta.images = sessionState.filesMeta.images.concat(picked);
       } else {
-        appState.filesMeta[category] = picked;
+        sessionState.filesMeta[category] = picked;
       }
       renderFilesMeta(category);
       renderSummary();
-      persistState();
     }
 
     function removeFileMeta(category, idx) {
-      if (!appState.filesMeta[category]) return;
-      appState.filesMeta[category].splice(idx, 1);
+      if (!sessionState.filesMeta[category]) return;
+      sessionState.filesMeta[category].splice(idx, 1);
       if (category !== `images`) {
         const inputEl = document.getElementById(`file-${category}`);
         if (inputEl) inputEl.value = ``;
       }
       renderFilesMeta(category);
       renderSummary();
-      persistState();
     }
 
     function renderFilesMeta(category) {
       const listEl = document.getElementById(`list-${category}`);
       const boxEl = document.getElementById(`upload-box-${category}`);
       if (!listEl) return;
-      const items = appState.filesMeta[category] || [];
+      const items = sessionState.filesMeta[category] || [];
       if (boxEl) boxEl.classList.toggle(`has-files`, items.length > 0);
       listEl.innerHTML = ``;
       items.forEach(function (item, idx) {
@@ -2038,22 +2108,22 @@
     }
 
     function buildWhatsAppMessage() {
-      const f = appState.fields;
+      const f = sessionState.fields;
       const cleanPhone = formatPhoneForDisplay(f.whatsappNumber);
       const servicesText = f.services.length > 0
         ? f.services.map(function (s) { return `- ${s}`; }).join(`\n`)
-        : `- لم يتم تحديد خدمات إضافية`;
+        : `- لم يتم تحديد خدمات بعد`;
 
-      const wordText = appState.filesMeta.word.length > 0
-        ? appState.filesMeta.word.map(function (x) { return `${x.name} (${x.sizeText})`; }).join(`، `)
+      const wordText = sessionState.filesMeta.word.length > 0
+        ? sessionState.filesMeta.word.map(function (x) { return `${x.name} (${x.sizeText})`; }).join(`، `)
         : `سيتم إرفاقه مباشرة في المحادثة`;
 
-      const logoText = appState.filesMeta.logo.length > 0
-        ? appState.filesMeta.logo.map(function (x) { return `${x.name} (${x.sizeText})`; }).join(`، `)
+      const logoText = sessionState.filesMeta.logo.length > 0
+        ? sessionState.filesMeta.logo.map(function (x) { return `${x.name} (${x.sizeText})`; }).join(`، `)
         : `غير مرفق / لا يوجد`;
 
-      const imagesText = appState.filesMeta.images.length > 0
-        ? `${appState.filesMeta.images.length} ملف (${appState.filesMeta.images.map(function (x) { return x.name; }).join(`، `)})`
+      const imagesText = sessionState.filesMeta.images.length > 0
+        ? `${sessionState.filesMeta.images.length} ملف (${sessionState.filesMeta.images.map(function (x) { return x.name; }).join(`، `)})`
         : `غير مرفق / لا يوجد`;
 
       return [
@@ -2069,7 +2139,7 @@
         `*2) تفاصيل المشروع:*`,
         `• عنوان المذكرة: ${f.bookletTitle || `—`}`,
         `• عدد الصفحات التقديري: ${f.pageCount ? f.pageCount + ` صفحة` : `—`}`,
-        `• الباقة المختارة: ${f.selectedPackage || `—`}`,
+        `• الباقة المختارة: ${f.selectedPackage || `لم يتم الاختيار بعد`}`,
         `• الخدمات المطلوبة:`,
         servicesText,
         ``,
@@ -2091,7 +2161,7 @@
     }
 
     function renderSummary() {
-      const f = appState.fields;
+      const f = sessionState.fields;
       const requiredVals = [
         f.teacherName,
         f.whatsappNumber,
@@ -2120,9 +2190,8 @@
 
       const statPkg = document.getElementById(`stat-package`);
       if (statPkg) {
-        statPkg.textContent = f.pageCount
-          ? `${f.selectedPackage} · ${f.pageCount} صفحة`
-          : f.selectedPackage;
+        const pkgText = f.selectedPackage || `لم يُحدَّد بعد`;
+        statPkg.textContent = f.pageCount ? `${pkgText} · ${f.pageCount} صفحة` : pkgText;
       }
 
       const preview = document.getElementById(`message-preview`);
@@ -2139,7 +2208,7 @@
 
     function validateOrderForm() {
       clearFieldErrors();
-      const f = appState.fields;
+      const f = sessionState.fields;
       const missing = [];
 
       const checkRequired = function (key, wrapId) {
@@ -2182,6 +2251,75 @@
       return missing;
     }
 
+    function renderSessionOrders() {
+      const container = document.getElementById(`session-orders-container`);
+      const countBadge = document.getElementById(`session-orders-count`);
+      const orders = sessionState.clientOrders || [];
+
+      if (countBadge) {
+        countBadge.textContent = `${orders.length} طلب محفوظ`;
+      }
+      if (!container) return;
+
+      if (orders.length === 0) {
+        container.innerHTML = `<p class="session-empty">لا توجد طلبات محفوظة بعد في جلستك الحالية؛ عند إرسال طلب سيظهر هنا خاصاً بك خلال هذه الجلسة فقط.</p>`;
+        return;
+      }
+
+      container.innerHTML = ``;
+      const listDiv = document.createElement(`div`);
+      listDiv.className = `session-list`;
+
+      orders.forEach(function (ord) {
+        const card = document.createElement(`article`);
+        card.className = `session-order-card`;
+
+        const top = document.createElement(`div`);
+        top.className = `session-order-top`;
+
+        const h3 = document.createElement(`h3`);
+        h3.className = `session-order-title`;
+        h3.textContent = `✓ ${ord.bookletTitle}`;
+
+        const delBtn = document.createElement(`button`);
+        delBtn.type = `button`;
+        delBtn.className = `file-remove`;
+        delBtn.textContent = `حذف`;
+        delBtn.onclick = function () {
+          sessionState.clientOrders = sessionState.clientOrders.filter(function (item) {
+            return item.id !== ord.id;
+          });
+          renderSessionOrders();
+        };
+
+        top.appendChild(h3);
+        top.appendChild(delBtn);
+
+        const meta = document.createElement(`p`);
+        meta.className = `session-order-meta`;
+        meta.textContent = `${ord.teacherName} · ${ord.subject} (${ord.grade}) — ${ord.selectedPackage || `بدون باقة`} · ${ord.pageCount} صفحة`;
+
+        const svcMeta = document.createElement(`p`);
+        svcMeta.className = `session-order-meta`;
+        svcMeta.textContent = `الخدمات: ${ord.services.length > 0 ? ord.services.join(`، `) : `لا توجد خدمات إضافية`}`;
+
+        const waBtn = document.createElement(`a`);
+        waBtn.className = `wa-link-btn`;
+        waBtn.href = `https://wa.me/${WHATSAPP_NUMBER_INTL}?text=${encodeURIComponent(ord.message)}`;
+        waBtn.target = `_blank`;
+        waBtn.rel = `noopener noreferrer`;
+        waBtn.textContent = `إرسال هذا الطلب على الواتساب`;
+
+        card.appendChild(top);
+        card.appendChild(meta);
+        card.appendChild(svcMeta);
+        card.appendChild(waBtn);
+        listDiv.appendChild(card);
+      });
+
+      container.appendChild(listDiv);
+    }
+
     function handleOrderSubmit(event) {
       if (event) event.preventDefault();
       syncFieldsFromDOM();
@@ -2206,53 +2344,32 @@
       const encodedText = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER_INTL}?text=${encodedText}`;
 
+      // حفظ الطلب في قائمة العميل الخاصة بجلسته الحالية فقط
+      sessionState.clientOrders.unshift({
+        id: Date.now(),
+        teacherName: sessionState.fields.teacherName,
+        subject: sessionState.fields.subject,
+        grade: sessionState.fields.grade,
+        bookletTitle: sessionState.fields.bookletTitle,
+        pageCount: sessionState.fields.pageCount,
+        selectedPackage: sessionState.fields.selectedPackage,
+        services: sessionState.fields.services.slice(),
+        message: message
+      });
+      renderSessionOrders();
+
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(message).catch(function () {});
       }
 
       const waWindow = window.open(whatsappUrl, `_blank`, `noopener,noreferrer`);
 
-      const formData = new FormData();
-      formData.append(`_subject`, `طلب مشروع جديد — 3laa Designs (${appState.fields.teacherName})`);
-      formData.append(`_template`, `table`);
-      formData.append(`الرسالة_المنسقة`, message);
-      formData.append(`اسم_المدرس`, appState.fields.teacherName);
-      formData.append(`رقم_الواتساب`, formatPhoneForDisplay(appState.fields.whatsappNumber));
-      formData.append(`المادة`, appState.fields.subject);
-      formData.append(`الصف_الدراسي`, appState.fields.grade);
-      formData.append(`السنة_الدراسية`, appState.fields.academicYear);
-      formData.append(`عنوان_المذكرة`, appState.fields.bookletTitle);
-      formData.append(`عدد_الصفحات`, appState.fields.pageCount);
-      formData.append(`الباقة`, appState.fields.selectedPackage);
-      formData.append(`الخدمات`, appState.fields.services.join(`، `));
-      formData.append(`الألوان`, appState.fields.preferredColors || `حسب رؤية المصمم`);
-      formData.append(`اتجاه_الصفحة`, appState.fields.pageOrientation);
-      formData.append(`ملاحظات`, appState.fields.specialNotes || `لا توجد`);
-
-      const wordInput = document.getElementById(`file-word`);
-      if (wordInput && wordInput.files[0]) {
-        formData.append(`ملف_الوورد`, wordInput.files[0]);
-      }
-
-      const logoInput = document.getElementById(`file-logo`);
-      if (logoInput && logoInput.files[0]) {
-        formData.append(`الشعار_اللوجو`, logoInput.files[0]);
-      }
-
-      const imagesInput = document.getElementById(`file-images`);
-      if (imagesInput && imagesInput.files.length > 0) {
-        Array.from(imagesInput.files).forEach(function (img, idx) {
-          formData.append(`صورة_${idx + 1}`, img);
-        });
-      }
-
       if (banner) {
         banner.className = `status-box is-success`;
         banner.innerHTML = ``;
 
         const titleP = document.createElement(`strong`);
-        titleP.id = `gmail-send-status`;
-        titleP.textContent = `جاري إرسال الطلب والملفات إلى Gmail وتجهيز الواتساب...`;
+        titleP.textContent = `تم حفظ طلبك في قائمة طلباتك الحالية وتجهيز رسالة الواتساب!`;
 
         const descP = document.createElement(`span`);
         descP.textContent = waWindow
@@ -2261,7 +2378,7 @@
 
         const attachTip = document.createElement(`div`);
         attachTip.className = `tip-pill`;
-        attachTip.textContent = `يُرسل الطلب والملفات إلى Gmail تلقائياً، ويُفضل أيضاً إرفاق الملفات الفعلية داخل محادثة الواتساب (📎).`;
+        attachTip.textContent = `هذا السجل خاص بجلستك الحالية فقط؛ وعند دخول الصفحة من جديد تبدأ الصفحة نظيفة من الأول.`;
 
         const actionsDiv = document.createElement(`div`);
         actionsDiv.className = `result-links`;
@@ -2289,29 +2406,6 @@
         banner.appendChild(attachTip);
         banner.appendChild(actionsDiv);
       }
-
-      fetch(GMAIL_FORMSUBMIT_ENDPOINT, {
-        method: `POST`,
-        body: formData
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error(`Gmail request failed`);
-          return res.json();
-        })
-        .then(function () {
-          const statusEl = document.getElementById(`gmail-send-status`);
-          if (statusEl) {
-            statusEl.textContent = `تم إرسال الطلب والملفات إلى Gmail بنجاح وتجهيز مختصر الواتساب!`;
-          }
-        })
-        .catch(function () {
-          const statusEl = document.getElementById(`gmail-send-status`);
-          if (statusEl) {
-            statusEl.textContent = `تم تجهيز مختصر الواتساب ونسخ النص؛ تحقق من تفعيل FormSubmit أو حجم الملفات المرفقة.`;
-          }
-        });
-
-      persistState();
     }
 
     function copyOrderMessage() {
@@ -2349,7 +2443,7 @@
     function downloadOrderSummary() {
       syncFieldsFromDOM();
       const content = buildWhatsAppMessage();
-      const safeTitle = (appState.fields.bookletTitle || `order`).replace(/[^\w\u0600-\u06FF-]+/g, `_`);
+      const safeTitle = (sessionState.fields.bookletTitle || `order`).replace(/[^\w\u0600-\u06FF-]+/g, `_`);
       const filename = `3laa-Designs-${safeTitle}.txt`;
 
       const blob = new Blob([content], { type: `text/plain;charset=utf-8` });
@@ -2387,7 +2481,8 @@
         btn.textContent = `مسح النموذج`;
       }
 
-      appState.fields = {
+      sessionState.prepChecks = { 1: false, 2: false, 3: false, 4: false };
+      sessionState.fields = {
         teacherName: ``,
         whatsappNumber: ``,
         subject: ``,
@@ -2395,14 +2490,14 @@
         academicYear: ``,
         bookletTitle: ``,
         pageCount: ``,
-        selectedPackage: `الباقة المتوسطة`,
-        services: [`تنسيق صفحات النصوص والدروس`, `تصميم ورقة داخلية A4 (ترويسة وتذييل)`],
+        selectedPackage: ``,
+        services: [],
         preferredColors: ``,
         pageOrientation: `عمودي (Portrait - A4)`,
         specialNotes: ``,
         termsAccepted: false
       };
-      appState.filesMeta = { word: [], logo: [], images: [] };
+      sessionState.filesMeta = { word: [], logo: [], images: [] };
 
       [`file-word`, `file-logo`, `file-images`].forEach(function (id) {
         const el = document.getElementById(id);
@@ -2423,38 +2518,13 @@
 
       clearFieldErrors();
       applyStateToDOM();
-      persistState();
-    }
-
-    function persistState() {
-      try {
-        localStorage.setItem(`3laa_designs_order_state`, JSON.stringify(appState));
-      } catch (e) {
-        /* Ignore storage quota errors */
-      }
     }
 
     function initApp() {
+      // يبدأ كل دخول جديد للصفحة من الأول تماماً دون أي بيانات محفوظة مسبقاً
       try {
-        const raw = localStorage.getItem(`3laa_designs_order_state`);
-        if (raw) {
-          const saved = JSON.parse(raw);
-          if (saved && typeof saved === `object`) {
-            if (saved.prepChecks) {
-              appState.prepChecks = Object.assign({}, appState.prepChecks, saved.prepChecks);
-            }
-            if (saved.fields) {
-              appState.fields = Object.assign({}, appState.fields, saved.fields);
-            }
-            if (saved.filesMeta) {
-              appState.filesMeta = Object.assign({}, appState.filesMeta, saved.filesMeta);
-            }
-          }
-        }
-      } catch (e) {
-        /* Start with default clean state */
-      }
-
+        localStorage.removeItem(`3laa_designs_order_state`);
+      } catch (e) {}
       applyStateToDOM();
     }
 
