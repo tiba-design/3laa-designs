@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="deco">
+  <title>3laa Designs — بوابة طلبات تصميم وتنسيق الملازم التعليمية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+
+      /* 1. Deco core palette adapted to 3laa Designs Black & Gold identity */
+      --background: #0b0a08;
+      --surface-container-low: #13110e;
+      --surface-container: #1b1812;
+      --surface-container-high: #262118;
+
+      /* Ink */
+      --on-surface: #f4ecda;
+      --on-surface-variant: #c9bfa9;
+
+      /* Rules */
+      --outline: #c9a14a;
+      --outline-variant: #5d4e2b;
+
+      /* Accents */
+      --primary: #c9a14a;
+      --on-primary: #0b0a08;
+      --primary-container: #292213;
+      --on-primary-container: #ebd292;
+      --secondary: #86bfa5;
+      --tertiary: #e0c175;
+      --error: #e8836f;
+      --on-error: #0b0a08;
+
+      /* Data series */
+      --data-1: #c9a14a;
+      --data-2: #5fae8c;
+      --data-3: #e8836f;
+      --data-4: #8aa9d6;
+      --data-context: #726a58;
+
+      /* Fonts (Arabic-first RTL stack) */
+      --font-headline: 'Cairo', 'Tajawal', sans-serif;
+      --font-body: 'Tajawal', 'Cairo', sans-serif;
+      --font-label: 'Cairo', 'IBM Plex Mono', monospace;
+      --font-mono: 'IBM Plex Mono', monospace;
+
+      /* Shape (Deco architectural crisp corners) */
+      --rounded: 0px;
+      --rounded-lg: 0px;
+      --rounded-full: 0px;
+
+      /* Style effects */
+      --gold-rule: 1px solid var(--outline);
+      --bronze-rule: 1px solid var(--outline-variant);
+      --gold-frame-inset: 6px;
+      --pinstripe: repeating-linear-gradient(
+        90deg,
+        rgba(201, 161, 74, 0.045) 0 1px,
+        transparent 1px 32px
+      );
+      --hero-glow: radial-gradient(
+        ellipse at 50% 0%,
+        rgba(201, 161, 74, 0.14) 0%,
+        rgba(11, 10, 8, 0) 68%
+      );
+      --surface-tint-gold: rgba(201, 161, 74, 0.08);
+      --surface-tint-warning: rgba(226, 180, 90, 0.10);
+      --surface-tint-positive: rgba(116, 185, 150, 0.11);
+      --surface-tint-error: rgba(232, 131, 111, 0.11);
+      --flank-rule-width: 36px;
+
+      /* 3. Shared tokens */
+      --positive: #74b996;
+      --warning: #e2b45a;
+      --focus: #e0c175;
+
+      /* Type scale (Focused Tool) */
+      --display-size: clamp(1.75rem, 1.35rem + 1.5vw, 2.45rem);
+      --headline-size: clamp(1.25rem, 1.08rem + 0.6vw, 1.55rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.2rem);
+      --body-size: clamp(0.95rem, 0.92rem + 0.15vw, 1.02rem);
+      --label-size: 0.78rem;
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--background);
+      background-image: var(--hero-glow), var(--pinstripe);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.65;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      position: static !important;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+      padding: var(--space-lg);
+      max-width: 1080px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .page-grid * {
+      min-width: 0;
+    }
+
+    /* Header / Brand Hero */
+    .brand-header {
+      border: var(--gold-rule);
+      outline: var(--gold-rule);
+      outline-offset: calc(-1 * var(--gold-frame-inset));
+      background-color: var(--surface-container-low);
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+      animation: fadeUp var(--dur-long) var(--ease-out) both;
+    }
+
+    .logo-lockup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .brand-emblem {
+      width: 96px;
+      height: 96px;
+      display: block;
+    }
+
+    .brand-name {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.85rem);
+      color: var(--primary);
+      margin: 0;
+      letter-spacing: 0.08em;
+    }
+
+    .flanked-kicker {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      color: var(--tertiary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin: 0;
+    }
+
+    .flanked-kicker::before,
+    .flanked-kicker::after {
+      content: "";
+      display: inline-block;
+      width: var(--flank-rule-width);
+      height: 1px;
+      background: var(--outline);
+    }
+
+    .hero-title {
+      font-family: var(--font-headline);
+      font-weight: 300;
+      font-size: var(--display-size);
+      line-height: 1.25;
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .hero-title b {
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      max-width: 58ch;
+      color: var(--on-surface-variant);
+      font-size: var(--subhead-size);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-xs);
+    }
+
+    .nav-jump {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-lg);
+      text-decoration: none;
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: var(--gold-rule);
+      transition: background-color var(--dur-short) var(--ease-out),
+                  color var(--dur-short) var(--ease-out);
+    }
+
+    .nav-jump--primary {
+      background-color: var(--primary);
+      color: var(--on-primary);
+    }
+
+    .nav-jump--primary:hover {
+      background-color: var(--tertiary);
+    }
+
+    .nav-jump--ghost {
+      background-color: transparent;
+      color: var(--primary);
+    }
+
+    .nav-jump--ghost:hover {
+      background-color: var(--surface-tint-gold);
+    }
+
+    .contact-strip {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      padding-top: var(--space-sm);
+      border-top: var(--bronze-rule);
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+    }
+
+    .contact-strip strong {
+      color: var(--tertiary);
+      font-family: var(--font-mono);
+    }
+
+    /* Section Headings */
+    .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      animation: fadeUp var(--dur-long) var(--ease-out) both;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: var(--gold-rule);
+    }
+
+    .section-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .section-kicker {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      color: var(--primary);
+    }
+
+    .section-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--headline-size);
+      line-height: 1.3;
+      margin: 0;
+      color: var(--on-surface);
+    }
+
+    .section-lede {
+      margin: 0;
+      color: var(--on-surface-variant);
+      max-width: 65ch;
+    }
+
+    .readiness-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      border: var(--gold-rule);
+      background-color: var(--surface-container-low);
+      font-family: var(--font-label);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--tertiary);
+      white-space: nowrap;
+    }
+
+    .readiness-pill.is-complete {
+      border-color: var(--positive);
+      background-color: var(--surface-tint-positive);
+      color: var(--positive);
+    }
+
+    /* Section 1: Preparation Grid */
+    .prep-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+
+    .prep-card-wrap {
+      container-type: inline-size;
+    }
+
+    .prep-card {
+      height: 100%;
+      background-color: var(--surface-container-low);
+      border: var(--bronze-rule);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      transition: background-color var(--dur-short) var(--ease-out),
+                  border-color var(--dur-short) var(--ease-out);
+    }
+
+    .prep-card.is-checked {
+      background-color: var(--surface-container);
+      border-color: var(--outline);
+    }
+
+    .prep-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: var(--bronze-rule);
+    }
+
+    .prep-card-title-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .prep-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      border: var(--gold-rule);
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--primary);
+      background-color: var(--primary-container);
+    }
+
+    .prep-card-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      color: var(--on-surface);
+    }
+
+    .prep-check-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      min-height: 44px;
+      min-width: 108px;
+      padding: var(--space-xs) var(--space-sm);
+      border: var(--bronze-rule);
+      background-color: transparent;
+      color: var(--on-surface-variant);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background-color var(--dur-short) var(--ease-out),
+                  color var(--dur-short) var(--ease-out),
+                  border-color var(--dur-short) var(--ease-out);
+    }
+
+    .prep-check-btn:hover {
+      border-color: var(--outline);
+      color: var(--on-surface);
+      background-color: var(--surface-tint-gold);
+    }
+
+    .prep-check-btn[aria-pressed="true"] {
+      border-color: var(--positive);
+      background-color: var(--surface-tint-positive);
+      color: var(--positive);
+    }
+
+    .prep-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .prep-list li {
+      position: relative;
+      padding-right: var(--space-md);
+      color: var(--on-surface-variant);
+      font-size: 0.95rem;
+    }
+
+    .prep-list li::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0.68em;
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary);
+    }
+
+    .prep-list li strong {
+      color: var(--on-surface);
+      font-weight: 600;
+    }
+
+    .prep-formats {
+      margin-top: auto;
+      padding-top: var(--space-sm);
+      border-top: var(--bronze-rule);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+
+    .format-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px var(--space-sm);
+      border: var(--bronze-rule);
+      font-family: var(--font-label);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--tertiary);
+      background-color: var(--background);
+    }
+
+    /* Explicit Visual-Only Disclaimer Callout */
+    .policy-callout {
+      border: 1px solid var(--warning);
+      border-right: 4px solid var(--warning);
+      background-color: var(--surface-tint-warning);
+      padding: var(--space-lg);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+
+    .policy-icon {
+      flex-shrink: 0;
+      color: var(--warning);
+      margin-top: 2px;
+    }
+
+    .policy-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .policy-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      color: var(--warning);
+    }
+
+    .policy-text {
+      margin: 0;
+      color: var(--on-surface);
+      max-width: 72ch;
+    }
+
+    /* Section 2: Order Form Shell (Tool Layout: Inputs + Live Output) */
+    .order-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    .form-frame {
+      border: var(--gold-rule);
+      outline: var(--gold-rule);
+      outline-offset: calc(-1 * var(--gold-frame-inset));
+      background-color: var(--surface-container-low);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .form-group-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-bottom: var(--space-lg);
+      border-bottom: var(--bronze-rule);
+    }
+
+    .form-group-block:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .group-heading-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .group-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .group-step {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      padding: 2px var(--space-sm);
+      border: var(--gold-rule);
+      color: var(--primary);
+    }
+
+    .fields-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+      align-items: end;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .field--full {
+      grid-column: 1 / -1;
+    }
+
+    .field-label {
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--on-surface);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .req-mark {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .opt-mark {
+      color: var(--on-surface-variant);
+      font-size: 0.78rem;
+      font-weight: 400;
+    }
+
+    .field-input,
+    .field-select,
+    .field-textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--background);
+      border: var(--bronze-rule);
+      border-bottom: var(--gold-rule);
+      color: var(--on-surface);
+      font-size: 0.95rem;
+      transition: border-color var(--dur-short) var(--ease-out),
+                  background-color var(--dur-short) var(--ease-out);
+    }
+
+    .field-select {
+      padding-left: var(--space-xl);
+      cursor: pointer;
+    }
+
+    .field-textarea {
+      min-height: 96px;
+      resize: vertical;
+      line-height: 1.55;
+    }
+
+    .field-input::placeholder,
+    .field-textarea::placeholder {
+      color: var(--on-surface-variant);
+      opacity: 0.58;
+    }
+
+    .field-input:hover,
+    .field-select:hover,
+    .field-textarea:hover {
+      border-color: var(--outline);
+    }
+
+    .field-input:focus,
+    .field-select:focus,
+    .field-textarea:focus {
+      background-color: var(--surface-container);
+      border-color: var(--tertiary);
+    }
+
+    .field.has-error .field-input,
+    .field.has-error .field-select,
+    .field.has-error .field-textarea {
+      border-color: var(--error);
+      background-color: var(--surface-tint-error);
+    }
+
+    .field-error {
+      font-size: 0.82rem;
+      color: var(--error);
+      min-height: 1.2em;
+      display: none;
+    }
+
+    .field.has-error .field-error {
+      display: block;
+    }
+
+    /* Package Radio Cards */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .pkg-option {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      padding: var(--space-md);
+      min-height: 44px;
+      border: var(--bronze-rule);
+      background-color: var(--background);
+      cursor: pointer;
+      transition: background-color var(--dur-short) var(--ease-out),
+                  border-color var(--dur-short) var(--ease-out);
+    }
+
+    .pkg-option:hover {
+      border-color: var(--outline);
+      background-color: var(--surface-tint-gold);
+    }
+
+    .pkg-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+    }
+
+    .pkg-option.is-selected {
+      border-color: var(--outline);
+      background-color: var(--primary-container);
+      box-shadow: inset 0 0 0 1px var(--outline);
+    }
+
+    .pkg-option:focus-within {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .pkg-name {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary);
+    }
+
+    .pkg-desc {
+      font-size: 0.82rem;
+      color: var(--on-surface-variant);
+      line-height: 1.45;
+    }
+
+    /* Services Checkboxes */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .check-chip {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      background-color: var(--background);
+      border: var(--bronze-rule);
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+      transition: background-color var(--dur-short) var(--ease-out),
+                  border-color var(--dur-short) var(--ease-out),
+                  color var(--dur-short) var(--ease-out);
+    }
+
+    .check-chip:hover {
+      border-color: var(--outline);
+      color: var(--on-surface);
+    }
+
+    .check-chip input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .check-chip.is-selected {
+      border-color: var(--outline);
+      background-color: var(--primary-container);
+      color: var(--on-surface);
+    }
+
+    /* Color Presets Chips */
+    .color-presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-xs);
+    }
+
+    .preset-btn {
+      min-height: 36px;
+      padding: var(--space-xs) var(--space-sm);
+      border: var(--bronze-rule);
+      background-color: transparent;
+      color: var(--tertiary);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out);
+    }
+
+    .preset-btn:hover {
+      border-color: var(--outline);
+      background-color: var(--surface-tint-gold);
+    }
+
+    /* File Upload Zones */
+    .uploads-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .upload-box {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      padding: var(--space-md);
+      background-color: var(--background);
+      border: 1px dashed var(--outline-variant);
+      transition: border-color var(--dur-short) var(--ease-out),
+                  background-color var(--dur-short) var(--ease-out);
+    }
+
+    .upload-box.has-files {
+      border-style: solid;
+      border-color: var(--outline);
+      background-color: var(--surface-container);
+    }
+
+    .upload-label {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: 0.86rem;
+      color: var(--on-surface);
+    }
+
+    .upload-hint {
+      font-size: 0.78rem;
+      color: var(--on-surface-variant);
+    }
+
+    .upload-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      margin-top: var(--space-xs);
+      border: var(--gold-rule);
+      background-color: transparent;
+      color: var(--primary);
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color var(--dur-short) var(--ease-out);
+    }
+
+    .upload-trigger:hover {
+      background-color: var(--surface-tint-gold);
+    }
+
+    .upload-trigger input[type="file"] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    .file-list {
+      margin: var(--space-xs) 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-xs);
+      padding: 4px var(--space-xs);
+      background-color: var(--surface-container-low);
+      border: var(--bronze-rule);
+      font-size: 0.78rem;
+      color: var(--on-surface);
+    }
+
+    .file-item-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .file-remove {
+      background: transparent;
+      border: none;
+      color: var(--error);
+      cursor: pointer;
+      padding: 2px 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      min-width: 28px;
+      min-height: 28px;
+    }
+
+    .upload-honest-note {
+      font-size: 0.84rem;
+      color: var(--on-surface-variant);
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--background);
+      border-right: 3px solid var(--primary);
+    }
+
+    /* Confirmation Checkbox */
+    .terms-box {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-md);
+      background-color: var(--background);
+      border: var(--gold-rule);
+      cursor: pointer;
+    }
+
+    .terms-box.has-error {
+      border-color: var(--error);
+      background-color: var(--surface-tint-error);
+    }
+
+    .terms-box input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .terms-text {
+      font-size: 0.92rem;
+      color: var(--on-surface);
+      line-height: 1.55;
+    }
+
+    /* Form Actions */
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .btn-whatsapp-submit {
+      flex: 1 1 260px;
+      min-height: 50px;
+      padding: var(--space-sm) var(--space-lg);
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border: var(--gold-rule);
+      font-family: var(--font-label);
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      transition: background-color var(--dur-short) var(--ease-out);
+    }
+
+    .btn-whatsapp-submit:hover {
+      background-color: var(--tertiary);
+    }
+
+    .btn-secondary {
+      min-height: 50px;
+      padding: var(--space-sm) var(--space-lg);
+      background-color: transparent;
+      color: var(--on-surface-variant);
+      border: var(--bronze-rule);
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      transition: border-color var(--dur-short) var(--ease-out),
+                  color var(--dur-short) var(--ease-out),
+                  background-color var(--dur-short) var(--ease-out);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--outline);
+      color: var(--on-surface);
+      background-color: var(--surface-tint-gold);
+    }
+
+    .btn-secondary.is-armed {
+      border-color: var(--error);
+      color: var(--error);
+      background-color: var(--surface-tint-error);
+    }
+
+    .form-status-banner {
+      display: none;
+      padding: var(--space-md);
+      border: var(--bronze-rule);
+      font-size: 0.92rem;
+    }
+
+    .form-status-banner.is-error {
+      display: block;
+      border-color: var(--error);
+      background-color: var(--surface-tint-error);
+      color: var(--error);
+    }
+
+    .form-status-banner.is-success {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      border-color: var(--positive);
+      background-color: var(--surface-tint-positive);
+      color: var(--on-surface);
+    }
+
+    .success-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .whatsapp-direct-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      background-color: var(--primary);
+      color: var(--on-primary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: var(--gold-rule);
+    }
+
+    .whatsapp-direct-link:hover {
+      background-color: var(--tertiary);
+    }
+
+    /* Live Summary Output Panel */
+    .summary-panel {
+      background-color: var(--surface-container-low);
+      border: var(--gold-rule);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-sm);
+      border-bottom: var(--gold-rule);
+    }
+
+    .summary-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      color: var(--primary);
+    }
+
+    .completion-badge {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--tertiary);
+      padding: 2px var(--space-sm);
+      border: var(--bronze-rule);
+    }
+
+    .summary-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .summary-stat {
+      padding: var(--space-sm);
+      background-color: var(--background);
+      border: var(--bronze-rule);
+    }
+
+    .summary-stat-label {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--on-surface-variant);
+    }
+
+    .summary-stat-val {
+      display: block;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--on-surface);
+      margin-top: 2px;
+      word-break: break-word;
+    }
+
+    .message-preview-box {
+      background-color: var(--background);
+      border: var(--bronze-rule);
+      padding: var(--space-md);
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: var(--on-surface);
+      white-space: pre-wrap;
+      max-height: 360px;
+      overflow-y: auto;
+    }
+
+    .summary-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .summary-tools .btn-secondary {
+      flex: 1 1 130px;
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.84rem;
+    }
+
+    .copy-feedback {
+      font-size: 0.84rem;
+      color: var(--positive);
+      min-height: 1.2em;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: var(--gold-rule);
+      padding: var(--space-lg) 0 var(--space-md);
+      text-align: center;
+      color: var(--on-surface-variant);
+      font-size: 0.88rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .site-footer strong {
+      color: var(--primary);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Container queries for component cards */
+    @container (max-width: 390px) {
+      .prep-card-top {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .prep-check-btn {
+        width: 100%;
+      }
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 900px) {
+      .order-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-sm);
+        gap: var(--space-lg);
+      }
+      .brand-header,
+      .form-frame {
+        padding: var(--space-lg) var(--space-md);
+      }
+      .prep-grid,
+      .fields-grid,
+      .packages-grid,
+      .services-grid,
+      .uploads-grid,
+      .summary-meta-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-grid">
+
+    <!-- Prominent Brand Header with 3laa Designs Emblem -->
+    <header class="brand-header">
+      <div class="logo-lockup">
+        <svg class="brand-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="6" y="6" width="108" height="108" stroke="#c9a14a" stroke-width="1.5"/>
+          <rect x="13" y="13" width="94" height="94" stroke="#5d4e2b" stroke-width="1"/>
+          <path d="M32 34H58C66 34 71 38 71 45C71 50 67 54 61 55C68 56 72 61 72 68C72 76 66 82 57 82H32" stroke="#c9a14a" stroke-width="3" stroke-linecap="square"/>
+          <path d="M40 55H59" stroke="#e0c175" stroke-width="2.5"/>
+          <path d="M60 34H76C86 34 92 42 92 58C92 74 86 82 76 82H60" stroke="#e0c175" stroke-width="2"/>
+          <polygon points="60,21 63,25 60,29 57,25" fill="#c9a14a"/>
+          <line x1="28" y1="93" x2="92" y2="93" stroke="#c9a14a" stroke-width="1.2"/>
+        </svg>
+        <p class="brand-name"><bdi dir="ltr">3laa Designs</bdi></p>
+      </div>
+
+      <p class="flanked-kicker">بوابة تسجيل طلبات المدرسين</p>
+      <h1 class="hero-title">جهّز ملفاتك وسجّل <b>طلب مذكرتك التعليمية</b></h1>
+      <p class="hero-subtitle">
+        أنت تركّز على التدريس والمحتوى العلمي، ونحن نركّز على تقديم مذكرتك بأرقى تصميم وتنسيق بصري جاهز للطباعة والنشر الرقمي.
+      </p>
+
+      <nav class="hero-actions" aria-label="التنقل السريع">
+        <a class="nav-jump nav-jump--ghost" href="#prep-section">1. المطلوب تحضيره قبل البدء</a>
+        <a class="nav-jump nav-jump--primary" href="#order-section">2. نموذج تقديم طلب مشروع جديد</a>
+      </nav>
+
+      <div class="contact-strip">
+        <span>الواتساب الرسمي لاستقبال الطلبات والملفات:</span>
+        <strong><bdi dir="ltr">+20 115 162 0464</bdi></strong>
+      </div>
+    </header>
+
+    <!-- Main Section 1: What You Need to Prepare Before Starting -->
+    <section id="prep-section" class="section-block" aria-labelledby="prep-heading">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-kicker">القسم الأول</span>
+          <h2 id="prep-heading" class="section-title">المطلوب منك تحضيره قبل البدء</h2>
+          <p class="section-lede">
+            لضمان سلاسة التنفيذ وإخراج المذكرة بأفضل جودة ممكنة، يُرجى مراجعة وتجهيز العناصر الأربعة التالية قبل إرسال الطلب:
+          </p>
+        </div>
+        <div id="readiness-pill" class="readiness-pill" aria-live="polite">
+          تم مراجعة <span id="readiness-count">0</span> من 4 بنود
+        </div>
+      </div>
+
+      <div class="prep-grid">
+        <!-- Item 1 -->
+        <div class="prep-card-wrap">
+          <article class="prep-card" id="prep-card-1">
+            <div class="prep-card-top">
+              <div class="prep-card-title-row">
+                <span class="prep-number" aria-hidden="true">01</span>
+                <h3 class="prep-card-title">بيانات المدرس والمادة والصف الدراسي</h3>
+              </div>
+              <button type="button" class="prep-check-btn" id="prep-btn-1" aria-pressed="false" onclick="togglePrepItem(1)">
+                تأكيد التجهيز
+              </button>
+            </div>
+            <ul class="prep-list">
+              <li><strong>الاسم الكامل للمدرس</strong> كما ترغب في ظهوره على الغلاف والصفحات الداخلية.</li>
+              <li><strong>اسم المادة العلمية</strong>، و<strong>الصف أو المرحلة الدراسية</strong>، و<strong>السنة الدراسية</strong>.</li>
+              <li><strong>رقم التواصل الرسمي</strong> لإدراجه بالمذكرة، وأي روابط تعليمية مطلوبة لرمز <bdi dir="ltr">QR</bdi> (اختياري).</li>
+            </ul>
+            <div class="prep-formats">
+              <span class="format-tag">بيانات الهوية</span>
+              <span class="format-tag">الصف والسنة الدراسية</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="prep-card-wrap">
+          <article class="prep-card" id="prep-card-2">
+            <div class="prep-card-top">
+              <div class="prep-card-title-row">
+                <span class="prep-number" aria-hidden="true">02</span>
+                <h3 class="prep-card-title">ملف <bdi dir="ltr">Word</bdi> جاهز ومنظم (<bdi dir="ltr">.docx</bdi>)</h3>
+              </div>
+              <button type="button" class="prep-check-btn" id="prep-btn-2" aria-pressed="false" onclick="togglePrepItem(2)">
+                تأكيد التجهيز
+              </button>
+            </div>
+            <ul class="prep-list">
+              <li>إرسال <strong>النسخة النهائية</strong> من ملف <bdi dir="ltr">Word</bdi> مع ترتيب الدروس والعناوين الرئيسية والفرعية بوضوح.</li>
+              <li>إدراج <strong>الجداول بمحتواها الكامل</strong> وكتابة <strong>المعادلات والرموز الرياضية</strong> بشكل واضح ومفهوم.</li>
+              <li>تجنّب إرسال لقطات شاشة للنصوص متى توفر النص الأصلي لضمان دقة التنسيق.</li>
+            </ul>
+            <div class="prep-formats">
+              <span class="format-tag"><bdi dir="ltr">.docx</bdi></span>
+              <span class="format-tag">جداول ومعادلات واضحة</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="prep-card-wrap">
+          <article class="prep-card" id="prep-card-3">
+            <div class="prep-card-top">
+              <div class="prep-card-title-row">
+                <span class="prep-number" aria-hidden="true">03</span>
+                <h3 class="prep-card-title">الشعارات والصور عالية الجودة بشكل منفصل</h3>
+              </div>
+              <button type="button" class="prep-check-btn" id="prep-btn-3" aria-pressed="false" onclick="togglePrepItem(3)">
+                تأكيد التجهيز
+              </button>
+            </div>
+            <ul class="prep-list">
+              <li>إرسال <strong>شعار المدرس (اللوجو)</strong> منفصلاً بأعلى جودة متاحة لدمجه في الغلاف والترويسة.</li>
+              <li>إرسال <strong>الصور والرسومات التوضيحية</strong> كملفات أصلية منفصلة بتسمية واضحة ومرتبطة بأماكنها في الدروس.</li>
+              <li>جمع كل ملفات المشروع وإرسالها معاً في حزمة واحدة لتفادي أي تأخير في بدء العمل.</li>
+            </ul>
+            <div class="prep-formats">
+              <span class="format-tag">الشعار: <bdi dir="ltr">PNG / SVG / PDF</bdi></span>
+              <span class="format-tag">الصور: <bdi dir="ltr">PNG / JPG</bdi></span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="prep-card-wrap">
+          <article class="prep-card" id="prep-card-4">
+            <div class="prep-card-top">
+              <div class="prep-card-title-row">
+                <span class="prep-number" aria-hidden="true">04</span>
+                <h3 class="prep-card-title">تحديد التفضيلات والنمط المطلوب</h3>
+              </div>
+              <button type="button" class="prep-check-btn" id="prep-btn-4" aria-pressed="false" onclick="togglePrepItem(4)">
+                تأكيد التجهيز
+              </button>
+            </div>
+            <ul class="prep-list">
+              <li>تحديد <strong>الألوان المفضلة</strong>، و<strong>نمط التصميم</strong>، أو مشاركة نماذج استرشادية قريبة لذوقك (إن وجدت).</li>
+              <li>تحديد <strong>مقاس الصفحة</strong> (<bdi dir="ltr">A4</bdi> افتراضياً) و<strong>اتجاهها</strong> (عمودي أو أفقي).</li>
+              <li>توضيح الإضافات المطلوبة: تصميم ورقة داخلية، غلاف أمامي وخلفي، فهرس، فواصل أبواب، أو ترقيم صفحات.</li>
+            </ul>
+            <div class="prep-formats">
+              <span class="format-tag">المقاس الافتراضي: <bdi dir="ltr">A4</bdi></span>
+              <span class="format-tag">التسليم النهائي: <bdi dir="ltr">PDF</bdi></span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Explicit Visual-Only Disclaimer -->
+      <aside class="policy-callout" role="note" aria-label="تنبيه مسؤولية المحتوى">
+        <svg class="policy-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <div class="policy-body">
+          <h3 class="policy-title">تنبيه صريح بخصوص المحتوى العلمي واللغوي</h3>
+          <p class="policy-text">
+            تقتصر خدمة <strong><bdi dir="ltr">3laa Designs</bdi></strong> على <strong>التصميم والتنسيق البصري وتنظيم الصفحات وتسليم ملف <bdi dir="ltr">PDF</bdi> نهائي</strong> فقط. العميل (المدرس) هو المسؤول مسؤولية كاملة عن دقة واكتمال المحتوى اللغوي والعلمي، ولا تشمل الخدمة كتابة المادة العلمية أو المراجعة العلمية أو التدقيق الإملائي واللغوي.
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Main Section 2: New Project Request Form -->
+    <section id="order-section" class="section-block" aria-labelledby="order-heading">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-kicker">القسم الثاني</span>
+          <h2 id="order-heading" class="section-title">نموذج تقديم طلب مشروع جديد</h2>
+          <p class="section-lede">
+            املأ بياناتك وتفاصيل المذكرة أدناه ليتم تجهيز طلبك تلقائياً وإرساله مباشرة عبر الواتساب إلى <bdi dir="ltr">+20 115 162 0464</bdi>.
+          </p>
+        </div>
+      </div>
+
+      <div class="order-layout">
+        <form id="project-form" class="form-frame" novalidate onsubmit="handleOrderSubmit(event)">
+
+          <!-- 1. Personal Information -->
+          <div class="form-group-block">
+            <div class="group-heading-row">
+              <h3 class="group-title">
+                <span class="group-step">01</span>
+                البيانات الشخصية وبيانات المادة
+              </h3>
+            </div>
+
+            <div class="fields-grid">
+              <div class="field" id="wrap-teacherName">
+                <label class="field-label" for="teacherName">
+                  اسم المدرس الكامل <span class="req-mark">*</span>
+                </label>
+                <input class="field-input" type="text" id="teacherName" name="teacherName" placeholder="مثال: أ. محمد أحمد محمود" required oninput="onFormChange()">
+                <span class="field-error" id="err-teacherName">يرجى إدخال اسم المدرس كما سيظهر في المذكرة.</span>
+              </div>
+
+              <div class="field" id="wrap-whatsappNumber">
+                <label class="field-label" for="whatsappNumber">
+                  رقم الواتساب <span class="req-mark">*</span>
+                </label>
+                <input class="field-input" type="tel" dir="ltr" id="whatsappNumber" name="whatsappNumber" placeholder="01012345678" required oninput="onFormChange()">
+                <span class="field-error" id="err-whatsappNumber">يرجى إدخال رقم واتساب صحيح للتواصل.</span>
+              </div>
+
+              <div class="field" id="wrap-subject">
+                <label class="field-label" for="subject">
+                  المادة <span class="req-mark">*</span>
+                </label>
+                <input class="field-input" type="text" id="subject" name="subject" placeholder="مثال: الفيزياء / الرياضيات / اللغة العربية" required oninput="onFormChange()">
+                <span class="field-error" id="err-subject">يرجى تحديد اسم المادة العلمية.</span>
+              </div>
+
+              <div class="field" id="wrap-grade">
+                <label class="field-label" for="grade">
+                  الصف الدراسي <span class="req-mark">*</span>
+                </label>
+                <input class="field-input" type="text" id="grade" name="grade" placeholder="مثال: الصف الثالث الثانوي" required oninput="onFormChange()">
+                <span class="field-error" id="err-grade">يرجى تحديد الصف أو المرحلة الدراسية.</span>
+              </div>
+
+              <div class="field field--full" id="wrap-academicYear">
+                <label class="field-label" for="academicYear">
+                  السنة الدراسية <span class="req-mark">*</span>
+                </label>
+                <input class="field-input" type="text" id="academicYear" name="academicYear" placeholder="مثال: 2026 / 2027" required oninput="onFormChange()">
+                <span class="field-error" id="err-academicYear">يرجى كتابة السنة الدراسية.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Project Details -->
+          <div class="form-group-block">
+            <div class="group-heading-row">
+              <h3 class="group-title">
+                <span class="group-step">02</span>
+                تفاصيل المشروع والباقة
+              </h3>
+            </div>
+
+            <div class="fields-grid">
+              <div class="field" id="wrap-bookletTitle">
+                <label class="field-label" for="bookletTitle">
+                  عنوان المذكرة <span class="req-mark">*</span>
+                </label>
+                <input class="field-input" type="text" id="bookletTitle" name="bookletTitle" placeholder="مثال: المراجعة النهائية — الفصل الأول" required oninput="onFormChange()">
+                <span class="field-error" id="err-bookletTitle">يرجى إدخال عنوان المذكرة المطلوب.</span>
+              </div>
+
+              <div class="field" id="wrap-pageCount">
+                <label class="field-label" for="pageCount">
+                  عدد الصفحات التقديري <span class="req-mark">*</span>
+                </label>
+                <input class="field-input" type="number" min="1" step="1" id="pageCount" name="pageCount" placeholder="مثال: 45" required oninput="onFormChange()">
+                <span class="field-error" id="err-pageCount">يرجى إدخال عدد صفحات تقديري لا يقل عن 1.</span>
+              </div>
+
+              <div class="field field--full">
+                <span class="field-label">الباقة المختارة <span class="req-mark">*</span></span>
+                <div class="packages-grid" role="radiogroup" aria-label="الباقة المختارة">
+                  <label class="pkg-option" id="pkg-card-basic">
+                    <input type="radio" name="selectedPackage" value="الباقة الأساسية" onchange="onPackageChange()">
+                    <span class="pkg-name">أساسية</span>
+                    <span class="pkg-desc">تنسيق مرتب وواضح + جولة تعديلات واحدة.</span>
+                  </label>
+                  <label class="pkg-option is-selected" id="pkg-card-pro">
+                    <input type="radio" name="selectedPackage" value="الباقة المتوسطة" checked onchange="onPackageChange()">
+                    <span class="pkg-name">متوسطة</span>
+                    <span class="pkg-desc">تنسيق متكامل + هيدر وفوتر + جولتا تعديلات.</span>
+                  </label>
+                  <label class="pkg-option" id="pkg-card-full">
+                    <input type="radio" name="selectedPackage" value="الباقة الشاملة" onchange="onPackageChange()">
+                    <span class="pkg-name">شاملة</span>
+                    <span class="pkg-desc">هوية وتصميم مخصص بالكامل + 3 جولات تعديلات.</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field field--full">
+                <span class="field-label">الخدمات المطلوبة <span class="opt-mark">(اختر كل ما ينطبق)</span></span>
+                <div class="services-grid">
+                  <label class="check-chip is-selected">
+                    <input type="checkbox" name="services" value="تنسيق صفحات النصوص والدروس" checked onchange="onServicesChange()">
+                    <span>تنسيق صفحات النصوص والدروس</span>
+                  </label>
+                  <label class="check-chip is-selected">
+                    <input type="checkbox" name="services" value="تصميم ورقة داخلية A4 (ترويسة وتذييل)" checked onchange="onServicesChange()">
+                    <span>تصميم ورقة داخلية <bdi dir="ltr">A4</bdi></span>
+                  </label>
+                  <label class="check-chip">
+                    <input type="checkbox" name="services" value="تنسيق جداول وصور ورسومات" onchange="onServicesChange()">
+                    <span>تنسيق جداول وصور ورسومات</span>
+                  </label>
+                  <label class="check-chip">
+                    <input type="checkbox" name="services" value="تنسيق معادلات ورموز علمية" onchange="onServicesChange()">
+                    <span>تنسيق معادلات ورموز علمية</span>
+                  </label>
+                  <label class="check-chip">
+                    <input type="checkbox" name="services" value="تصميم غلاف أمامي وخلفي" onchange="onServicesChange()">
+                    <span>تصميم غلاف أمامي وخلفي</span>
+                  </label>
+                  <label class="check-chip">
+                    <input type="checkbox" name="services" value="فهرس وفواصل أبواب وترقيم صفحات" onchange="onServicesChange()">
+                    <span>فهرس وفواصل أبواب وترقيم</span>
+                  </label>
+                  <label class="check-chip">
+                    <input type="checkbox" name="services" value="إدراج رمز QR Code" onchange="onServicesChange()">
+                    <span>إدراج رمز <bdi dir="ltr">QR Code</bdi></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Design Preferences -->
+          <div class="form-group-block">
+            <div class="group-heading-row">
+              <h3 class="group-title">
+                <span class="group-step">03</span>
+                تفاصيل التصميم
+              </h3>
+            </div>
+
+            <div class="fields-grid">
+              <div class="field">
+                <label class="field-label" for="preferredColors">
+                  الألوان المفضلة <span class="opt-mark">(اختياري)</span>
+                </label>
+                <input class="field-input" type="text" id="preferredColors" name="preferredColors" placeholder="مثال: أسود وذهبي، أو أزرق داكن وأبيض" oninput="onFormChange()">
+                <div class="color-presets" aria-label="اختيارات ألوان سريعة">
+                  <button type="button" class="preset-btn" onclick="applyColorPreset('أسود وذهبي فاخر')">أسود وذهبي</button>
+                  <button type="button" class="preset-btn" onclick="applyColorPreset('أزرق كحلي وأبيض')">كحلي وأبيض</button>
+                  <button type="button" class="preset-btn" onclick="applyColorPreset('أخضر زمردي وبيج')">زمردي وبيج</button>
+                  <button type="button" class="preset-btn" onclick="applyColorPreset('على ذوق المصمم')">ذوق المصمم</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="pageOrientation">
+                  اتجاه الصفحة <span class="opt-mark">(المقاس الافتراضي <bdi dir="ltr">A4</bdi>)</span>
+                </label>
+                <select class="field-select" id="pageOrientation" name="pageOrientation" onchange="onFormChange()">
+                  <option value="عمودي (Portrait - A4)">عمودي (Portrait — A4)</option>
+                  <option value="أفقي (Landscape - A4)">أفقي (Landscape — A4)</option>
+                </select>
+              </div>
+
+              <div class="field field--full">
+                <label class="field-label" for="specialNotes">
+                  ملاحظات خاصة <span class="opt-mark">(نمط التصميم، رابط QR، أو أي تعليمات إضافية)</span>
+                </label>
+                <textarea class="field-textarea" id="specialNotes" name="specialNotes" placeholder="أضف هنا أي تفاصيل حول أسلوب التصميم المطلوب، رابط قناة يوتيوب أو تيليجرام لـ QR، أو ملاحظات الترتيب..." oninput="onFormChange()"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. File Attachments -->
+          <div class="form-group-block">
+            <div class="group-heading-row">
+              <h3 class="group-title">
+                <span class="group-step">04</span>
+                رفع الملفات التجهيزية
+              </h3>
+            </div>
+
+            <div class="uploads-grid">
+              <!-- Word File -->
+              <div class="upload-box" id="upload-box-word">
+                <span class="upload-label">ملف الوورد (<bdi dir="ltr">.docx</bdi>)</span>
+                <span class="upload-hint">ملف الدروس النهائي المنظم</span>
+                <label class="upload-trigger">
+                  اختيار ملف الوورد
+                  <input type="file" id="file-word" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onchange="handleFilesSelected('word', this)">
+                </label>
+                <ul class="file-list" id="list-word"></ul>
+              </div>
+
+              <!-- Logo File -->
+              <div class="upload-box" id="upload-box-logo">
+                <span class="upload-label">اللوجو / الشعار</span>
+                <span class="upload-hint"><bdi dir="ltr">PNG / SVG / PDF</bdi></span>
+                <label class="upload-trigger">
+                  اختيار اللوجو
+                  <input type="file" id="file-logo" accept=".png,.jpg,.jpeg,.svg,.pdf" onchange="handleFilesSelected('logo', this)">
+                </label>
+                <ul class="file-list" id="list-logo"></ul>
+              </div>
+
+              <!-- Images Files -->
+              <div class="upload-box" id="upload-box-images">
+                <span class="upload-label">الصور والرسومات</span>
+                <span class="upload-hint"><bdi dir="ltr">PNG / JPG</bdi> (متعدد)</span>
+                <label class="upload-trigger">
+                  اختيار الصور
+                  <input type="file" id="file-images" accept="image/png,image/jpeg,image/webp" multiple onchange="handleFilesSelected('images', this)">
+                </label>
+                <ul class="file-list" id="list-images"></ul>
+              </div>
+            </div>
+
+            <div class="upload-honest-note">
+              ملاحظة تقنية: تُدرج أسماء الملفات المختارة هنا تلقائياً في نص طلبك لتوثيقها، ويُرجى إرفاق الملفات الفعلية مباشرة داخل نافذة محادثة الواتساب بعد فتحها لضمان وصولها بدقتها الكاملة.
+            </div>
+          </div>
+
+          <!-- 5. Confirmation & Submit -->
+          <div class="form-group-block">
+            <label class="terms-box" id="wrap-terms">
+              <input type="checkbox" id="termsAccepted" onchange="onFormChange()">
+              <span class="terms-text">
+                أؤكد أن المحتوى التعليمي المقدم كامل ومنظم وجاهز للتنسيق، وأوافق على أن الخدمة تشمل التصميم والتنسيق البصري وتسليم ملف <bdi dir="ltr">PDF</bdi> فقط، ولا تشمل كتابة المحتوى أو المراجعة العلمية أو التدقيق اللغوي.
+              </span>
+            </label>
+            <span class="field-error" id="err-termsAccepted">يجب تأكيد الموافقة على الشروط ومسؤولية المحتوى قبل إرسال الطلب.</span>
+
+            <div id="form-status-banner" class="form-status-banner" role="status" aria-live="polite"></div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-whatsapp-submit">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+                إرسال الطلب عبر الواتساب
+              </button>
+              <button type="button" class="btn-secondary" id="reset-form-btn" onclick="resetOrderForm(this)">
+                مسح النموذج
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- Live WhatsApp Message & Order Summary Panel -->
+        <aside class="summary-panel" aria-labelledby="summary-heading">
+          <div class="summary-header">
+            <h3 id="summary-heading" class="summary-title">معاينة رسالة الطلب</h3>
+            <span class="completion-badge" id="completion-badge">0 / 7 مكتمل</span>
+          </div>
+
+          <div class="summary-meta-grid">
+            <div class="summary-stat">
+              <span class="summary-stat-label">المدرس والمادة</span>
+              <span class="summary-stat-val" id="stat-teacher">لم يُحدَّد بعد</span>
+            </div>
+            <div class="summary-stat">
+              <span class="summary-stat-label">الباقة والصفحات</span>
+              <span class="summary-stat-val" id="stat-package">الباقة المتوسطة</span>
+            </div>
+          </div>
+
+          <div class="message-preview-box" id="message-preview" aria-label="نص رسالة الواتساب المجهزة"></div>
+
+          <div class="summary-tools">
+            <button type="button" class="btn-secondary" onclick="copyOrderMessage()">
+              نسخ نص الطلب
+            </button>
+            <button type="button" class="btn-secondary" onclick="downloadOrderSummary()">
+              حفظ كملف نصي
+            </button>
+          </div>
+          <div class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></div>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p style="margin: 0;"><strong><bdi dir="ltr">3laa Designs</bdi></strong> — تصميم وتنسيق الملازم والكتب التعليمية باحترافية</p>
+      <p style="margin: 0;">واتساب استقبال الطلبات: <bdi dir="ltr">+20 115 162 0464</bdi> · <bdi dir="ltr">wa.me/201151620464</bdi></p>
+    </footer>
+
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    const WHATSAPP_NUMBER_INTL = `201151620464`;
+    const WHATSAPP_DISPLAY = `+20 115 162 0464`;
+
+    let appState = {
+      prepChecks: { 1: false, 2: false, 3: false, 4: false },
+      fields: {
+        teacherName: ``,
+        whatsappNumber: ``,
+        subject: ``,
+        grade: ``,
+        academicYear: ``,
+        bookletTitle: ``,
+        pageCount: ``,
+        selectedPackage: `الباقة المتوسطة`,
+        services: [`تنسيق صفحات النصوص والدروس`, `تصميم ورقة داخلية A4 (ترويسة وتذييل)`],
+        preferredColors: ``,
+        pageOrientation: `عمودي (Portrait - A4)`,
+        specialNotes: ``,
+        termsAccepted: false
+      },
+      filesMeta: {
+        word: [],
+        logo: [],
+        images: []
+      }
+    };
+
+    function formatBytesToKB(bytes) {
+      if (!bytes || bytes <= 0) return `0 KB`;
+      if (bytes < 1024 * 1024) {
+        return `${Math.max(1, Math.round(bytes / 1024))} KB`;
+      }
+      return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+    }
+
+    function togglePrepItem(num) {
+      appState.prepChecks[num] = !appState.prepChecks[num];
+      renderPrepState();
+      persistState();
+    }
+
+    function renderPrepState() {
+      let count = 0;
+      for (let i = 1; i <= 4; i++) {
+        const checked = Boolean(appState.prepChecks[i]);
+        if (checked) count++;
+        const card = document.getElementById(`prep-card-${i}`);
+        const btn = document.getElementById(`prep-btn-${i}`);
+        if (card) {
+          card.classList.toggle(`is-checked`, checked);
+        }
+        if (btn) {
+          btn.setAttribute(`aria-pressed`, checked ? `true` : `false`);
+          btn.textContent = checked ? `تم التجهيز ✓` : `تأكيد التجهيز`;
+        }
+      }
+      const countEl = document.getElementById(`readiness-count`);
+      const pillEl = document.getElementById(`readiness-pill`);
+      if (countEl) countEl.textContent = String(count);
+      if (pillEl) pillEl.classList.toggle(`is-complete`, count === 4);
+    }
+
+    function syncFieldsFromDOM() {
+      const getVal = function (id) {
+        const el = document.getElementById(id);
+        return el ? el.value.trim() : ``;
+      };
+
+      appState.fields.teacherName = getVal(`teacherName`);
+      appState.fields.whatsappNumber = getVal(`whatsappNumber`);
+      appState.fields.subject = getVal(`subject`);
+      appState.fields.grade = getVal(`grade`);
+      appState.fields.academicYear = getVal(`academicYear`);
+      appState.fields.bookletTitle = getVal(`bookletTitle`);
+      appState.fields.pageCount = getVal(`pageCount`);
+      appState.fields.preferredColors = getVal(`preferredColors`);
+
+      const orientEl = document.getElementById(`pageOrientation`);
+      if (orientEl) appState.fields.pageOrientation = orientEl.value;
+
+      const notesEl = document.getElementById(`specialNotes`);
+      if (notesEl) appState.fields.specialNotes = notesEl.value.trim();
+
+      const pkgChecked = document.querySelector(`input[name="selectedPackage"]:checked`);
+      if (pkgChecked) appState.fields.selectedPackage = pkgChecked.value;
+
+      const serviceInputs = document.querySelectorAll(`input[name="services"]`);
+      const selectedServices = [];
+      serviceInputs.forEach(function (cb) {
+        const label = cb.closest(`.check-chip`);
+        if (cb.checked) {
+          selectedServices.push(cb.value);
+        }
+        if (label) {
+          label.classList.toggle(`is-selected`, cb.checked);
+        }
+      });
+      appState.fields.services = selectedServices;
+
+      const termsEl = document.getElementById(`termsAccepted`);
+      appState.fields.termsAccepted = termsEl ? termsEl.checked : false;
+    }
+
+    function applyStateToDOM() {
+      const setVal = function (id, val) {
+        const el = document.getElementById(id);
+        if (el && typeof val === `string`) el.value = val;
+      };
+
+      setVal(`teacherName`, appState.fields.teacherName);
+      setVal(`whatsappNumber`, appState.fields.whatsappNumber);
+      setVal(`subject`, appState.fields.subject);
+      setVal(`grade`, appState.fields.grade);
+      setVal(`academicYear`, appState.fields.academicYear);
+      setVal(`bookletTitle`, appState.fields.bookletTitle);
+      setVal(`pageCount`, appState.fields.pageCount);
+      setVal(`preferredColors`, appState.fields.preferredColors);
+      setVal(`pageOrientation`, appState.fields.pageOrientation || `عمودي (Portrait - A4)`);
+      setVal(`specialNotes`, appState.fields.specialNotes);
+
+      const pkgRadios = document.querySelectorAll(`input[name="selectedPackage"]`);
+      pkgRadios.forEach(function (radio) {
+        radio.checked = radio.value === appState.fields.selectedPackage;
+        const card = radio.closest(`.pkg-option`);
+        if (card) card.classList.toggle(`is-selected`, radio.checked);
+      });
+
+      const serviceInputs = document.querySelectorAll(`input[name="services"]`);
+      const activeServices = Array.isArray(appState.fields.services) ? appState.fields.services : [];
+      serviceInputs.forEach(function (cb) {
+        cb.checked = activeServices.includes(cb.value);
+        const label = cb.closest(`.check-chip`);
+        if (label) label.classList.toggle(`is-selected`, cb.checked);
+      });
+
+      const termsEl = document.getElementById(`termsAccepted`);
+      if (termsEl) termsEl.checked = Boolean(appState.fields.termsAccepted);
+
+      renderPrepState();
+      renderFilesMeta(`word`);
+      renderFilesMeta(`logo`);
+      renderFilesMeta(`images`);
+      renderSummary();
+    }
+
+    function onFormChange() {
+      syncFieldsFromDOM();
+      clearFieldErrors();
+      renderSummary();
+      persistState();
+    }
+
+    function onPackageChange() {
+      const pkgRadios = document.querySelectorAll(`input[name="selectedPackage"]`);
+      pkgRadios.forEach(function (radio) {
+        const card = radio.closest(`.pkg-option`);
+        if (card) card.classList.toggle(`is-selected`, radio.checked);
+      });
+      onFormChange();
+    }
+
+    function onServicesChange() {
+      onFormChange();
+    }
+
+    function applyColorPreset(presetText) {
+      const input = document.getElementById(`preferredColors`);
+      if (!input) return;
+      input.value = presetText;
+      onFormChange();
+    }
+
+    function handleFilesSelected(category, inputEl) {
+      if (!inputEl || !inputEl.files) return;
+      const picked = Array.from(inputEl.files).map(function (file) {
+        return {
+          name: file.name,
+          sizeText: formatBytesToKB(file.size)
+        };
+      });
+      if (category === `images`) {
+        appState.filesMeta.images = appState.filesMeta.images.concat(picked);
+      } else {
+        appState.filesMeta[category] = picked;
+      }
+      renderFilesMeta(category);
+      renderSummary();
+      persistState();
+    }
+
+    function removeFileMeta(category, idx) {
+      if (!appState.filesMeta[category]) return;
+      appState.filesMeta[category].splice(idx, 1);
+      if (category !== `images`) {
+        const inputEl = document.getElementById(`file-${category}`);
+        if (inputEl) inputEl.value = ``;
+      }
+      renderFilesMeta(category);
+      renderSummary();
+      persistState();
+    }
+
+    function renderFilesMeta(category) {
+      const listEl = document.getElementById(`list-${category}`);
+      const boxEl = document.getElementById(`upload-box-${category}`);
+      if (!listEl) return;
+      const items = appState.filesMeta[category] || [];
+      if (boxEl) {
+        boxEl.classList.toggle(`has-files`, items.length > 0);
+      }
+      listEl.innerHTML = ``;
+      items.forEach(function (item, idx) {
+        const li = document.createElement(`li`);
+        li.className = `file-item`;
+
+        const nameSpan = document.createElement(`span`);
+        nameSpan.className = `file-item-name`;
+        nameSpan.textContent = `${item.name} (${item.sizeText})`;
+
+        const removeBtn = document.createElement(`button`);
+        removeBtn.type = `button`;
+        removeBtn.className = `file-remove`;
+        removeBtn.setAttribute(`aria-label`, `إزالة ${item.name}`);
+        removeBtn.textContent = `×`;
+        removeBtn.onclick = function () {
+          removeFileMeta(category, idx);
+        };
+
+        li.appendChild(nameSpan);
+        li.appendChild(removeBtn);
+        listEl.appendChild(li);
+      });
+    }
+
+    function buildWhatsAppMessage() {
+      const f = appState.fields;
+      const servicesText = f.services.length > 0
+        ? f.services.map(function (s) { return `- ${s}`; }).join(`\n`)
+        : `- لم يتم تحديد خدمات إضافية`;
+
+      const wordText = appState.filesMeta.word.length > 0
+        ? appState.filesMeta.word.map(function (x) { return `${x.name} (${x.sizeText})`; }).join(`، `)
+        : `سيتم إرفاقه مباشرة في المحادثة`;
+
+      const logoText = appState.filesMeta.logo.length > 0
+        ? appState.filesMeta.logo.map(function (x) { return `${x.name} (${x.sizeText})`; }).join(`، `)
+        : `غير مرفق / لا يوجد`;
+
+      const imagesText = appState.filesMeta.images.length > 0
+        ? `${appState.filesMeta.images.length} ملف (${appState.filesMeta.images.map(function (x) { return x.name; }).join(`، `)})`
+        : `غير مرفق / لا يوجد`;
+
+      return [
+        `*طلب مشروع جديد — 3laa Designs*`,
+        `━━━━━━━━━━━━━━━━━━`,
+        `*1) بيانات المدرس:*`,
+        `• اسم المدرس: ${f.teacherName || `—`}`,
+        `• رقم الواتساب: ${f.whatsappNumber || `—`}`,
+        `• المادة: ${f.subject || `—`}`,
+        `• الصف الدراسي: ${f.grade || `—`}`,
+        `• السنة الدراسية: ${f.academicYear || `—`}`,
+        ``,
+        `*2) تفاصيل المشروع:*`,
+        `• عنوان المذكرة: ${f.bookletTitle || `—`}`,
+        `• عدد الصفحات التقديري: ${f.pageCount ? f.pageCount + ` صفحة` : `—`}`,
+        `• الباقة المختارة: ${f.selectedPackage || `—`}`,
+        `• الخدمات المطلوبة:`,
+        servicesText,
+        ``,
+        `*3) تفاصيل التصميم:*`,
+        `• الألوان المفضلة: ${f.preferredColors || `حسب رؤية المصمم`}`,
+        `• اتجاه الصفحة: ${f.pageOrientation || `عمودي (Portrait - A4)`}`,
+        `• ملاحظات خاصة: ${f.specialNotes || `لا توجد ملاحظات إضافية`}`,
+        ``,
+        `*4) الملفات الجاهزة للإرسال:*`,
+        `• ملف الوورد (.docx): ${wordText}`,
+        `• الشعار (اللوجو): ${logoText}`,
+        `• الصور والرسومات: ${imagesText}`,
+        ``,
+        `*5) الإقرار والموافقة:*`,
+        f.termsAccepted
+          ? `☑ أؤكد أن المحتوى كامل ومنظم وجاهز للتنسيق، والخدمة تصميم وتنسيق بصري وتسليم PDF فقط دون تدقيق علمي أو لغوي.`
+          : `☐ بانتظار تأكيد الموافقة على الشروط.`
+      ].join(`\n`);
+    }
+
+    function renderSummary() {
+      const f = appState.fields;
+      const requiredVals = [
+        f.teacherName,
+        f.whatsappNumber,
+        f.subject,
+        f.grade,
+        f.academicYear,
+        f.bookletTitle,
+        f.pageCount
+      ];
+      const completed = requiredVals.filter(function (v) {
+        return String(v || ``).trim().length > 0;
+      }).length;
+
+      const badge = document.getElementById(`completion-badge`);
+      if (badge) badge.textContent = `${completed} / 7 مكتمل`;
+
+      const statTeacher = document.getElementById(`stat-teacher`);
+      if (statTeacher) {
+        if (f.teacherName || f.subject) {
+          statTeacher.textContent = [f.teacherName, f.subject].filter(Boolean).join(` — `);
+        } else {
+          statTeacher.textContent = `لم يُحدَّد بعد`;
+        }
+      }
+
+      const statPkg = document.getElementById(`stat-package`);
+      if (statPkg) {
+        statPkg.textContent = f.pageCount
+          ? `${f.selectedPackage} · ${f.pageCount} صفحة`
+          : f.selectedPackage;
+      }
+
+      const preview = document.getElementById(`message-preview`);
+      if (preview) {
+        preview.textContent = buildWhatsAppMessage();
+      }
+    }
+
+    function clearFieldErrors() {
+      const errorWraps = document.querySelectorAll(`.has-error`);
+      errorWraps.forEach(function (el) {
+        el.classList.remove(`has-error`);
+      });
+      const termsErr = document.getElementById(`err-termsAccepted`);
+      if (termsErr) termsErr.style.display = `none`;
+    }
+
+    function validateOrderForm() {
+      clearFieldErrors();
+      const f = appState.fields;
+      const missing = [];
+
+      const checkRequired = function (key, wrapId) {
+        if (!String(f[key] || ``).trim()) {
+          missing.push(wrapId);
+          const wrap = document.getElementById(wrapId);
+          if (wrap) wrap.classList.add(`has-error`);
+        }
+      };
+
+      checkRequired(`teacherName`, `wrap-teacherName`);
+      checkRequired(`whatsappNumber`, `wrap-whatsappNumber`);
+      checkRequired(`subject`, `wrap-subject`);
+      checkRequired(`grade`, `wrap-grade`);
+      checkRequired(`academicYear`, `wrap-academicYear`);
+      checkRequired(`bookletTitle`, `wrap-bookletTitle`);
+
+      const pagesNum = Number(f.pageCount);
+      if (!f.pageCount || !Number.isFinite(pagesNum) || pagesNum < 1) {
+        missing.push(`wrap-pageCount`);
+        const pageWrap = document.getElementById(`wrap-pageCount`);
+        if (pageWrap) pageWrap.classList.add(`has-error`);
+      }
+
+      if (!f.termsAccepted) {
+        missing.push(`wrap-terms`);
+        const termsWrap = document.getElementById(`wrap-terms`);
+        const termsErr = document.getElementById(`err-termsAccepted`);
+        if (termsWrap) termsWrap.classList.add(`has-error`);
+        if (termsErr) termsErr.style.display = `block`;
+      } else {
+        const termsErr = document.getElementById(`err-termsAccepted`);
+        if (termsErr) termsErr.style.display = `none`;
+      }
+
+      return missing;
+    }
+
+    function handleOrderSubmit(event) {
+      if (event) event.preventDefault();
+      syncFieldsFromDOM();
+      renderSummary();
+
+      const banner = document.getElementById(`form-status-banner`);
+      const missing = validateOrderForm();
+
+      if (missing.length > 0) {
+        if (banner) {
+          banner.className = `form-status-banner is-error`;
+          banner.textContent = `يرجى استكمال الحقول المطلوبة والمحددة باللون الأحمر وتأكيد الموافقة على الشروط قبل الإرسال.`;
+        }
+        const firstInvalid = document.getElementById(missing[0]);
+        if (firstInvalid) {
+          firstInvalid.scrollIntoView({ behavior: `smooth`, block: `center` });
+        }
+        return;
+      }
+
+      const message = buildWhatsAppMessage();
+      const encodedText = encodeURIComponent(message);
+      const whatsappUri = `whatsapp://send?phone=${WHATSAPP_NUMBER_INTL}&text=${encodedText}`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(message).catch(function () {});
+      }
+
+      if (banner) {
+        banner.className = `form-status-banner is-success`;
+        banner.innerHTML = ``;
+
+        const titleP = document.createElement(`strong`);
+        titleP.textContent = `تم تجهيز طلبك ونسخ تفاصيله بنجاح!`;
+
+        const descP = document.createElement(`span`);
+        descP.textContent = `اضغط على الزر أدناه لفتح محادثة الواتساب مباشرة مع الرقم ${WHATSAPP_DISPLAY} وإرسال النص مع ملفاتك:`;
+
+        const actionsDiv = document.createElement(`div`);
+        actionsDiv.className = `success-actions`;
+
+        const waLink = document.createElement(`a`);
+        waLink.id = `whatsapp-direct-link`;
+        waLink.className = `whatsapp-direct-link`;
+        waLink.href = whatsappUri;
+        waLink.textContent = `فتح الواتساب وإرسال الطلب الآن`;
+
+        const copyBtn = document.createElement(`button`);
+        copyBtn.type = `button`;
+        copyBtn.className = `btn-secondary`;
+        copyBtn.textContent = `إعادة نسخ النص`;
+        copyBtn.onclick = function () {
+          copyOrderMessage();
+        };
+
+        actionsDiv.appendChild(waLink);
+        actionsDiv.appendChild(copyBtn);
+
+        const fallbackNote = document.createElement(`span`);
+        fallbackNote.style.fontSize = `0.82rem`;
+        fallbackNote.style.color = `var(--on-surface-variant)`;
+        fallbackNote.textContent = `في حال لم يفتح تطبيق الواتساب تلقائياً من داخل المتصفح، تم نسخ نص الطلب في الحافظة لإرساله مباشرة إلى ${WHATSAPP_DISPLAY} (wa.me/201151620464).`;
+
+        banner.appendChild(titleP);
+        banner.appendChild(descP);
+        banner.appendChild(actionsDiv);
+        banner.appendChild(fallbackNote);
+      }
+
+      persistState();
+    }
+
+    function copyOrderMessage() {
+      syncFieldsFromDOM();
+      const message = buildWhatsAppMessage();
+      const feedback = document.getElementById(`copy-feedback`);
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(message).then(function () {
+          if (feedback) feedback.textContent = `تم نسخ نص الطلب بالكامل — جاهز للصق في الواتساب.`;
+        }).catch(function () {
+          fallbackCopyText(message, feedback);
+        });
+      } else {
+        fallbackCopyText(message, feedback);
+      }
+    }
+
+    function fallbackCopyText(text, feedbackEl) {
+      const ta = document.createElement(`textarea`);
+      ta.value = text;
+      ta.style.position = `fixed`;
+      ta.style.opacity = `0`;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand(`copy`);
+        if (feedbackEl) feedbackEl.textContent = `تم نسخ نص الطلب بالكامل.`;
+      } catch (e) {
+        if (feedbackEl) feedbackEl.textContent = `يرجى تحديد النص من المعاينة أعلاه ونسخه يدوياً.`;
+      }
+      document.body.removeChild(ta);
+    }
+
+    function downloadOrderSummary() {
+      syncFieldsFromDOM();
+      const content = buildWhatsAppMessage();
+      const safeTitle = (appState.fields.bookletTitle || `order`).replace(/[^\w\u0600-\u06FF-]+/g, `_`);
+      const filename = `3laa-Designs-${safeTitle}.txt`;
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === `function`) {
+        window.notebookAppApi.triggerFileDownload({
+          content: content,
+          contentType: `text/plain`,
+          encoding: `UTF-8`,
+          filename: filename
+        });
+      } else {
+        const blob = new Blob([content], { type: `text/plain;charset=utf-8` });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement(`a`);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      const feedback = document.getElementById(`copy-feedback`);
+      if (feedback) feedback.textContent = `تم تنزيل ملخص الطلب كملف نصي.`;
+    }
+
+    function resetOrderForm(btn) {
+      if (btn && btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.classList.add(`is-armed`);
+        btn.textContent = `اضغط مرة أخرى لتأكيد المسح`;
+        setTimeout(function () {
+          if (btn.dataset.armed === `true`) {
+            btn.dataset.armed = `false`;
+            btn.classList.remove(`is-armed`);
+            btn.textContent = `مسح النموذج`;
+          }
+        }, 4000);
+        return;
+      }
+
+      if (btn) {
+        btn.dataset.armed = `false`;
+        btn.classList.remove(`is-armed`);
+        btn.textContent = `مسح النموذج`;
+      }
+
+      appState.fields = {
+        teacherName: ``,
+        whatsappNumber: ``,
+        subject: ``,
+        grade: ``,
+        academicYear: ``,
+        bookletTitle: ``,
+        pageCount: ``,
+        selectedPackage: `الباقة المتوسطة`,
+        services: [`تنسيق صفحات النصوص والدروس`, `تصميم ورقة داخلية A4 (ترويسة وتذييل)`],
+        preferredColors: ``,
+        pageOrientation: `عمودي (Portrait - A4)`,
+        specialNotes: ``,
+        termsAccepted: false
+      };
+      appState.filesMeta = { word: [], logo: [], images: [] };
+
+      [`file-word`, `file-logo`, `file-images`].forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el) el.value = ``;
+      });
+
+      const banner = document.getElementById(`form-status-banner`);
+      if (banner) {
+        banner.className = `form-status-banner`;
+        banner.innerHTML = ``;
+      }
+
+      const termsErr = document.getElementById(`err-termsAccepted`);
+      if (termsErr) termsErr.style.display = `none`;
+
+      const feedback = document.getElementById(`copy-feedback`);
+      if (feedback) feedback.textContent = ``;
+
+      clearFieldErrors();
+      applyStateToDOM();
+      persistState();
+    }
+
+    async function persistState() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+          await window.notebookAppApi.setAppState(appState);
+        }
+      } catch (e) {
+        /* Ignore storage errors gracefully */
+      }
+    }
+
+    async function initApp() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            if (saved.prepChecks) {
+              appState.prepChecks = Object.assign({}, appState.prepChecks, saved.prepChecks);
+            }
+            if (saved.fields) {
+              appState.fields = Object.assign({}, appState.fields, saved.fields);
+            }
+            if (saved.filesMeta) {
+              appState.filesMeta = Object.assign({}, appState.filesMeta, saved.filesMeta);
+            }
+          }
+        }
+      } catch (e) {
+        /* Start with default clean state */
+      }
+
+      applyStateToDOM();
+
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+          window.notebookAppApi.notifyAppReady();
+        }
+      } catch (e) {
+        /* Ignore */
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initApp);
+  </script>
+</body>
+</html>
