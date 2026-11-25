@@ -25,13 +25,14 @@
       --ink-secondary: #cfd7e8;
       --ink-muted: #8b98b4;
 
-      /* Brand & Conversion Accents */
+      /* Brand & Done Accents */
       --gold: #e5b94c;
       --gold-soft: #f7d77c;
       --gold-glow: rgba(229, 185, 76, 0.16);
       --royal-blue: #254e96;
-      --emerald: #2fa676;
-      --emerald-soft: rgba(47, 166, 118, 0.16);
+      --emerald: #22b573;
+      --emerald-bright: #7ef2ba;
+      --emerald-soft: rgba(34, 181, 115, 0.24);
       --amber: #f2be54;
       --amber-soft: rgba(242, 190, 84, 0.14);
       --danger: #f07d68;
@@ -75,7 +76,7 @@
       background-image:
         radial-gradient(ellipse 85% 48% at 50% -6%, rgba(229, 185, 76, 0.18), transparent 72%),
         radial-gradient(ellipse 60% 40% at 88% 18%, rgba(37, 78, 150, 0.26), transparent 72%),
-        radial-gradient(ellipse 52% 36% at 12% 38%, rgba(47, 166, 118, 0.12), transparent 72%);
+        radial-gradient(ellipse 52% 36% at 12% 38%, rgba(34, 181, 115, 0.14), transparent 72%);
       color: var(--ink-primary);
       font-family: var(--font-body);
       font-size: clamp(0.96rem, 0.92rem + 0.18vw, 1.04rem);
@@ -123,7 +124,7 @@
       inset: 0;
       border-radius: inherit;
       padding: 1px;
-      background: linear-gradient(135deg, rgba(247, 215, 124, 0.42), transparent 46%, rgba(47, 166, 118, 0.3));
+      background: linear-gradient(135deg, rgba(247, 215, 124, 0.42), transparent 46%, rgba(34, 181, 115, 0.32));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -214,11 +215,11 @@
       padding: 0.35rem 1rem;
       border-radius: var(--radius-pill);
       background: var(--emerald-soft);
-      border: 1px solid rgba(47, 166, 118, 0.38);
+      border: 1px solid rgba(34, 181, 115, 0.45);
       font-family: var(--font-headline);
       font-size: 0.85rem;
       font-weight: 700;
-      color: #96e0c0;
+      color: var(--emerald-bright);
     }
 
     .hero-title {
@@ -370,9 +371,10 @@
     }
 
     .progress-chip.is-complete {
-      background: var(--emerald-soft);
-      border-color: rgba(47, 166, 118, 0.58);
-      color: #96e0c0;
+      background: linear-gradient(135deg, rgba(34, 181, 115, 0.34), rgba(20, 96, 62, 0.55));
+      border-color: var(--emerald-bright);
+      color: var(--emerald-bright);
+      box-shadow: 0 0 18px rgba(34, 181, 115, 0.25);
     }
 
     /* Preparation Cards */
@@ -393,7 +395,8 @@
       gap: 0.9rem;
       transition: transform var(--dur-med) var(--ease-out),
                   border-color var(--dur-med) var(--ease-out),
-                  background-color var(--dur-med) var(--ease-out);
+                  background-color var(--dur-med) var(--ease-out),
+                  box-shadow var(--dur-med) var(--ease-out);
     }
 
     .prep-card:hover {
@@ -403,9 +406,9 @@
     }
 
     .prep-card.is-checked {
-      background: linear-gradient(155deg, rgba(47, 166, 118, 0.16), rgba(13, 34, 42, 0.94));
-      border-color: rgba(47, 166, 118, 0.6);
-      box-shadow: inset 0 0 0 1px rgba(47, 166, 118, 0.18);
+      background: linear-gradient(155deg, rgba(34, 181, 115, 0.26), rgba(11, 44, 34, 0.96));
+      border-color: var(--emerald-bright);
+      box-shadow: 0 12px 28px rgba(34, 181, 115, 0.2), inset 0 0 0 1px rgba(126, 242, 186, 0.25);
     }
 
     .prep-top {
@@ -415,6 +418,10 @@
       gap: 0.75rem;
       padding-bottom: 0.75rem;
       border-bottom: 1px solid rgba(253, 251, 247, 0.08);
+    }
+
+    .prep-card.is-checked .prep-top {
+      border-bottom-color: rgba(126, 242, 186, 0.25);
     }
 
     .prep-title-group {
@@ -442,8 +449,9 @@
 
     .prep-card.is-checked .prep-num {
       background: var(--emerald);
-      border-color: #7ae0b4;
-      color: #061810;
+      border-color: var(--emerald-bright);
+      color: #051910;
+      font-weight: 700;
     }
 
     .prep-title {
@@ -455,9 +463,13 @@
       line-height: 1.4;
     }
 
+    .prep-card.is-checked .prep-title {
+      color: var(--emerald-bright);
+    }
+
     .prep-btn {
       min-height: 38px;
-      padding: 0.35rem 0.85rem;
+      padding: 0.35rem 0.9rem;
       border-radius: var(--radius-pill);
       border: 1px solid var(--border-subtle);
       background: rgba(255, 255, 255, 0.03);
@@ -476,10 +488,12 @@
       background: var(--gold-glow);
     }
 
-    .prep-btn[aria-pressed="true"] {
+    .prep-btn[aria-pressed="true"],
+    .prep-card.is-checked .prep-btn {
       background: var(--emerald);
-      border-color: #7ae0b4;
-      color: #061810;
+      border-color: var(--emerald-bright);
+      color: #051910;
+      box-shadow: 0 4px 14px rgba(34, 181, 115, 0.35);
     }
 
     .prep-points {
@@ -498,6 +512,10 @@
       font-size: 0.94rem;
     }
 
+    .prep-card.is-checked .prep-points li {
+      color: #dcfce9;
+    }
+
     .prep-points li::before {
       content: "";
       position: absolute;
@@ -510,11 +528,15 @@
     }
 
     .prep-card.is-checked .prep-points li::before {
-      background: #7ae0b4;
+      background: var(--emerald-bright);
     }
 
     .prep-points li strong {
       color: var(--ink-primary);
+    }
+
+    .prep-card.is-checked .prep-points li strong {
+      color: #ffffff;
     }
 
     .prep-badges {
@@ -526,6 +548,10 @@
       gap: 0.4rem;
     }
 
+    .prep-card.is-checked .prep-badges {
+      border-top-color: rgba(126, 242, 186, 0.22);
+    }
+
     .badge-chip {
       padding: 0.2rem 0.65rem;
       border-radius: var(--radius-pill);
@@ -534,6 +560,12 @@
       font-size: 0.78rem;
       font-weight: 600;
       color: var(--gold-soft);
+    }
+
+    .prep-card.is-checked .badge-chip {
+      background: rgba(34, 181, 115, 0.22);
+      border-color: rgba(126, 242, 186, 0.45);
+      color: var(--emerald-bright);
     }
 
     /* Scope Notice */
@@ -818,9 +850,9 @@
     }
 
     .service-item.is-selected {
-      border-color: rgba(47, 166, 118, 0.62);
+      border-color: var(--emerald-bright);
       background: var(--emerald-soft);
-      color: #c8f5e0;
+      color: var(--emerald-bright);
     }
 
     /* Color Quick Chips */
@@ -867,7 +899,7 @@
 
     .drop-card.has-files {
       border-style: solid;
-      border-color: rgba(47, 166, 118, 0.62);
+      border-color: var(--emerald-bright);
       background: var(--emerald-soft);
     }
 
@@ -985,7 +1017,7 @@
     }
 
     .terms-card.is-accepted {
-      border-color: rgba(47, 166, 118, 0.62);
+      border-color: var(--emerald-bright);
       background: var(--emerald-soft);
     }
 
@@ -1090,7 +1122,7 @@
       flex-direction: column;
       gap: 0.65rem;
       background: var(--emerald-soft);
-      border: 1px solid rgba(47, 166, 118, 0.55);
+      border: 1px solid var(--emerald-bright);
       color: var(--ink-primary);
     }
 
@@ -1170,8 +1202,8 @@
 
     .preview-count.is-done {
       background: var(--emerald-soft);
-      border-color: rgba(47, 166, 118, 0.6);
-      color: #96e0c0;
+      border-color: var(--emerald-bright);
+      color: var(--emerald-bright);
     }
 
     .stats-row {
@@ -1231,7 +1263,7 @@
 
     .feedback-note {
       font-size: 0.84rem;
-      color: #96e0c0;
+      color: var(--emerald-bright);
       min-height: 1.2em;
     }
 
@@ -1810,7 +1842,8 @@
     }
 
     function togglePrepItem(num) {
-      appState.prepChecks[num] = !appState.prepChecks[num];
+      const key = Number(num);
+      appState.prepChecks[key] = !Boolean(appState.prepChecks[key]);
       renderPrepState();
       persistState();
     }
@@ -1824,7 +1857,7 @@
         if (card) card.classList.toggle(`is-checked`, checked);
         if (btn) {
           btn.setAttribute(`aria-pressed`, checked ? `true` : `false`);
-          btn.textContent = checked ? `تم التجهيز ✓` : `تأكيد التجهيز`;
+          btn.textContent = checked ? `✓ تم التجهيز` : `تأكيد التجهيز`;
         }
       }
       const countEl = document.getElementById(`readiness-count`);
@@ -1946,4 +1979,486 @@
 
     function handleFilesSelected(category, inputEl) {
       if (!inputEl || !inputEl.files) return;
-      const picked = Array.from(inputEl.files).map(function
+      const picked = Array.from(inputEl.files).map(function (file) {
+        return {
+          name: file.name,
+          sizeText: formatBytesToKB(file.size)
+        };
+      });
+      if (category === `images`) {
+        appState.filesMeta.images = appState.filesMeta.images.concat(picked);
+      } else {
+        appState.filesMeta[category] = picked;
+      }
+      renderFilesMeta(category);
+      renderSummary();
+      persistState();
+    }
+
+    function removeFileMeta(category, idx) {
+      if (!appState.filesMeta[category]) return;
+      appState.filesMeta[category].splice(idx, 1);
+      if (category !== `images`) {
+        const inputEl = document.getElementById(`file-${category}`);
+        if (inputEl) inputEl.value = ``;
+      }
+      renderFilesMeta(category);
+      renderSummary();
+      persistState();
+    }
+
+    function renderFilesMeta(category) {
+      const listEl = document.getElementById(`list-${category}`);
+      const boxEl = document.getElementById(`upload-box-${category}`);
+      if (!listEl) return;
+      const items = appState.filesMeta[category] || [];
+      if (boxEl) boxEl.classList.toggle(`has-files`, items.length > 0);
+      listEl.innerHTML = ``;
+      items.forEach(function (item, idx) {
+        const li = document.createElement(`li`);
+        li.className = `file-item`;
+
+        const nameSpan = document.createElement(`span`);
+        nameSpan.className = `file-item-name`;
+        nameSpan.textContent = `${item.name} (${item.sizeText})`;
+
+        const removeBtn = document.createElement(`button`);
+        removeBtn.type = `button`;
+        removeBtn.className = `file-remove`;
+        removeBtn.setAttribute(`aria-label`, `إزالة ${item.name}`);
+        removeBtn.textContent = `×`;
+        removeBtn.onclick = function () {
+          removeFileMeta(category, idx);
+        };
+
+        li.appendChild(nameSpan);
+        li.appendChild(removeBtn);
+        listEl.appendChild(li);
+      });
+    }
+
+    function buildWhatsAppMessage() {
+      const f = appState.fields;
+      const cleanPhone = formatPhoneForDisplay(f.whatsappNumber);
+      const servicesText = f.services.length > 0
+        ? f.services.map(function (s) { return `- ${s}`; }).join(`\n`)
+        : `- لم يتم تحديد خدمات إضافية`;
+
+      const wordText = appState.filesMeta.word.length > 0
+        ? appState.filesMeta.word.map(function (x) { return `${x.name} (${x.sizeText})`; }).join(`، `)
+        : `سيتم إرفاقه مباشرة في المحادثة`;
+
+      const logoText = appState.filesMeta.logo.length > 0
+        ? appState.filesMeta.logo.map(function (x) { return `${x.name} (${x.sizeText})`; }).join(`، `)
+        : `غير مرفق / لا يوجد`;
+
+      const imagesText = appState.filesMeta.images.length > 0
+        ? `${appState.filesMeta.images.length} ملف (${appState.filesMeta.images.map(function (x) { return x.name; }).join(`، `)})`
+        : `غير مرفق / لا يوجد`;
+
+      return [
+        `*طلب مشروع جديد — 3laa Designs*`,
+        `━━━━━━━━━━━━━━━━━━`,
+        `*1) بيانات المدرس:*`,
+        `• اسم المدرس: ${f.teacherName || `—`}`,
+        `• رقم الواتساب: ${cleanPhone}`,
+        `• المادة: ${f.subject || `—`}`,
+        `• الصف الدراسي: ${f.grade || `—`}`,
+        `• السنة الدراسية: ${f.academicYear || `—`}`,
+        ``,
+        `*2) تفاصيل المشروع:*`,
+        `• عنوان المذكرة: ${f.bookletTitle || `—`}`,
+        `• عدد الصفحات التقديري: ${f.pageCount ? f.pageCount + ` صفحة` : `—`}`,
+        `• الباقة المختارة: ${f.selectedPackage || `—`}`,
+        `• الخدمات المطلوبة:`,
+        servicesText,
+        ``,
+        `*3) تفاصيل التصميم:*`,
+        `• الألوان المفضلة: ${f.preferredColors || `حسب رؤية المصمم`}`,
+        `• اتجاه الصفحة: ${f.pageOrientation || `عمودي (Portrait - A4)`}`,
+        `• ملاحظات خاصة: ${f.specialNotes || `لا توجد ملاحظات إضافية`}`,
+        ``,
+        `*4) الملفات الجاهزة للإرسال:*`,
+        `• ملف الوورد (.docx): ${wordText}`,
+        `• الشعار (اللوجو): ${logoText}`,
+        `• الصور والرسومات: ${imagesText}`,
+        ``,
+        `*5) الإقرار والموافقة:*`,
+        f.termsAccepted
+          ? `☑ أؤكد أن المحتوى كامل ومنظم وجاهز للتنسيق، والخدمة تصميم وتنسيق بصري وتسليم PDF فقط دون تدقيق علمي أو لغوي.`
+          : `☐ بانتظار تأكيد الموافقة على الشروط.`
+      ].join(`\n`);
+    }
+
+    function renderSummary() {
+      const f = appState.fields;
+      const requiredVals = [
+        f.teacherName,
+        f.whatsappNumber,
+        f.subject,
+        f.grade,
+        f.academicYear,
+        f.bookletTitle,
+        f.pageCount
+      ];
+      const completed = requiredVals.filter(function (v) {
+        return String(v || ``).trim().length > 0;
+      }).length;
+
+      const badge = document.getElementById(`completion-badge`);
+      if (badge) {
+        badge.textContent = `${completed} / 7 مكتمل`;
+        badge.classList.toggle(`is-done`, completed === 7);
+      }
+
+      const statTeacher = document.getElementById(`stat-teacher`);
+      if (statTeacher) {
+        statTeacher.textContent = (f.teacherName || f.subject)
+          ? [f.teacherName, f.subject].filter(Boolean).join(` — `)
+          : `لم يُحدَّد بعد`;
+      }
+
+      const statPkg = document.getElementById(`stat-package`);
+      if (statPkg) {
+        statPkg.textContent = f.pageCount
+          ? `${f.selectedPackage} · ${f.pageCount} صفحة`
+          : f.selectedPackage;
+      }
+
+      const preview = document.getElementById(`message-preview`);
+      if (preview) preview.textContent = buildWhatsAppMessage();
+    }
+
+    function clearFieldErrors() {
+      document.querySelectorAll(`.has-error`).forEach(function (el) {
+        el.classList.remove(`has-error`);
+      });
+      const termsErr = document.getElementById(`err-termsAccepted`);
+      if (termsErr) termsErr.style.display = `none`;
+    }
+
+    function validateOrderForm() {
+      clearFieldErrors();
+      const f = appState.fields;
+      const missing = [];
+
+      const checkRequired = function (key, wrapId) {
+        if (!String(f[key] || ``).trim()) {
+          missing.push(wrapId);
+          const wrap = document.getElementById(wrapId);
+          if (wrap) wrap.classList.add(`has-error`);
+        }
+      };
+
+      checkRequired(`teacherName`, `wrap-teacherName`);
+
+      const digitsOnlyPhone = String(f.whatsappNumber || ``).replace(/\D/g, ``);
+      if (digitsOnlyPhone.length < 8) {
+        missing.push(`wrap-whatsappNumber`);
+        const phoneWrap = document.getElementById(`wrap-whatsappNumber`);
+        if (phoneWrap) phoneWrap.classList.add(`has-error`);
+      }
+
+      checkRequired(`subject`, `wrap-subject`);
+      checkRequired(`grade`, `wrap-grade`);
+      checkRequired(`academicYear`, `wrap-academicYear`);
+      checkRequired(`bookletTitle`, `wrap-bookletTitle`);
+
+      const pagesNum = Number(f.pageCount);
+      if (!f.pageCount || !Number.isFinite(pagesNum) || pagesNum < 1) {
+        missing.push(`wrap-pageCount`);
+        const pageWrap = document.getElementById(`wrap-pageCount`);
+        if (pageWrap) pageWrap.classList.add(`has-error`);
+      }
+
+      if (!f.termsAccepted) {
+        missing.push(`wrap-terms`);
+        const termsWrap = document.getElementById(`wrap-terms`);
+        const termsErr = document.getElementById(`err-termsAccepted`);
+        if (termsWrap) termsWrap.classList.add(`has-error`);
+        if (termsErr) termsErr.style.display = `block`;
+      }
+
+      return missing;
+    }
+
+    function handleOrderSubmit(event) {
+      if (event) event.preventDefault();
+      syncFieldsFromDOM();
+      renderSummary();
+
+      const banner = document.getElementById(`form-status-banner`);
+      const missing = validateOrderForm();
+
+      if (missing.length > 0) {
+        if (banner) {
+          banner.className = `status-box is-error`;
+          banner.textContent = `يرجى استكمال الحقول المطلوبة والمحددة باللون الأحمر وتأكيد الموافقة على الشروط قبل الإرسال.`;
+        }
+        const firstInvalid = document.getElementById(missing[0]);
+        if (firstInvalid) {
+          firstInvalid.scrollIntoView({ behavior: `smooth`, block: `center` });
+        }
+        return;
+      }
+
+      const message = buildWhatsAppMessage();
+      const encodedText = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER_INTL}?text=${encodedText}`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(message).catch(function () {});
+      }
+
+      const waWindow = window.open(whatsappUrl, `_blank`, `noopener,noreferrer`);
+
+      const formData = new FormData();
+      formData.append(`_subject`, `طلب مشروع جديد — 3laa Designs (${appState.fields.teacherName})`);
+      formData.append(`_template`, `table`);
+      formData.append(`الرسالة_المنسقة`, message);
+      formData.append(`اسم_المدرس`, appState.fields.teacherName);
+      formData.append(`رقم_الواتساب`, formatPhoneForDisplay(appState.fields.whatsappNumber));
+      formData.append(`المادة`, appState.fields.subject);
+      formData.append(`الصف_الدراسي`, appState.fields.grade);
+      formData.append(`السنة_الدراسية`, appState.fields.academicYear);
+      formData.append(`عنوان_المذكرة`, appState.fields.bookletTitle);
+      formData.append(`عدد_الصفحات`, appState.fields.pageCount);
+      formData.append(`الباقة`, appState.fields.selectedPackage);
+      formData.append(`الخدمات`, appState.fields.services.join(`، `));
+      formData.append(`الألوان`, appState.fields.preferredColors || `حسب رؤية المصمم`);
+      formData.append(`اتجاه_الصفحة`, appState.fields.pageOrientation);
+      formData.append(`ملاحظات`, appState.fields.specialNotes || `لا توجد`);
+
+      const wordInput = document.getElementById(`file-word`);
+      if (wordInput && wordInput.files[0]) {
+        formData.append(`ملف_الوورد`, wordInput.files[0]);
+      }
+
+      const logoInput = document.getElementById(`file-logo`);
+      if (logoInput && logoInput.files[0]) {
+        formData.append(`الشعار_اللوجو`, logoInput.files[0]);
+      }
+
+      const imagesInput = document.getElementById(`file-images`);
+      if (imagesInput && imagesInput.files.length > 0) {
+        Array.from(imagesInput.files).forEach(function (img, idx) {
+          formData.append(`صورة_${idx + 1}`, img);
+        });
+      }
+
+      if (banner) {
+        banner.className = `status-box is-success`;
+        banner.innerHTML = ``;
+
+        const titleP = document.createElement(`strong`);
+        titleP.id = `gmail-send-status`;
+        titleP.textContent = `جاري إرسال الطلب والملفات إلى Gmail وتجهيز الواتساب...`;
+
+        const descP = document.createElement(`span`);
+        descP.textContent = waWindow
+          ? `تم فتح الواتساب على الرقم ${WHATSAPP_DISPLAY}، وإذا لم يظهر التبويب استخدم الزر أدناه:`
+          : `قد يكون المتصفح حجب نافذة الواتساب؛ اضغط على الزر أدناه لفتح المحادثة على ${WHATSAPP_DISPLAY}:`;
+
+        const attachTip = document.createElement(`div`);
+        attachTip.className = `tip-pill`;
+        attachTip.textContent = `يُرسل الطلب والملفات إلى Gmail تلقائياً، ويُفضل أيضاً إرفاق الملفات الفعلية داخل محادثة الواتساب (📎).`;
+
+        const actionsDiv = document.createElement(`div`);
+        actionsDiv.className = `result-links`;
+
+        const waLink = document.createElement(`a`);
+        waLink.className = `wa-link-btn`;
+        waLink.href = whatsappUrl;
+        waLink.target = `_blank`;
+        waLink.rel = `noopener noreferrer`;
+        waLink.textContent = `فتح الواتساب بالمختصر`;
+
+        const copyBtn = document.createElement(`button`);
+        copyBtn.type = `button`;
+        copyBtn.className = `btn-ghost-action`;
+        copyBtn.textContent = `إعادة نسخ النص`;
+        copyBtn.onclick = function () {
+          copyOrderMessage();
+        };
+
+        actionsDiv.appendChild(waLink);
+        actionsDiv.appendChild(copyBtn);
+
+        banner.appendChild(titleP);
+        banner.appendChild(descP);
+        banner.appendChild(attachTip);
+        banner.appendChild(actionsDiv);
+      }
+
+      fetch(GMAIL_FORMSUBMIT_ENDPOINT, {
+        method: `POST`,
+        body: formData
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error(`Gmail request failed`);
+          return res.json();
+        })
+        .then(function () {
+          const statusEl = document.getElementById(`gmail-send-status`);
+          if (statusEl) {
+            statusEl.textContent = `تم إرسال الطلب والملفات إلى Gmail بنجاح وتجهيز مختصر الواتساب!`;
+          }
+        })
+        .catch(function () {
+          const statusEl = document.getElementById(`gmail-send-status`);
+          if (statusEl) {
+            statusEl.textContent = `تم تجهيز مختصر الواتساب ونسخ النص؛ تحقق من تفعيل FormSubmit أو حجم الملفات المرفقة.`;
+          }
+        });
+
+      persistState();
+    }
+
+    function copyOrderMessage() {
+      syncFieldsFromDOM();
+      const message = buildWhatsAppMessage();
+      const feedback = document.getElementById(`copy-feedback`);
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(message).then(function () {
+          if (feedback) feedback.textContent = `تم نسخ نص الطلب بالكامل — جاهز للصق في الواتساب.`;
+        }).catch(function () {
+          fallbackCopyText(message, feedback);
+        });
+      } else {
+        fallbackCopyText(message, feedback);
+      }
+    }
+
+    function fallbackCopyText(text, feedbackEl) {
+      const ta = document.createElement(`textarea`);
+      ta.value = text;
+      ta.style.position = `fixed`;
+      ta.style.opacity = `0`;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand(`copy`);
+        if (feedbackEl) feedbackEl.textContent = `تم نسخ نص الطلب بالكامل.`;
+      } catch (e) {
+        if (feedbackEl) feedbackEl.textContent = `يرجى تحديد النص من المعاينة أعلاه ونسخه يدوياً.`;
+      }
+      document.body.removeChild(ta);
+    }
+
+    function downloadOrderSummary() {
+      syncFieldsFromDOM();
+      const content = buildWhatsAppMessage();
+      const safeTitle = (appState.fields.bookletTitle || `order`).replace(/[^\w\u0600-\u06FF-]+/g, `_`);
+      const filename = `3laa-Designs-${safeTitle}.txt`;
+
+      const blob = new Blob([content], { type: `text/plain;charset=utf-8` });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement(`a`);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      const feedback = document.getElementById(`copy-feedback`);
+      if (feedback) feedback.textContent = `تم تنزيل ملخص الطلب كملف نصي.`;
+    }
+
+    function resetOrderForm(btn) {
+      if (btn && btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.classList.add(`is-armed`);
+        btn.textContent = `اضغط مرة أخرى لتأكيد المسح`;
+        setTimeout(function () {
+          if (btn.dataset.armed === `true`) {
+            btn.dataset.armed = `false`;
+            btn.classList.remove(`is-armed`);
+            btn.textContent = `مسح النموذج`;
+          }
+        }, 4000);
+        return;
+      }
+
+      if (btn) {
+        btn.dataset.armed = `false`;
+        btn.classList.remove(`is-armed`);
+        btn.textContent = `مسح النموذج`;
+      }
+
+      appState.fields = {
+        teacherName: ``,
+        whatsappNumber: ``,
+        subject: ``,
+        grade: ``,
+        academicYear: ``,
+        bookletTitle: ``,
+        pageCount: ``,
+        selectedPackage: `الباقة المتوسطة`,
+        services: [`تنسيق صفحات النصوص والدروس`, `تصميم ورقة داخلية A4 (ترويسة وتذييل)`],
+        preferredColors: ``,
+        pageOrientation: `عمودي (Portrait - A4)`,
+        specialNotes: ``,
+        termsAccepted: false
+      };
+      appState.filesMeta = { word: [], logo: [], images: [] };
+
+      [`file-word`, `file-logo`, `file-images`].forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el) el.value = ``;
+      });
+
+      const banner = document.getElementById(`form-status-banner`);
+      if (banner) {
+        banner.className = `status-box`;
+        banner.innerHTML = ``;
+      }
+
+      const termsErr = document.getElementById(`err-termsAccepted`);
+      if (termsErr) termsErr.style.display = `none`;
+
+      const feedback = document.getElementById(`copy-feedback`);
+      if (feedback) feedback.textContent = ``;
+
+      clearFieldErrors();
+      applyStateToDOM();
+      persistState();
+    }
+
+    function persistState() {
+      try {
+        localStorage.setItem(`3laa_designs_order_state`, JSON.stringify(appState));
+      } catch (e) {
+        /* Ignore storage quota errors */
+      }
+    }
+
+    function initApp() {
+      try {
+        const raw = localStorage.getItem(`3laa_designs_order_state`);
+        if (raw) {
+          const saved = JSON.parse(raw);
+          if (saved && typeof saved === `object`) {
+            if (saved.prepChecks) {
+              appState.prepChecks = Object.assign({}, appState.prepChecks, saved.prepChecks);
+            }
+            if (saved.fields) {
+              appState.fields = Object.assign({}, appState.fields, saved.fields);
+            }
+            if (saved.filesMeta) {
+              appState.filesMeta = Object.assign({}, appState.filesMeta, saved.filesMeta);
+            }
+          }
+        }
+      } catch (e) {
+        /* Start with default clean state */
+      }
+
+      applyStateToDOM();
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initApp);
+  </script>
+</body>
+</html>
