@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="artifact-type" content="tool">
-  <meta name="design-style" content="deco">
   <title>3laa Designs — بوابة طلبات تصميم وتنسيق الملازم التعليمية</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,207 +12,178 @@
     :root {
       color-scheme: dark;
 
-      /* 1. Deco core palette adapted to 3laa Designs Black & Gold identity */
-      --background: #0b0a08;
-      --surface-container-low: #13110e;
-      --surface-container: #1b1812;
-      --surface-container-high: #262118;
+      /* Core Surfaces */
+      --bg-base: #090b0f;
+      --bg-elevated: #10141c;
+      --bg-card: rgba(18, 23, 33, 0.86);
+      --bg-card-solid: #121721;
+      --bg-card-hover: rgba(25, 32, 46, 0.94);
+      --bg-input: rgba(9, 12, 18, 0.78);
 
-      /* Ink */
-      --on-surface: #f4ecda;
-      --on-surface-variant: #c9bfa9;
+      /* Typography Ink */
+      --ink-primary: #f6f1e4;
+      --ink-secondary: #b9c1d1;
+      --ink-muted: #7f899d;
 
-      /* Rules */
-      --outline: #c9a14a;
-      --outline-variant: #5d4e2b;
+      /* Brand & Accents (Harmonized with 3laa Designs Logo + Royal Gold & Emerald) */
+      --gold: #d4af5a;
+      --gold-soft: #ebd08b;
+      --gold-dim: rgba(212, 175, 90, 0.24);
+      --gold-glow: rgba(212, 175, 90, 0.14);
+      --royal-blue: #274b8e;
+      --emerald: #3da57a;
+      --emerald-soft: rgba(61, 165, 122, 0.14);
+      --amber: #e5b557;
+      --amber-soft: rgba(229, 181, 87, 0.12);
+      --danger: #eb7c68;
+      --danger-soft: rgba(235, 124, 104, 0.14);
 
-      /* Accents */
-      --primary: #c9a14a;
-      --on-primary: #0b0a08;
-      --primary-container: #292213;
-      --on-primary-container: #ebd292;
-      --secondary: #86bfa5;
-      --tertiary: #e0c175;
-      --error: #e8836f;
-      --on-error: #0b0a08;
+      /* Borders & Radii */
+      --border-subtle: rgba(212, 175, 90, 0.16);
+      --border-accent: rgba(212, 175, 90, 0.45);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --radius-pill: 999px;
 
-      /* Data series */
-      --data-1: #c9a14a;
-      --data-2: #5fae8c;
-      --data-3: #e8836f;
-      --data-4: #8aa9d6;
-      --data-context: #726a58;
-
-      /* Fonts (Arabic-first RTL stack) */
+      /* Fonts */
       --font-basmala: 'Amiri', 'Cairo', serif;
       --font-headline: 'Cairo', 'Tajawal', sans-serif;
       --font-body: 'Tajawal', 'Cairo', sans-serif;
-      --font-label: 'Cairo', 'IBM Plex Mono', monospace;
       --font-mono: 'IBM Plex Mono', monospace;
-
-      /* Shape (Deco architectural crisp corners) */
-      --rounded: 0px;
-      --rounded-lg: 0px;
-      --rounded-full: 0px;
-
-      /* Style effects */
-      --gold-rule: 1px solid var(--outline);
-      --bronze-rule: 1px solid var(--outline-variant);
-      --gold-frame-inset: 6px;
-      --pinstripe: repeating-linear-gradient(
-        90deg,
-        rgba(201, 161, 74, 0.045) 0 1px,
-        transparent 1px 32px
-      );
-      --hero-glow: radial-gradient(
-        ellipse at 50% 0%,
-        rgba(201, 161, 74, 0.16) 0%,
-        rgba(11, 10, 8, 0) 70%
-      );
-      --surface-tint-gold: rgba(201, 161, 74, 0.08);
-      --surface-tint-warning: rgba(226, 180, 90, 0.10);
-      --surface-tint-positive: rgba(116, 185, 150, 0.11);
-      --surface-tint-error: rgba(232, 131, 111, 0.11);
-      --flank-rule-width: 36px;
-
-      /* 3. Shared tokens */
-      --positive: #74b996;
-      --warning: #e2b45a;
-      --focus: #e0c175;
-
-      /* Type scale (Focused Tool) */
-      --display-size: clamp(1.75rem, 1.35rem + 1.5vw, 2.45rem);
-      --headline-size: clamp(1.25rem, 1.08rem + 0.6vw, 1.55rem);
-      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.2rem);
-      --body-size: clamp(0.95rem, 0.92rem + 0.15vw, 1.02rem);
-      --label-size: 0.78rem;
-
-      /* Spacing scale */
-      --space-xs: 0.25rem;
-      --space-sm: 0.5rem;
-      --space-md: 1rem;
-      --space-lg: 1.5rem;
-      --space-xl: 2.5rem;
-      --space-2xl: 4rem;
 
       /* Motion */
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-      --dur-micro: 120ms;
-      --dur-short: 220ms;
-      --dur-long: 420ms;
+      --dur-fast: 160ms;
+      --dur-med: 280ms;
+      --dur-slow: 480ms;
     }
 
-    /* Base reset */
     *, *::before, *::after {
       box-sizing: border-box;
     }
 
     html, body {
-      overflow-x: clip;
       margin: 0;
       padding: 0;
+      overflow-x: clip;
       scroll-behavior: smooth;
     }
 
     body {
-      background-color: var(--background);
-      background-image: var(--hero-glow), var(--pinstripe);
-      color: var(--on-surface);
+      background-color: var(--bg-base);
+      background-image:
+        radial-gradient(ellipse 80% 45% at 50% -6%, rgba(212, 175, 90, 0.16), transparent 70%),
+        radial-gradient(ellipse 55% 35% at 88% 18%, rgba(39, 75, 142, 0.16), transparent 72%),
+        radial-gradient(ellipse 50% 35% at 12% 35%, rgba(61, 165, 122, 0.09), transparent 70%);
+      color: var(--ink-primary);
       font-family: var(--font-body);
-      font-size: var(--body-size);
-      line-height: 1.65;
-      letter-spacing: 0;
+      font-size: clamp(0.96rem, 0.92rem + 0.18vw, 1.04rem);
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-    }
-
-    header {
-      position: static !important;
     }
 
     button, input, select, textarea {
       font-family: inherit;
-      letter-spacing: 0;
-      text-transform: none;
     }
 
     :focus-visible {
-      outline: 2px solid var(--focus);
+      outline: 2px solid var(--gold-soft);
       outline-offset: 2px;
     }
 
-    .page-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: var(--space-xl);
-      padding: var(--space-lg);
-      max-width: 1080px;
+    .page-shell {
+      max-width: 1120px;
       margin: 0 auto;
-      overflow: hidden;
+      padding: clamp(1rem, 3vw, 2.25rem) clamp(0.85rem, 2.5vw, 1.5rem) 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.75rem;
     }
 
-    .page-grid * {
-      min-width: 0;
-    }
-
-    /* Header / Brand Hero */
-    .brand-header {
-      border: var(--gold-rule);
-      outline: var(--gold-rule);
-      outline-offset: calc(-1 * var(--gold-frame-inset));
-      background-color: var(--surface-container-low);
-      padding: var(--space-xl) var(--space-lg);
+    /* Hero / Spiritual Welcome & Brand Showcase */
+    .hero-card {
+      position: relative;
+      background: linear-gradient(165deg, rgba(22, 28, 40, 0.92) 0%, rgba(12, 15, 22, 0.95) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-xl);
+      padding: clamp(1.75rem, 4vw, 3rem) clamp(1.25rem, 3.5vw, 2.5rem);
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--space-md);
-      animation: fadeUp var(--dur-long) var(--ease-out) both;
+      gap: 1.15rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      animation: riseIn var(--dur-slow) var(--ease-out) both;
     }
 
-    .basmala-banner {
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(235, 208, 139, 0.35), transparent 45%, rgba(61, 165, 122, 0.25));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .spiritual-header {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-      padding-bottom: var(--space-xs);
+      gap: 0.25rem;
     }
 
-    .basmala-text {
+    .basmala {
       font-family: var(--font-basmala);
-      font-size: clamp(1.5rem, 1.25rem + 1vw, 2.05rem);
+      font-size: clamp(1.6rem, 1.3rem + 1.1vw, 2.25rem);
+      font-weight: 700;
+      color: var(--gold-soft);
+      margin: 0;
       line-height: 1.5;
-      color: var(--tertiary);
-      margin: 0;
-      font-weight: 700;
     }
 
-    .salutation-text {
+    .salam {
       font-family: var(--font-headline);
-      font-size: clamp(1rem, 0.92rem + 0.35vw, 1.22rem);
+      font-size: clamp(1rem, 0.94rem + 0.3vw, 1.2rem);
       font-weight: 700;
-      color: var(--on-surface);
+      color: var(--ink-primary);
       margin: 0;
     }
 
-    .logo-lockup {
+    .brand-showcase {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--space-sm);
+      gap: 0.65rem;
+      margin: 0.2rem 0;
     }
 
-    .logo-frame {
-      width: 132px;
-      height: 132px;
-      background-color: #ffffff;
-      border: 2px solid var(--primary);
-      box-shadow: 0 0 0 4px var(--surface-container), 0 8px 24px rgba(0, 0, 0, 0.45);
+    .logo-medallion {
+      width: 136px;
+      height: 136px;
+      border-radius: 28px;
+      background: #ffffff;
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 6px;
-      overflow: hidden;
+      border: 2px solid var(--gold);
+      box-shadow:
+        0 0 0 6px rgba(212, 175, 90, 0.12),
+        0 16px 34px rgba(0, 0, 0, 0.5);
+      transition: transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out);
+    }
+
+    .logo-medallion:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 0 8px rgba(212, 175, 90, 0.18),
+        0 20px 40px rgba(0, 0, 0, 0.58);
     }
 
     .brand-logo-img {
@@ -221,714 +191,710 @@
       height: 100%;
       object-fit: contain;
       display: block;
+      border-radius: 18px;
     }
 
-    .brand-name {
-      font-family: var(--font-mono);
-      font-weight: 600;
-      font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.85rem);
-      color: var(--primary);
-      margin: 0;
-      letter-spacing: 0.08em;
-    }
-
-    .flanked-kicker {
-      font-family: var(--font-label);
-      font-weight: 700;
-      font-size: var(--label-size);
-      color: var(--tertiary);
+    .brand-tag {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: var(--space-sm);
-      margin: 0;
+      gap: 0.5rem;
+      padding: 0.28rem 0.9rem;
+      border-radius: var(--radius-pill);
+      background: var(--gold-glow);
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--gold-soft);
     }
 
-    .flanked-kicker::before,
-    .flanked-kicker::after {
-      content: "";
-      display: inline-block;
-      width: var(--flank-rule-width);
-      height: 1px;
-      background: var(--outline);
+    .welcome-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      border-radius: var(--radius-pill);
+      background: rgba(61, 165, 122, 0.12);
+      border: 1px solid rgba(61, 165, 122, 0.32);
+      font-family: var(--font-headline);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #8fd6b7;
     }
 
     .hero-title {
       font-family: var(--font-headline);
-      font-weight: 300;
-      font-size: var(--display-size);
-      line-height: 1.28;
-      color: var(--on-surface);
+      font-size: clamp(1.75rem, 1.35rem + 1.5vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.3;
       margin: 0;
+      color: var(--ink-primary);
     }
 
-    .hero-title b {
+    .hero-title strong {
       font-weight: 800;
-      color: var(--primary);
+      background: linear-gradient(120deg, var(--gold-soft), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .hero-subtitle {
+    .hero-lead {
       margin: 0;
       max-width: 62ch;
-      color: var(--on-surface-variant);
-      font-size: var(--subhead-size);
-      line-height: 1.7;
+      color: var(--ink-secondary);
+      font-size: clamp(1rem, 0.95rem + 0.22vw, 1.14rem);
+      line-height: 1.75;
     }
 
-    .hero-actions {
+    .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: var(--space-sm);
-      margin-top: var(--space-xs);
+      gap: 0.75rem;
+      margin-top: 0.25rem;
     }
 
-    .nav-jump {
+    .btn-cta-primary,
+    .btn-cta-secondary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: var(--space-xs);
-      min-height: 44px;
-      padding: var(--space-sm) var(--space-lg);
+      gap: 0.5rem;
+      min-height: 46px;
+      padding: 0.65rem 1.45rem;
+      border-radius: var(--radius-pill);
       text-decoration: none;
-      font-family: var(--font-label);
+      font-family: var(--font-headline);
       font-weight: 700;
-      font-size: 0.9rem;
-      border: var(--gold-rule);
-      transition: background-color var(--dur-short) var(--ease-out),
-                  color var(--dur-short) var(--ease-out);
+      font-size: 0.94rem;
+      transition: transform var(--dur-fast) var(--ease-out),
+                  background-color var(--dur-med) var(--ease-out),
+                  border-color var(--dur-med) var(--ease-out),
+                  box-shadow var(--dur-med) var(--ease-out);
     }
 
-    .nav-jump--primary {
-      background-color: var(--primary);
-      color: var(--on-primary);
+    .btn-cta-primary {
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color: #0b0e14;
+      box-shadow: 0 8px 24px rgba(212, 175, 90, 0.28);
     }
 
-    .nav-jump--primary:hover {
-      background-color: var(--tertiary);
+    .btn-cta-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(212, 175, 90, 0.38);
     }
 
-    .nav-jump--ghost {
-      background-color: transparent;
-      color: var(--primary);
+    .btn-cta-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-accent);
     }
 
-    .nav-jump--ghost:hover {
-      background-color: var(--surface-tint-gold);
+    .btn-cta-secondary:hover {
+      background: var(--gold-glow);
+      border-color: var(--gold);
     }
 
-    .contact-strip {
-      display: inline-flex;
+    .hero-meta-bar {
+      display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: var(--space-sm);
-      padding-top: var(--space-sm);
-      border-top: var(--bronze-rule);
+      gap: 0.6rem;
+      padding-top: 0.85rem;
+      margin-top: 0.15rem;
+      border-top: 1px solid var(--border-subtle);
       font-size: 0.9rem;
-      color: var(--on-surface-variant);
+      color: var(--ink-secondary);
     }
 
-    .contact-strip strong {
-      color: var(--tertiary);
+    .hero-meta-bar strong {
       font-family: var(--font-mono);
+      color: var(--gold-soft);
     }
 
-    /* Section Headings */
-    .section-block {
+    /* Section Structure */
+    .section-wrap {
       display: flex;
       flex-direction: column;
-      gap: var(--space-lg);
-      animation: fadeUp var(--dur-long) var(--ease-out) both;
+      gap: 1.35rem;
+      animation: riseIn var(--dur-slow) var(--ease-out) both;
     }
 
-    .section-header {
+    .section-head {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-end;
       justify-content: space-between;
-      gap: var(--space-md);
-      padding-bottom: var(--space-md);
-      border-bottom: var(--gold-rule);
+      gap: 1rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .section-title-group {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-xs);
-    }
-
-    .section-kicker {
-      font-family: var(--font-label);
+    .section-step {
+      display: inline-block;
+      font-family: var(--font-headline);
+      font-size: 0.8rem;
       font-weight: 700;
-      font-size: var(--label-size);
-      color: var(--primary);
+      color: var(--gold);
+      margin-bottom: 0.2rem;
     }
 
     .section-title {
+      margin: 0;
       font-family: var(--font-headline);
+      font-size: clamp(1.28rem, 1.1rem + 0.65vw, 1.62rem);
       font-weight: 700;
-      font-size: var(--headline-size);
-      line-height: 1.3;
-      margin: 0;
-      color: var(--on-surface);
+      color: var(--ink-primary);
     }
 
-    .section-lede {
-      margin: 0;
-      color: var(--on-surface-variant);
-      max-width: 65ch;
+    .section-desc {
+      margin: 0.25rem 0 0;
+      color: var(--ink-secondary);
+      max-width: 66ch;
     }
 
-    .readiness-pill {
+    .progress-chip {
       display: inline-flex;
       align-items: center;
-      gap: var(--space-sm);
-      padding: var(--space-sm) var(--space-md);
-      border: var(--gold-rule);
-      background-color: var(--surface-container-low);
-      font-family: var(--font-label);
-      font-size: 0.875rem;
+      gap: 0.45rem;
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-pill);
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      font-family: var(--font-headline);
+      font-size: 0.86rem;
       font-weight: 700;
-      color: var(--tertiary);
+      color: var(--gold-soft);
       white-space: nowrap;
     }
 
-    .readiness-pill.is-complete {
-      border-color: var(--positive);
-      background-color: var(--surface-tint-positive);
-      color: var(--positive);
+    .progress-chip.is-complete {
+      background: var(--emerald-soft);
+      border-color: rgba(61, 165, 122, 0.55);
+      color: #8fd6b7;
     }
 
-    /* Section 1: Preparation Grid */
+    /* Preparation Cards */
     .prep-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-md);
-    }
-
-    .prep-card-wrap {
-      container-type: inline-size;
+      gap: 1.1rem;
     }
 
     .prep-card {
-      height: 100%;
-      background-color: var(--surface-container-low);
-      border: var(--bronze-rule);
-      padding: var(--space-lg);
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
       display: flex;
       flex-direction: column;
-      gap: var(--space-md);
-      transition: background-color var(--dur-short) var(--ease-out),
-                  border-color var(--dur-short) var(--ease-out);
+      gap: 0.9rem;
+      transition: transform var(--dur-med) var(--ease-out),
+                  border-color var(--dur-med) var(--ease-out),
+                  background-color var(--dur-med) var(--ease-out);
+    }
+
+    .prep-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
     }
 
     .prep-card.is-checked {
-      background-color: var(--surface-container);
-      border-color: var(--outline);
+      border-color: rgba(61, 165, 122, 0.5);
+      box-shadow: inset 0 0 0 1px rgba(61, 165, 122, 0.16);
     }
 
-    .prep-card-top {
+    .prep-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: var(--space-md);
-      padding-bottom: var(--space-sm);
-      border-bottom: var(--bronze-rule);
+      gap: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .prep-card-title-row {
+    .prep-title-group {
       display: flex;
       align-items: center;
-      gap: var(--space-sm);
+      gap: 0.65rem;
     }
 
-    .prep-number {
+    .prep-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      flex-shrink: 0;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
-      border: var(--gold-rule);
       font-family: var(--font-mono);
+      font-size: 0.86rem;
       font-weight: 600;
-      font-size: 0.85rem;
-      color: var(--primary);
-      background-color: var(--primary-container);
+      color: var(--gold-soft);
+      background: var(--gold-glow);
+      border: 1px solid var(--border-accent);
     }
 
-    .prep-card-title {
+    .prep-title {
       margin: 0;
       font-family: var(--font-headline);
+      font-size: 1.05rem;
       font-weight: 700;
-      font-size: var(--subhead-size);
-      color: var(--on-surface);
+      color: var(--ink-primary);
+      line-height: 1.4;
     }
 
-    .prep-check-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-xs);
-      min-height: 44px;
-      min-width: 108px;
-      padding: var(--space-xs) var(--space-sm);
-      border: var(--bronze-rule);
-      background-color: transparent;
-      color: var(--on-surface-variant);
-      font-size: 0.85rem;
-      font-weight: 600;
+    .prep-btn {
+      min-height: 38px;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--ink-secondary);
+      font-family: var(--font-headline);
+      font-size: 0.82rem;
+      font-weight: 700;
       cursor: pointer;
       flex-shrink: 0;
-      transition: background-color var(--dur-short) var(--ease-out),
-                  color var(--dur-short) var(--ease-out),
-                  border-color var(--dur-short) var(--ease-out);
+      transition: all var(--dur-fast) var(--ease-out);
     }
 
-    .prep-check-btn:hover {
-      border-color: var(--outline);
-      color: var(--on-surface);
-      background-color: var(--surface-tint-gold);
+    .prep-btn:hover {
+      border-color: var(--gold);
+      color: var(--ink-primary);
+      background: var(--gold-glow);
     }
 
-    .prep-check-btn[aria-pressed="true"] {
-      border-color: var(--positive);
-      background-color: var(--surface-tint-positive);
-      color: var(--positive);
+    .prep-btn[aria-pressed="true"] {
+      background: var(--emerald-soft);
+      border-color: rgba(61, 165, 122, 0.6);
+      color: #93dfc0;
     }
 
-    .prep-list {
+    .prep-points {
       margin: 0;
       padding: 0;
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: var(--space-sm);
+      gap: 0.55rem;
     }
 
-    .prep-list li {
+    .prep-points li {
       position: relative;
-      padding-right: var(--space-md);
-      color: var(--on-surface-variant);
-      font-size: 0.95rem;
+      padding-right: 1.15rem;
+      color: var(--ink-secondary);
+      font-size: 0.94rem;
     }
 
-    .prep-list li::before {
+    .prep-points li::before {
       content: "";
       position: absolute;
       right: 0;
-      top: 0.68em;
+      top: 0.62em;
       width: 6px;
       height: 6px;
-      background-color: var(--primary);
+      border-radius: 50%;
+      background: var(--gold);
     }
 
-    .prep-list li strong {
-      color: var(--on-surface);
-      font-weight: 600;
+    .prep-points li strong {
+      color: var(--ink-primary);
     }
 
-    .prep-formats {
+    .prep-badges {
       margin-top: auto;
-      padding-top: var(--space-sm);
-      border-top: var(--bronze-rule);
+      padding-top: 0.7rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-xs);
+      gap: 0.4rem;
     }
 
-    .format-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 2px var(--space-sm);
-      border: var(--bronze-rule);
-      font-family: var(--font-label);
+    .badge-chip {
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
       font-size: 0.78rem;
       font-weight: 600;
-      color: var(--tertiary);
-      background-color: var(--background);
+      color: var(--gold-soft);
     }
 
-    /* Explicit Visual-Only Disclaimer Callout */
-    .policy-callout {
-      border: 1px solid var(--warning);
-      border-right: 4px solid var(--warning);
-      background-color: var(--surface-tint-warning);
-      padding: var(--space-lg);
+    /* Scope Notice */
+    .notice-banner {
       display: flex;
       align-items: flex-start;
-      gap: var(--space-md);
+      gap: 0.9rem;
+      padding: 1.2rem 1.35rem;
+      border-radius: var(--radius-lg);
+      background: var(--amber-soft);
+      border: 1px solid rgba(229, 181, 87, 0.35);
     }
 
-    .policy-icon {
+    .notice-icon {
       flex-shrink: 0;
-      color: var(--warning);
+      color: var(--amber);
       margin-top: 2px;
     }
 
-    .policy-body {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-xs);
-    }
-
-    .policy-title {
-      margin: 0;
+    .notice-title {
+      margin: 0 0 0.25rem;
       font-family: var(--font-headline);
+      font-size: 1rem;
       font-weight: 700;
-      font-size: var(--subhead-size);
-      color: var(--warning);
+      color: var(--amber);
     }
 
-    .policy-text {
+    .notice-text {
       margin: 0;
-      color: var(--on-surface);
-      max-width: 72ch;
+      color: var(--ink-primary);
+      font-size: 0.94rem;
     }
 
-    /* Section 2: Order Form Shell (Tool Layout: Inputs + Live Output) */
-    .order-layout {
+    /* Order Section Layout */
+    .order-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
-      gap: var(--space-lg);
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.92fr);
+      gap: 1.35rem;
       align-items: start;
     }
 
-    .form-frame {
-      border: var(--gold-rule);
-      outline: var(--gold-rule);
-      outline-offset: calc(-1 * var(--gold-frame-inset));
-      background-color: var(--surface-container-low);
-      padding: var(--space-xl);
+    .form-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-xl);
+      padding: clamp(1.25rem, 3vw, 2rem);
       display: flex;
       flex-direction: column;
-      gap: var(--space-xl);
+      gap: 1.85rem;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.35);
     }
 
-    .form-group-block {
+    .form-step-block {
       display: flex;
       flex-direction: column;
-      gap: var(--space-md);
-      padding-bottom: var(--space-lg);
-      border-bottom: var(--bronze-rule);
+      gap: 1rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .form-group-block:last-of-type {
+    .form-step-block:last-of-type {
       border-bottom: none;
       padding-bottom: 0;
     }
 
-    .group-heading-row {
+    .step-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: var(--space-sm);
+      gap: 0.65rem;
     }
 
-    .group-title {
-      margin: 0;
-      font-family: var(--font-headline);
-      font-weight: 700;
-      font-size: var(--subhead-size);
-      color: var(--primary);
-      display: flex;
+    .step-badge {
+      display: inline-flex;
       align-items: center;
-      gap: var(--space-sm);
-    }
-
-    .group-step {
+      justify-content: center;
+      min-width: 34px;
+      height: 34px;
+      padding: 0 0.45rem;
+      border-radius: 10px;
+      background: var(--gold-glow);
+      border: 1px solid var(--border-accent);
       font-family: var(--font-mono);
       font-size: 0.85rem;
-      padding: 2px var(--space-sm);
-      border: var(--gold-rule);
-      color: var(--primary);
+      font-weight: 600;
+      color: var(--gold-soft);
     }
 
-    .fields-grid {
+    .step-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold-soft);
+    }
+
+    .inputs-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-md);
-      align-items: end;
+      gap: 1rem;
+      align-items: start;
     }
 
-    .field {
+    .field-group {
       display: flex;
       flex-direction: column;
-      gap: var(--space-xs);
+      gap: 0.35rem;
     }
 
-    .field--full {
+    .field-group--wide {
       grid-column: 1 / -1;
     }
 
     .field-label {
-      font-family: var(--font-label);
-      font-weight: 600;
-      font-size: 0.875rem;
-      color: var(--on-surface);
+      font-family: var(--font-headline);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ink-primary);
       display: flex;
       align-items: center;
-      gap: var(--space-xs);
+      gap: 0.3rem;
     }
 
-    .req-mark {
-      color: var(--primary);
-      font-weight: 700;
+    .req {
+      color: var(--gold);
     }
 
-    .opt-mark {
-      color: var(--on-surface-variant);
+    .opt {
+      color: var(--ink-muted);
       font-size: 0.78rem;
       font-weight: 400;
     }
 
-    .field-input,
-    .field-select,
-    .field-textarea {
+    .input-control,
+    .select-control,
+    .textarea-control {
       width: 100%;
-      min-height: 44px;
-      padding: var(--space-sm) var(--space-md);
-      background-color: var(--background);
-      border: var(--bronze-rule);
-      border-bottom: var(--gold-rule);
-      color: var(--on-surface);
+      min-height: 46px;
+      padding: 0.65rem 0.95rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      color: var(--ink-primary);
       font-size: 0.95rem;
-      transition: border-color var(--dur-short) var(--ease-out),
-                  background-color var(--dur-short) var(--ease-out);
+      transition: border-color var(--dur-fast) var(--ease-out),
+                  background-color var(--dur-fast) var(--ease-out),
+                  box-shadow var(--dur-fast) var(--ease-out);
     }
 
-    .field-select {
-      padding-left: var(--space-xl);
-      cursor: pointer;
-    }
-
-    .field-textarea {
-      min-height: 96px;
+    .textarea-control {
+      min-height: 98px;
       resize: vertical;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
-    .field-input::placeholder,
-    .field-textarea::placeholder {
-      color: var(--on-surface-variant);
-      opacity: 0.58;
+    .input-control::placeholder,
+    .textarea-control::placeholder {
+      color: var(--ink-muted);
+      opacity: 0.72;
     }
 
-    .field-input:hover,
-    .field-select:hover,
-    .field-textarea:hover {
-      border-color: var(--outline);
+    .input-control:hover,
+    .select-control:hover,
+    .textarea-control:hover {
+      border-color: var(--border-accent);
     }
 
-    .field-input:focus,
-    .field-select:focus,
-    .field-textarea:focus {
-      background-color: var(--surface-container);
-      border-color: var(--tertiary);
+    .input-control:focus,
+    .select-control:focus,
+    .textarea-control:focus {
+      border-color: var(--gold);
+      background: rgba(16, 21, 31, 0.95);
+      box-shadow: 0 0 0 3px rgba(212, 175, 90, 0.14);
     }
 
-    .field.has-error .field-input,
-    .field.has-error .field-select,
-    .field.has-error .field-textarea {
-      border-color: var(--error);
-      background-color: var(--surface-tint-error);
+    .field-group.has-error .input-control,
+    .field-group.has-error .select-control,
+    .field-group.has-error .textarea-control {
+      border-color: var(--danger);
+      background: var(--danger-soft);
     }
 
-    .field-error {
-      font-size: 0.82rem;
-      color: var(--error);
-      min-height: 1.2em;
+    .error-msg {
       display: none;
+      font-size: 0.82rem;
+      color: var(--danger);
     }
 
-    .field.has-error .field-error {
+    .field-group.has-error .error-msg {
       display: block;
     }
 
-    /* Package Radio Cards */
-    .packages-grid {
+    /* Package Selector */
+    .pkg-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-sm);
+      gap: 0.65rem;
     }
 
-    .pkg-option {
+    .pkg-card {
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: var(--space-xs);
-      padding: var(--space-md);
-      min-height: 44px;
-      border: var(--bronze-rule);
-      background-color: var(--background);
+      gap: 0.3rem;
+      padding: 0.95rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
       cursor: pointer;
-      transition: background-color var(--dur-short) var(--ease-out),
-                  border-color var(--dur-short) var(--ease-out);
+      transition: all var(--dur-fast) var(--ease-out);
     }
 
-    .pkg-option:hover {
-      border-color: var(--outline);
-      background-color: var(--surface-tint-gold);
+    .pkg-card:hover {
+      border-color: var(--border-accent);
+      background: rgba(212, 175, 90, 0.06);
     }
 
-    .pkg-option input[type="radio"] {
+    .pkg-card input[type="radio"] {
       position: absolute;
       opacity: 0;
       width: 1px;
       height: 1px;
     }
 
-    .pkg-option.is-selected {
-      border-color: var(--outline);
-      background-color: var(--primary-container);
-      box-shadow: inset 0 0 0 1px var(--outline);
+    .pkg-card.is-selected {
+      border-color: var(--gold);
+      background: linear-gradient(155deg, rgba(212, 175, 90, 0.16), rgba(39, 75, 142, 0.12));
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
 
-    .pkg-option:focus-within {
-      outline: 2px solid var(--focus);
+    .pkg-card:focus-within {
+      outline: 2px solid var(--gold-soft);
       outline-offset: 2px;
     }
 
     .pkg-name {
       font-family: var(--font-headline);
+      font-size: 0.96rem;
       font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--primary);
+      color: var(--gold-soft);
     }
 
     .pkg-desc {
       font-size: 0.82rem;
-      color: var(--on-surface-variant);
-      line-height: 1.45;
+      color: var(--ink-secondary);
+      line-height: 1.5;
     }
 
-    /* Services Checkboxes */
+    /* Services Chips */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-sm);
+      gap: 0.55rem;
     }
 
-    .check-chip {
+    .service-item {
       display: flex;
       align-items: center;
-      gap: var(--space-sm);
-      min-height: 44px;
-      padding: var(--space-xs) var(--space-sm);
-      background-color: var(--background);
-      border: var(--bronze-rule);
+      gap: 0.6rem;
+      min-height: 46px;
+      padding: 0.55rem 0.8rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
       cursor: pointer;
       font-size: 0.9rem;
-      color: var(--on-surface-variant);
-      transition: background-color var(--dur-short) var(--ease-out),
-                  border-color var(--dur-short) var(--ease-out),
-                  color var(--dur-short) var(--ease-out);
+      color: var(--ink-secondary);
+      transition: all var(--dur-fast) var(--ease-out);
     }
 
-    .check-chip:hover {
-      border-color: var(--outline);
-      color: var(--on-surface);
+    .service-item:hover {
+      border-color: var(--border-accent);
+      color: var(--ink-primary);
     }
 
-    .check-chip input[type="checkbox"] {
+    .service-item input[type="checkbox"] {
       width: 18px;
       height: 18px;
       flex-shrink: 0;
-      accent-color: var(--primary);
+      accent-color: var(--gold);
       cursor: pointer;
     }
 
-    .check-chip.is-selected {
-      border-color: var(--outline);
-      background-color: var(--primary-container);
-      color: var(--on-surface);
+    .service-item.is-selected {
+      border-color: rgba(212, 175, 90, 0.55);
+      background: rgba(212, 175, 90, 0.11);
+      color: var(--ink-primary);
     }
 
-    /* Color Presets Chips */
-    .color-presets {
+    /* Color Quick Chips */
+    .palette-row {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-xs);
-      margin-top: var(--space-xs);
+      gap: 0.4rem;
+      margin-top: 0.25rem;
     }
 
-    .preset-btn {
-      min-height: 36px;
-      padding: var(--space-xs) var(--space-sm);
-      border: var(--bronze-rule);
-      background-color: transparent;
-      color: var(--tertiary);
+    .palette-btn {
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--gold-soft);
       font-size: 0.8rem;
       cursor: pointer;
-      transition: background-color var(--dur-micro) var(--ease-out),
-                  border-color var(--dur-micro) var(--ease-out);
+      transition: all var(--dur-fast) var(--ease-out);
     }
 
-    .preset-btn:hover {
-      border-color: var(--outline);
-      background-color: var(--surface-tint-gold);
+    .palette-btn:hover {
+      border-color: var(--gold);
+      background: var(--gold-glow);
     }
 
-    /* File Upload Zones */
+    /* File Uploader */
     .uploads-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-sm);
+      gap: 0.75rem;
     }
 
-    .upload-box {
+    .drop-card {
       display: flex;
       flex-direction: column;
-      gap: var(--space-xs);
-      padding: var(--space-md);
-      background-color: var(--background);
-      border: 1px dashed var(--outline-variant);
-      transition: border-color var(--dur-short) var(--ease-out),
-                  background-color var(--dur-short) var(--ease-out);
+      gap: 0.35rem;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-input);
+      border: 1px dashed var(--border-accent);
+      transition: all var(--dur-fast) var(--ease-out);
     }
 
-    .upload-box.has-files {
+    .drop-card.has-files {
       border-style: solid;
-      border-color: var(--outline);
-      background-color: var(--surface-container);
+      border-color: var(--gold);
+      background: rgba(212, 175, 90, 0.07);
     }
 
-    .upload-label {
-      font-family: var(--font-label);
+    .drop-title {
+      font-family: var(--font-headline);
+      font-size: 0.88rem;
       font-weight: 700;
-      font-size: 0.86rem;
-      color: var(--on-surface);
+      color: var(--ink-primary);
     }
 
-    .upload-hint {
+    .drop-sub {
       font-size: 0.78rem;
-      color: var(--on-surface-variant);
+      color: var(--ink-muted);
     }
 
-    .upload-trigger {
+    .pick-file-btn {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: var(--space-xs);
-      min-height: 44px;
-      padding: var(--space-xs) var(--space-sm);
-      margin-top: var(--space-xs);
-      border: var(--gold-rule);
-      background-color: transparent;
-      color: var(--primary);
+      min-height: 42px;
+      padding: 0.45rem 0.8rem;
+      margin-top: 0.3rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-accent);
+      background: var(--gold-glow);
+      color: var(--gold-soft);
+      font-family: var(--font-headline);
       font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
-      text-align: center;
-      transition: background-color var(--dur-short) var(--ease-out);
+      transition: background-color var(--dur-fast) var(--ease-out);
     }
 
-    .upload-trigger:hover {
-      background-color: var(--surface-tint-gold);
+    .pick-file-btn:hover {
+      background: rgba(212, 175, 90, 0.22);
     }
 
-    .upload-trigger input[type="file"] {
+    .pick-file-btn input[type="file"] {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -937,24 +903,25 @@
     }
 
     .file-list {
-      margin: var(--space-xs) 0 0;
+      margin: 0.35rem 0 0;
       padding: 0;
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 0.3rem;
     }
 
     .file-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: var(--space-xs);
-      padding: 4px var(--space-xs);
-      background-color: var(--surface-container-low);
-      border: var(--bronze-rule);
+      gap: 0.35rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
       font-size: 0.78rem;
-      color: var(--on-surface);
+      color: var(--ink-primary);
     }
 
     .file-item-name {
@@ -966,297 +933,303 @@
     .file-remove {
       background: transparent;
       border: none;
-      color: var(--error);
+      color: var(--danger);
       cursor: pointer;
-      padding: 2px 6px;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      min-width: 28px;
-      min-height: 28px;
+      padding: 0 4px;
     }
 
-    .upload-honest-note {
-      font-size: 0.84rem;
-      color: var(--on-surface-variant);
-      padding: var(--space-sm) var(--space-md);
-      background-color: var(--background);
-      border-right: 3px solid var(--primary);
+    .info-strip {
+      font-size: 0.85rem;
+      color: var(--ink-secondary);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.03);
+      border-right: 3px solid var(--gold);
     }
 
-    .prep-reminder-note {
+    .warn-strip {
       display: none;
-      font-size: 0.84rem;
-      color: var(--warning);
-      padding: var(--space-sm) var(--space-md);
-      background-color: var(--surface-tint-warning);
-      border-right: 3px solid var(--warning);
+      font-size: 0.85rem;
+      color: var(--amber);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      background: var(--amber-soft);
+      border-right: 3px solid var(--amber);
     }
 
-    /* Confirmation Checkbox */
-    .terms-box {
+    /* Terms & Submit */
+    .terms-card {
       display: flex;
       align-items: flex-start;
-      gap: var(--space-sm);
-      padding: var(--space-md);
-      background-color: var(--background);
-      border: var(--gold-rule);
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-input);
+      border: 1px solid var(--border-accent);
       cursor: pointer;
     }
 
-    .terms-box.has-error {
-      border-color: var(--error);
-      background-color: var(--surface-tint-error);
+    .terms-card.has-error {
+      border-color: var(--danger);
+      background: var(--danger-soft);
     }
 
-    .terms-box input[type="checkbox"] {
-      width: 22px;
-      height: 22px;
+    .terms-card input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
       margin-top: 2px;
       flex-shrink: 0;
-      accent-color: var(--primary);
+      accent-color: var(--gold);
       cursor: pointer;
     }
 
-    .terms-text {
+    .terms-copy {
       font-size: 0.92rem;
-      color: var(--on-surface);
-      line-height: 1.55;
+      color: var(--ink-primary);
+      line-height: 1.6;
     }
 
-    /* Form Actions */
-    .form-actions {
+    .submit-row {
       display: flex;
       flex-wrap: wrap;
+      gap: 0.65rem;
       align-items: center;
-      gap: var(--space-sm);
     }
 
-    .btn-whatsapp-submit {
+    .btn-submit-main {
       flex: 1 1 260px;
       min-height: 50px;
-      padding: var(--space-sm) var(--space-lg);
-      background-color: var(--primary);
-      color: var(--on-primary);
-      border: var(--gold-rule);
-      font-family: var(--font-label);
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color: #0b0e14;
+      font-family: var(--font-headline);
+      font-size: 0.98rem;
       font-weight: 800;
-      font-size: 1rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: var(--space-sm);
-      transition: background-color var(--dur-short) var(--ease-out);
+      gap: 0.5rem;
+      box-shadow: 0 10px 26px rgba(212, 175, 90, 0.25);
+      transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
     }
 
-    .btn-whatsapp-submit:hover {
-      background-color: var(--tertiary);
+    .btn-submit-main:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(212, 175, 90, 0.35);
     }
 
-    .btn-secondary {
+    .btn-ghost-action {
       min-height: 50px;
-      padding: var(--space-sm) var(--space-lg);
-      background-color: transparent;
-      color: var(--on-surface-variant);
-      border: var(--bronze-rule);
-      font-family: var(--font-label);
+      padding: 0.7rem 1.25rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--ink-secondary);
+      font-family: var(--font-headline);
+      font-size: 0.88rem;
       font-weight: 700;
-      font-size: 0.9rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: var(--space-xs);
-      transition: border-color var(--dur-short) var(--ease-out),
-                  color var(--dur-short) var(--ease-out),
-                  background-color var(--dur-short) var(--ease-out);
+      gap: 0.4rem;
+      transition: all var(--dur-fast) var(--ease-out);
     }
 
-    .btn-secondary:hover {
-      border-color: var(--outline);
-      color: var(--on-surface);
-      background-color: var(--surface-tint-gold);
+    .btn-ghost-action:hover {
+      border-color: var(--border-accent);
+      color: var(--ink-primary);
+      background: var(--gold-glow);
     }
 
-    .btn-secondary.is-armed {
-      border-color: var(--error);
-      color: var(--error);
-      background-color: var(--surface-tint-error);
+    .btn-ghost-action.is-armed {
+      border-color: var(--danger);
+      color: var(--danger);
+      background: var(--danger-soft);
     }
 
-    .form-status-banner {
+    .status-box {
       display: none;
-      padding: var(--space-md);
-      border: var(--bronze-rule);
+      padding: 1rem;
+      border-radius: var(--radius-md);
       font-size: 0.92rem;
     }
 
-    .form-status-banner.is-error {
+    .status-box.is-error {
       display: block;
-      border-color: var(--error);
-      background-color: var(--surface-tint-error);
-      color: var(--error);
+      background: var(--danger-soft);
+      border: 1px solid rgba(235, 124, 104, 0.5);
+      color: var(--danger);
     }
 
-    .form-status-banner.is-success {
+    .status-box.is-success {
       display: flex;
       flex-direction: column;
-      gap: var(--space-sm);
-      border-color: var(--positive);
-      background-color: var(--surface-tint-positive);
-      color: var(--on-surface);
+      gap: 0.65rem;
+      background: var(--emerald-soft);
+      border: 1px solid rgba(61, 165, 122, 0.5);
+      color: var(--ink-primary);
     }
 
-    .attach-highlight {
-      padding: var(--space-xs) var(--space-sm);
-      background-color: var(--background);
-      border-right: 3px solid var(--primary);
-      font-size: 0.85rem;
-      color: var(--tertiary);
+    .tip-pill {
+      padding: 0.55rem 0.8rem;
+      border-radius: var(--radius-sm);
+      background: rgba(9, 12, 18, 0.65);
+      border-right: 3px solid var(--gold);
+      font-size: 0.84rem;
+      color: var(--gold-soft);
     }
 
-    .success-actions {
+    .result-links {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-sm);
+      gap: 0.55rem;
     }
 
-    .whatsapp-direct-link {
+    .wa-link-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: var(--space-xs);
-      min-height: 44px;
-      padding: var(--space-xs) var(--space-md);
-      background-color: var(--primary);
-      color: var(--on-primary);
+      min-height: 42px;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color: #0b0e14;
       text-decoration: none;
-      font-weight: 700;
-      font-size: 0.9rem;
-      border: var(--gold-rule);
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: 0.88rem;
     }
 
-    .whatsapp-direct-link:hover {
-      background-color: var(--tertiary);
-    }
-
-    /* Live Summary Output Panel */
-    .summary-panel {
-      background-color: var(--surface-container-low);
-      border: var(--gold-rule);
-      padding: var(--space-lg);
+    /* Live Preview Card */
+    .preview-card {
+      position: sticky;
+      top: 1.25rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-xl);
+      padding: 1.4rem;
       display: flex;
       flex-direction: column;
-      gap: var(--space-md);
+      gap: 1rem;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.35);
     }
 
-    .summary-header {
+    .preview-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: var(--space-sm);
-      padding-bottom: var(--space-sm);
-      border-bottom: var(--gold-rule);
+      gap: 0.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .summary-title {
+    .preview-title {
       margin: 0;
       font-family: var(--font-headline);
+      font-size: 1.08rem;
       font-weight: 700;
-      font-size: var(--subhead-size);
-      color: var(--primary);
+      color: var(--gold-soft);
     }
 
-    .completion-badge {
+    .preview-count {
+      padding: 0.22rem 0.7rem;
+      border-radius: var(--radius-pill);
+      background: var(--gold-glow);
+      border: 1px solid var(--border-subtle);
       font-family: var(--font-mono);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      color: var(--tertiary);
-      padding: 2px var(--space-sm);
-      border: var(--bronze-rule);
+      color: var(--gold-soft);
     }
 
-    .summary-meta-grid {
+    .stats-row {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-sm);
+      gap: 0.65rem;
     }
 
-    .summary-stat {
-      padding: var(--space-sm);
-      background-color: var(--background);
-      border: var(--bronze-rule);
+    .stat-box {
+      padding: 0.7rem 0.85rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
     }
 
-    .summary-stat-label {
+    .stat-label {
       display: block;
       font-size: 0.76rem;
-      color: var(--on-surface-variant);
+      color: var(--ink-muted);
     }
 
-    .summary-stat-val {
+    .stat-value {
       display: block;
+      margin-top: 0.15rem;
       font-family: var(--font-headline);
+      font-size: 0.92rem;
       font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--on-surface);
-      margin-top: 2px;
+      color: var(--ink-primary);
       word-break: break-word;
     }
 
-    .message-preview-box {
-      background-color: var(--background);
-      border: var(--bronze-rule);
-      padding: var(--space-md);
-      font-family: var(--font-body);
-      font-size: 0.86rem;
-      line-height: 1.6;
-      color: var(--on-surface);
+    .preview-box {
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.95rem;
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--ink-primary);
       white-space: pre-wrap;
       max-height: 360px;
       overflow-y: auto;
     }
 
-    .summary-tools {
+    .preview-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-sm);
+      gap: 0.55rem;
     }
 
-    .summary-tools .btn-secondary {
+    .preview-actions .btn-ghost-action {
       flex: 1 1 130px;
-      min-height: 44px;
-      padding: var(--space-xs) var(--space-sm);
+      min-height: 42px;
+      padding: 0.45rem 0.8rem;
       font-size: 0.84rem;
     }
 
-    .copy-feedback {
+    .feedback-note {
       font-size: 0.84rem;
-      color: var(--positive);
+      color: #93dfc0;
       min-height: 1.2em;
     }
 
     /* Footer */
-    .site-footer {
-      border-top: var(--gold-rule);
-      padding: var(--space-lg) 0 var(--space-md);
+    .footer-card {
       text-align: center;
-      color: var(--on-surface-variant);
-      font-size: 0.88rem;
+      padding: 1.5rem 1rem 0.5rem;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--ink-secondary);
+      font-size: 0.9rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: var(--space-xs);
+      gap: 0.3rem;
     }
 
-    .site-footer strong {
-      color: var(--primary);
+    .footer-card strong {
+      color: var(--gold-soft);
     }
 
-    @keyframes fadeUp {
+    @keyframes riseIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(12px);
       }
       to {
         opacity: 1;
@@ -1264,44 +1237,29 @@
       }
     }
 
-    /* Container queries for component cards */
-    @container (max-width: 390px) {
-      .prep-card-top {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .prep-check-btn {
-        width: 100%;
-      }
-    }
-
-    /* Responsive breakpoints */
-    @media (max-width: 900px) {
-      .order-layout {
+    @media (max-width: 940px) {
+      .order-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+      .preview-card {
+        position: static;
+      }
     }
 
-    @media (max-width: 640px) {
-      .page-grid {
-        padding: var(--space-sm);
-        gap: var(--space-lg);
-      }
-      .brand-header,
-      .form-frame {
-        padding: var(--space-lg) var(--space-md);
-      }
+    @media (max-width: 660px) {
       .prep-grid,
-      .fields-grid,
-      .packages-grid,
+      .inputs-grid,
+      .pkg-grid,
       .services-grid,
       .uploads-grid,
-      .summary-meta-grid {
+      .stats-row {
         grid-template-columns: minmax(0, 1fr);
       }
-      .section-header {
+      .prep-top {
         flex-direction: column;
-        align-items: flex-start;
+      }
+      .prep-btn {
+        width: 100%;
       }
     }
 
@@ -1315,279 +1273,262 @@
   </style>
 </head>
 <body>
-  <div class="page-grid">
+  <div class="page-shell">
 
-    <!-- Prominent Brand Header with 3laa Designs Logo & Spiritual Welcome -->
-    <header class="brand-header">
-      <div class="basmala-banner">
-        <p class="basmala-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-        <p class="salutation-text">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</p>
+    <!-- Spiritual Welcome & Brand Hero -->
+    <header class="hero-card">
+      <div class="spiritual-header">
+        <p class="basmala">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+        <p class="salam">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</p>
       </div>
 
-      <div class="logo-lockup">
-        <div class="logo-frame">
+      <div class="brand-showcase">
+        <div class="logo-medallion">
           <img
             class="brand-logo-img"
             src="logo.jpg"
             alt="شعار 3laa Designs"
           >
         </div>
-        <p class="brand-name"><bdi dir="ltr">3laa Designs</bdi></p>
+        <span class="brand-tag"><bdi dir="ltr">3laa Designs</bdi> · إخراج بصري للملازم التعليمية</span>
       </div>
 
-      <p class="flanked-kicker">أهلاً ومرحباً بصُنّاع العلم والهداية</p>
-      <h1 class="hero-title">نُرحّب بكم في بوابة <b>إخراج الملازم التعليمية</b></h1>
-      <p class="hero-subtitle">
-        اللهم بارك في علمكم وجهدكم واجعله علماً يُنتفع به. أتمّوا رسالتكم التعليمية بكل طمأنينة، ونتولّى نحن تنسيق مذكرتكم وإخراجها بحُلّة بهية ومرتبة تليق بأهل العلم وطلّابه.
+      <span class="welcome-pill">أهلاً ومرحباً بصُنّاع العلم والهداية</span>
+      <h1 class="hero-title">نُرحّب بكم في بوابة <strong>تنسيق الملازم التعليمية</strong></h1>
+      <p class="hero-lead">
+        اللهم بارك في علمكم وجهدكم واجعله علماً يُنتفع به. أتمّوا رسالتكم التعليمية بكل طمأنينة، ونتولّى نحن تنسيق مذكرتكم وإخراجها بحُلّة أنيقة ومريحة للعين تليق بأهل العلم وطلّابه.
       </p>
 
-      <nav class="hero-actions" aria-label="التنقل السريع">
-        <a class="nav-jump nav-jump--ghost" href="#prep-section">1. المطلوب تحضيره قبل البدء</a>
-        <a class="nav-jump nav-jump--primary" href="#order-section">2. نموذج تقديم طلب مشروع جديد</a>
+      <nav class="hero-cta-row" aria-label="التنقل السريع">
+        <a class="btn-cta-secondary" href="#prep-section">1. المطلوب تحضيره قبل البدء</a>
+        <a class="btn-cta-primary" href="#order-section">2. ابدأ طلب مذكرتك الآن</a>
       </nav>
 
-      <div class="contact-strip">
+      <div class="hero-meta-bar">
         <span>الواتساب الرسمي لاستقبال الطلبات والملفات:</span>
         <strong><bdi dir="ltr">+20 115 162 0464</bdi></strong>
       </div>
     </header>
 
-    <!-- Main Section 1: What You Need to Prepare Before Starting -->
-    <section id="prep-section" class="section-block" aria-labelledby="prep-heading">
-      <div class="section-header">
-        <div class="section-title-group">
-          <span class="section-kicker">القسم الأول</span>
+    <!-- Section 1: Preparation Guide -->
+    <section id="prep-section" class="section-wrap" aria-labelledby="prep-heading">
+      <div class="section-head">
+        <div>
+          <span class="section-step">الخطوة الأولى</span>
           <h2 id="prep-heading" class="section-title">المطلوب منك تحضيره قبل البدء</h2>
-          <p class="section-lede">
+          <p class="section-desc">
             لضمان سلاسة التنفيذ وإخراج المذكرة بأفضل جودة ممكنة، يُرجى مراجعة وتجهيز العناصر الأربعة التالية قبل إرسال الطلب:
           </p>
         </div>
-        <div id="readiness-pill" class="readiness-pill" aria-live="polite">
+        <div id="readiness-pill" class="progress-chip" aria-live="polite">
           تم مراجعة <span id="readiness-count">0</span> من 4 بنود
         </div>
       </div>
 
       <div class="prep-grid">
-        <!-- Item 1 -->
-        <div class="prep-card-wrap">
-          <article class="prep-card" id="prep-card-1">
-            <div class="prep-card-top">
-              <div class="prep-card-title-row">
-                <span class="prep-number" aria-hidden="true">01</span>
-                <h3 class="prep-card-title">بيانات المدرس والمادة والصف الدراسي</h3>
-              </div>
-              <button type="button" class="prep-check-btn" id="prep-btn-1" aria-pressed="false" onclick="togglePrepItem(1)">
-                تأكيد التجهيز
-              </button>
+        <article class="prep-card" id="prep-card-1">
+          <div class="prep-top">
+            <div class="prep-title-group">
+              <span class="prep-num" aria-hidden="true">01</span>
+              <h3 class="prep-title">بيانات المدرس والمادة والصف الدراسي</h3>
             </div>
-            <ul class="prep-list">
-              <li><strong>الاسم الكامل للمدرس</strong> كما ترغب في ظهوره على الغلاف والصفحات الداخلية.</li>
-              <li><strong>اسم المادة العلمية</strong>، و<strong>الصف أو المرحلة الدراسية</strong>، و<strong>السنة الدراسية</strong>.</li>
-              <li><strong>رقم التواصل الرسمي</strong> لإدراجه بالمذكرة، وأي روابط تعليمية مطلوبة لرمز <bdi dir="ltr">QR</bdi> (اختياري).</li>
-            </ul>
-            <div class="prep-formats">
-              <span class="format-tag">بيانات الهوية</span>
-              <span class="format-tag">الصف والسنة الدراسية</span>
-            </div>
-          </article>
-        </div>
+            <button type="button" class="prep-btn" id="prep-btn-1" aria-pressed="false" onclick="togglePrepItem(1)">
+              تأكيد التجهيز
+            </button>
+          </div>
+          <ul class="prep-points">
+            <li><strong>الاسم الكامل للمدرس</strong> كما ترغب في ظهوره على الغلاف والصفحات الداخلية.</li>
+            <li><strong>اسم المادة العلمية</strong>، و<strong>الصف أو المرحلة الدراسية</strong>، و<strong>السنة الدراسية</strong>.</li>
+            <li><strong>رقم التواصل الرسمي</strong> لإدراجه بالمذكرة، وأي روابط تعليمية مطلوبة لرمز <bdi dir="ltr">QR</bdi> (اختياري).</li>
+          </ul>
+          <div class="prep-badges">
+            <span class="badge-chip">بيانات الهوية</span>
+            <span class="badge-chip">الصف والسنة الدراسية</span>
+          </div>
+        </article>
 
-        <!-- Item 2 -->
-        <div class="prep-card-wrap">
-          <article class="prep-card" id="prep-card-2">
-            <div class="prep-card-top">
-              <div class="prep-card-title-row">
-                <span class="prep-number" aria-hidden="true">02</span>
-                <h3 class="prep-card-title">ملف <bdi dir="ltr">Word</bdi> جاهز ومنظم (<bdi dir="ltr">.docx</bdi>)</h3>
-              </div>
-              <button type="button" class="prep-check-btn" id="prep-btn-2" aria-pressed="false" onclick="togglePrepItem(2)">
-                تأكيد التجهيز
-              </button>
+        <article class="prep-card" id="prep-card-2">
+          <div class="prep-top">
+            <div class="prep-title-group">
+              <span class="prep-num" aria-hidden="true">02</span>
+              <h3 class="prep-title">ملف <bdi dir="ltr">Word</bdi> جاهز ومنظم (<bdi dir="ltr">.docx</bdi>)</h3>
             </div>
-            <ul class="prep-list">
-              <li>إرسال <strong>النسخة النهائية</strong> من ملف <bdi dir="ltr">Word</bdi> مع ترتيب الدروس والعناوين الرئيسية والفرعية بوضوح.</li>
-              <li>إدراج <strong>الجداول بمحتواها الكامل</strong> وكتابة <strong>المعادلات والرموز الرياضية</strong> بشكل واضح ومفهوم.</li>
-              <li>تجنّب إرسال لقطات شاشة للنصوص متى توفر النص الأصلي لضمان دقة التنسيق.</li>
-            </ul>
-            <div class="prep-formats">
-              <span class="format-tag"><bdi dir="ltr">.docx</bdi></span>
-              <span class="format-tag">جداول ومعادلات واضحة</span>
-            </div>
-          </article>
-        </div>
+            <button type="button" class="prep-btn" id="prep-btn-2" aria-pressed="false" onclick="togglePrepItem(2)">
+              تأكيد التجهيز
+            </button>
+          </div>
+          <ul class="prep-points">
+            <li>إرسال <strong>النسخة النهائية</strong> من ملف <bdi dir="ltr">Word</bdi> مع ترتيب الدروس والعناوين الرئيسية والفرعية بوضوح.</li>
+            <li>إدراج <strong>الجداول بمحتواها الكامل</strong> وكتابة <strong>المعادلات والرموز الرياضية</strong> بشكل واضح ومفهوم.</li>
+            <li>تجنّب إرسال لقطات شاشة للنصوص متى توفر النص الأصلي لضمان دقة التنسيق.</li>
+          </ul>
+          <div class="prep-badges">
+            <span class="badge-chip"><bdi dir="ltr">.docx</bdi></span>
+            <span class="badge-chip">جداول ومعادلات واضحة</span>
+          </div>
+        </article>
 
-        <!-- Item 3 -->
-        <div class="prep-card-wrap">
-          <article class="prep-card" id="prep-card-3">
-            <div class="prep-card-top">
-              <div class="prep-card-title-row">
-                <span class="prep-number" aria-hidden="true">03</span>
-                <h3 class="prep-card-title">الشعارات والصور عالية الجودة بشكل منفصل</h3>
-              </div>
-              <button type="button" class="prep-check-btn" id="prep-btn-3" aria-pressed="false" onclick="togglePrepItem(3)">
-                تأكيد التجهيز
-              </button>
+        <article class="prep-card" id="prep-card-3">
+          <div class="prep-top">
+            <div class="prep-title-group">
+              <span class="prep-num" aria-hidden="true">03</span>
+              <h3 class="prep-title">الشعارات والصور عالية الجودة بشكل منفصل</h3>
             </div>
-            <ul class="prep-list">
-              <li>إرسال <strong>شعار المدرس (اللوجو)</strong> منفصلاً بأعلى جودة متاحة لدمجه في الغلاف والترويسة.</li>
-              <li>إرسال <strong>الصور والرسومات التوضيحية</strong> كملفات أصلية منفصلة بتسمية واضحة ومرتبطة بأماكنها في الدروس.</li>
-              <li>جمع كل ملفات المشروع وإرسالها معاً في حزمة واحدة لتفادي أي تأخير في بدء العمل.</li>
-            </ul>
-            <div class="prep-formats">
-              <span class="format-tag">الشعار: <bdi dir="ltr">PNG / SVG / PDF</bdi></span>
-              <span class="format-tag">الصور: <bdi dir="ltr">PNG / JPG</bdi></span>
-            </div>
-          </article>
-        </div>
+            <button type="button" class="prep-btn" id="prep-btn-3" aria-pressed="false" onclick="togglePrepItem(3)">
+              تأكيد التجهيز
+            </button>
+          </div>
+          <ul class="prep-points">
+            <li>إرسال <strong>شعار المدرس (اللوجو)</strong> منفصلاً بأعلى جودة متاحة لدمجه في الغلاف والترويسة.</li>
+            <li>إرسال <strong>الصور والرسومات التوضيحية</strong> كملفات أصلية منفصلة بتسمية واضحة ومرتبطة بأماكنها في الدروس.</li>
+            <li>جمع كل ملفات المشروع وإرسالها معاً في حزمة واحدة لتفادي أي تأخير في بدء العمل.</li>
+          </ul>
+          <div class="prep-badges">
+            <span class="badge-chip">الشعار: <bdi dir="ltr">PNG / SVG / PDF</bdi></span>
+            <span class="badge-chip">الصور: <bdi dir="ltr">PNG / JPG</bdi></span>
+          </div>
+        </article>
 
-        <!-- Item 4 -->
-        <div class="prep-card-wrap">
-          <article class="prep-card" id="prep-card-4">
-            <div class="prep-card-top">
-              <div class="prep-card-title-row">
-                <span class="prep-number" aria-hidden="true">04</span>
-                <h3 class="prep-card-title">تحديد التفضيلات والنمط المطلوب</h3>
-              </div>
-              <button type="button" class="prep-check-btn" id="prep-btn-4" aria-pressed="false" onclick="togglePrepItem(4)">
-                تأكيد التجهيز
-              </button>
+        <article class="prep-card" id="prep-card-4">
+          <div class="prep-top">
+            <div class="prep-title-group">
+              <span class="prep-num" aria-hidden="true">04</span>
+              <h3 class="prep-title">تحديد التفضيلات والنمط المطلوب</h3>
             </div>
-            <ul class="prep-list">
-              <li>تحديد <strong>الألوان المفضلة</strong>، و<strong>نمط التصميم</strong>، أو مشاركة نماذج استرشادية قريبة لذوقك (إن وجدت).</li>
-              <li>تحديد <strong>مقاس الصفحة</strong> (<bdi dir="ltr">A4</bdi> افتراضياً) و<strong>اتجاهها</strong> (عمودي أو أفقي).</li>
-              <li>توضيح الإضافات المطلوبة: تصميم ورقة داخلية، غلاف أمامي وخلفي، فهرس، فواصل أبواب، أو ترقيم صفحات.</li>
-            </ul>
-            <div class="prep-formats">
-              <span class="format-tag">المقاس الافتراضي: <bdi dir="ltr">A4</bdi></span>
-              <span class="format-tag">التسليم النهائي: <bdi dir="ltr">PDF</bdi></span>
-            </div>
-          </article>
-        </div>
+            <button type="button" class="prep-btn" id="prep-btn-4" aria-pressed="false" onclick="togglePrepItem(4)">
+              تأكيد التجهيز
+            </button>
+          </div>
+          <ul class="prep-points">
+            <li>تحديد <strong>الألوان المفضلة</strong>، و<strong>نمط التصميم</strong>، أو مشاركة نماذج استرشادية قريبة لذوقك (إن وجدت).</li>
+            <li>تحديد <strong>مقاس الصفحة</strong> (<bdi dir="ltr">A4</bdi> افتراضياً) و<strong>اتجاهها</strong> (عمودي أو أفقي).</li>
+            <li>توضيح الإضافات المطلوبة: تصميم ورقة داخلية، غلاف أمامي وخلفي، فهرس، فواصل أبواب، أو ترقيم صفحات.</li>
+          </ul>
+          <div class="prep-badges">
+            <span class="badge-chip">المقاس الافتراضي: <bdi dir="ltr">A4</bdi></span>
+            <span class="badge-chip">التسليم النهائي: <bdi dir="ltr">PDF</bdi></span>
+          </div>
+        </article>
       </div>
 
-      <!-- Explicit Visual-Only Disclaimer -->
-      <aside class="policy-callout" role="note" aria-label="تنبيه مسؤولية المحتوى">
-        <svg class="policy-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <aside class="notice-banner" role="note" aria-label="تنبيه مسؤولية المحتوى">
+        <svg class="notice-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
           <line x1="12" y1="9" x2="12" y2="13"/>
           <line x1="12" y1="17" x2="12.01" y2="17"/>
         </svg>
-        <div class="policy-body">
-          <h3 class="policy-title">تنبيه صريح بخصوص المحتوى العلمي واللغوي</h3>
-          <p class="policy-text">
+        <div>
+          <h3 class="notice-title">تنبيه صريح بخصوص المحتوى العلمي واللغوي</h3>
+          <p class="notice-text">
             تقتصر خدمة <strong><bdi dir="ltr">3laa Designs</bdi></strong> على <strong>التصميم والتنسيق البصري وتنظيم الصفحات وتسليم ملف <bdi dir="ltr">PDF</bdi> نهائي</strong> فقط. العميل (المدرس) هو المسؤول مسؤولية كاملة عن دقة واكتمال المحتوى اللغوي والعلمي، ولا تشمل الخدمة كتابة المادة العلمية أو المراجعة العلمية أو التدقيق الإملائي واللغوي.
           </p>
         </div>
       </aside>
     </section>
 
-    <!-- Main Section 2: New Project Request Form -->
-    <section id="order-section" class="section-block" aria-labelledby="order-heading">
-      <div class="section-header">
-        <div class="section-title-group">
-          <span class="section-kicker">القسم الثاني</span>
+    <!-- Section 2: Project Request Form & Live Preview -->
+    <section id="order-section" class="section-wrap" aria-labelledby="order-heading">
+      <div class="section-head">
+        <div>
+          <span class="section-step">الخطوة الثانية</span>
           <h2 id="order-heading" class="section-title">نموذج تقديم طلب مشروع جديد</h2>
-          <p class="section-lede">
+          <p class="section-desc">
             املأ بياناتك وتفاصيل المذكرة أدناه ليتم تجهيز طلبك تلقائياً وإرساله إلى البريد والواتساب على <bdi dir="ltr">+20 115 162 0464</bdi>.
           </p>
         </div>
       </div>
 
-      <div class="order-layout">
-        <form id="project-form" class="form-frame" enctype="multipart/form-data" novalidate onsubmit="handleOrderSubmit(event)">
+      <div class="order-grid">
+        <form id="project-form" class="form-panel" enctype="multipart/form-data" novalidate onsubmit="handleOrderSubmit(event)">
 
-          <!-- 1. Personal Information -->
-          <div class="form-group-block">
-            <div class="group-heading-row">
-              <h3 class="group-title">
-                <span class="group-step">01</span>
-                البيانات الشخصية وبيانات المادة
-              </h3>
+          <!-- 1. Personal & Subject Info -->
+          <div class="form-step-block">
+            <div class="step-header">
+              <span class="step-badge">01</span>
+              <h3 class="step-title">البيانات الشخصية وبيانات المادة</h3>
             </div>
 
-            <div class="fields-grid">
-              <div class="field" id="wrap-teacherName">
+            <div class="inputs-grid">
+              <div class="field-group" id="wrap-teacherName">
                 <label class="field-label" for="teacherName">
-                  اسم المدرس الكامل <span class="req-mark">*</span>
+                  اسم المدرس الكامل <span class="req">*</span>
                 </label>
-                <input class="field-input" type="text" id="teacherName" name="teacherName" placeholder="مثال: أ. محمد أحمد محمود" required oninput="onFormChange()">
-                <span class="field-error" id="err-teacherName">يرجى إدخال اسم المدرس كما سيظهر في المذكرة.</span>
+                <input class="input-control" type="text" id="teacherName" name="teacherName" placeholder="مثال: أ. محمد أحمد محمود" required oninput="onFormChange()">
+                <span class="error-msg" id="err-teacherName">يرجى إدخال اسم المدرس كما سيظهر في المذكرة.</span>
               </div>
 
-              <div class="field" id="wrap-whatsappNumber">
+              <div class="field-group" id="wrap-whatsappNumber">
                 <label class="field-label" for="whatsappNumber">
-                  رقم الواتساب <span class="req-mark">*</span>
+                  رقم الواتساب <span class="req">*</span>
                 </label>
-                <input class="field-input" type="tel" dir="ltr" id="whatsappNumber" name="whatsappNumber" placeholder="01012345678" required oninput="onFormChange()">
-                <span class="field-error" id="err-whatsappNumber">يرجى إدخال رقم واتساب صحيح للتواصل.</span>
+                <input class="input-control" type="tel" dir="ltr" id="whatsappNumber" name="whatsappNumber" placeholder="01012345678" required oninput="onFormChange()">
+                <span class="error-msg" id="err-whatsappNumber">يرجى إدخال رقم واتساب صحيح للتواصل.</span>
               </div>
 
-              <div class="field" id="wrap-subject">
+              <div class="field-group" id="wrap-subject">
                 <label class="field-label" for="subject">
-                  المادة <span class="req-mark">*</span>
+                  المادة <span class="req">*</span>
                 </label>
-                <input class="field-input" type="text" id="subject" name="subject" placeholder="مثال: الفيزياء / الرياضيات / اللغة العربية" required oninput="onFormChange()">
-                <span class="field-error" id="err-subject">يرجى تحديد اسم المادة العلمية.</span>
+                <input class="input-control" type="text" id="subject" name="subject" placeholder="مثال: الفيزياء / الرياضيات / اللغة العربية" required oninput="onFormChange()">
+                <span class="error-msg" id="err-subject">يرجى تحديد اسم المادة العلمية.</span>
               </div>
 
-              <div class="field" id="wrap-grade">
+              <div class="field-group" id="wrap-grade">
                 <label class="field-label" for="grade">
-                  الصف الدراسي <span class="req-mark">*</span>
+                  الصف الدراسي <span class="req">*</span>
                 </label>
-                <input class="field-input" type="text" id="grade" name="grade" placeholder="مثال: الصف الثالث الثانوي" required oninput="onFormChange()">
-                <span class="field-error" id="err-grade">يرجى تحديد الصف أو المرحلة الدراسية.</span>
+                <input class="input-control" type="text" id="grade" name="grade" placeholder="مثال: الصف الثالث الثانوي" required oninput="onFormChange()">
+                <span class="error-msg" id="err-grade">يرجى تحديد الصف أو المرحلة الدراسية.</span>
               </div>
 
-              <div class="field field--full" id="wrap-academicYear">
+              <div class="field-group field-group--wide" id="wrap-academicYear">
                 <label class="field-label" for="academicYear">
-                  السنة الدراسية <span class="req-mark">*</span>
+                  السنة الدراسية <span class="req">*</span>
                 </label>
-                <input class="field-input" type="text" id="academicYear" name="academicYear" placeholder="مثال: 2026 / 2027" required oninput="onFormChange()">
-                <span class="field-error" id="err-academicYear">يرجى كتابة السنة الدراسية.</span>
+                <input class="input-control" type="text" id="academicYear" name="academicYear" placeholder="مثال: 2026 / 2027" required oninput="onFormChange()">
+                <span class="error-msg" id="err-academicYear">يرجى كتابة السنة الدراسية.</span>
               </div>
             </div>
           </div>
 
-          <!-- 2. Project Details -->
-          <div class="form-group-block">
-            <div class="group-heading-row">
-              <h3 class="group-title">
-                <span class="group-step">02</span>
-                تفاصيل المشروع والباقة
-              </h3>
+          <!-- 2. Project & Package -->
+          <div class="form-step-block">
+            <div class="step-header">
+              <span class="step-badge">02</span>
+              <h3 class="step-title">تفاصيل المشروع والباقة</h3>
             </div>
 
-            <div class="fields-grid">
-              <div class="field" id="wrap-bookletTitle">
+            <div class="inputs-grid">
+              <div class="field-group" id="wrap-bookletTitle">
                 <label class="field-label" for="bookletTitle">
-                  عنوان المذكرة <span class="req-mark">*</span>
+                  عنوان المذكرة <span class="req">*</span>
                 </label>
-                <input class="field-input" type="text" id="bookletTitle" name="bookletTitle" placeholder="مثال: المراجعة النهائية — الفصل الأول" required oninput="onFormChange()">
-                <span class="field-error" id="err-bookletTitle">يرجى إدخال عنوان المذكرة المطلوب.</span>
+                <input class="input-control" type="text" id="bookletTitle" name="bookletTitle" placeholder="مثال: المراجعة النهائية — الفصل الأول" required oninput="onFormChange()">
+                <span class="error-msg" id="err-bookletTitle">يرجى إدخال عنوان المذكرة المطلوب.</span>
               </div>
 
-              <div class="field" id="wrap-pageCount">
+              <div class="field-group" id="wrap-pageCount">
                 <label class="field-label" for="pageCount">
-                  عدد الصفحات التقديري <span class="req-mark">*</span>
+                  عدد الصفحات التقديري <span class="req">*</span>
                 </label>
-                <input class="field-input" type="number" min="1" step="1" id="pageCount" name="pageCount" placeholder="مثال: 45" required oninput="onFormChange()">
-                <span class="field-error" id="err-pageCount">يرجى إدخال عدد صفحات تقديري لا يقل عن 1.</span>
+                <input class="input-control" type="number" min="1" step="1" id="pageCount" name="pageCount" placeholder="مثال: 45" required oninput="onFormChange()">
+                <span class="error-msg" id="err-pageCount">يرجى إدخال عدد صفحات تقديري لا يقل عن 1.</span>
               </div>
 
-              <div class="field field--full">
-                <span class="field-label">الباقة المختارة <span class="req-mark">*</span></span>
-                <div class="packages-grid" role="radiogroup" aria-label="الباقة المختارة">
-                  <label class="pkg-option" id="pkg-card-basic">
+              <div class="field-group field-group--wide">
+                <span class="field-label">الباقة المختارة <span class="req">*</span></span>
+                <div class="pkg-grid" role="radiogroup" aria-label="الباقة المختارة">
+                  <label class="pkg-card" id="pkg-card-basic">
                     <input type="radio" name="selectedPackage" value="الباقة الأساسية" onchange="onPackageChange()">
                     <span class="pkg-name">أساسية</span>
                     <span class="pkg-desc">تنسيق مرتب وواضح + جولة تعديلات واحدة.</span>
                   </label>
-                  <label class="pkg-option is-selected" id="pkg-card-pro">
+                  <label class="pkg-card is-selected" id="pkg-card-pro">
                     <input type="radio" name="selectedPackage" value="الباقة المتوسطة" checked onchange="onPackageChange()">
                     <span class="pkg-name">متوسطة</span>
                     <span class="pkg-desc">تنسيق متكامل + هيدر وفوتر + جولتا تعديلات.</span>
                   </label>
-                  <label class="pkg-option" id="pkg-card-full">
+                  <label class="pkg-card" id="pkg-card-full">
                     <input type="radio" name="selectedPackage" value="الباقة الشاملة" onchange="onPackageChange()">
                     <span class="pkg-name">شاملة</span>
                     <span class="pkg-desc">هوية وتصميم مخصص بالكامل + 3 جولات تعديلات.</span>
@@ -1595,34 +1536,34 @@
                 </div>
               </div>
 
-              <div class="field field--full">
-                <span class="field-label">الخدمات المطلوبة <span class="opt-mark">(اختر كل ما ينطبق)</span></span>
+              <div class="field-group field-group--wide">
+                <span class="field-label">الخدمات المطلوبة <span class="opt">(اختر كل ما ينطبق)</span></span>
                 <div class="services-grid">
-                  <label class="check-chip is-selected">
+                  <label class="service-item is-selected">
                     <input type="checkbox" name="services" value="تنسيق صفحات النصوص والدروس" checked onchange="onServicesChange()">
                     <span>تنسيق صفحات النصوص والدروس</span>
                   </label>
-                  <label class="check-chip is-selected">
+                  <label class="service-item is-selected">
                     <input type="checkbox" name="services" value="تصميم ورقة داخلية A4 (ترويسة وتذييل)" checked onchange="onServicesChange()">
                     <span>تصميم ورقة داخلية <bdi dir="ltr">A4</bdi></span>
                   </label>
-                  <label class="check-chip">
+                  <label class="service-item">
                     <input type="checkbox" name="services" value="تنسيق جداول وصور ورسومات" onchange="onServicesChange()">
                     <span>تنسيق جداول وصور ورسومات</span>
                   </label>
-                  <label class="check-chip">
+                  <label class="service-item">
                     <input type="checkbox" name="services" value="تنسيق معادلات ورموز علمية" onchange="onServicesChange()">
                     <span>تنسيق معادلات ورموز علمية</span>
                   </label>
-                  <label class="check-chip">
+                  <label class="service-item">
                     <input type="checkbox" name="services" value="تصميم غلاف أمامي وخلفي" onchange="onServicesChange()">
                     <span>تصميم غلاف أمامي وخلفي</span>
                   </label>
-                  <label class="check-chip">
+                  <label class="service-item">
                     <input type="checkbox" name="services" value="فهرس وفواصل أبواب وترقيم صفحات" onchange="onServicesChange()">
                     <span>فهرس وفواصل أبواب وترقيم</span>
                   </label>
-                  <label class="check-chip">
+                  <label class="service-item">
                     <input type="checkbox" name="services" value="إدراج رمز QR Code" onchange="onServicesChange()">
                     <span>إدراج رمز <bdi dir="ltr">QR Code</bdi></span>
                   </label>
@@ -1632,84 +1573,77 @@
           </div>
 
           <!-- 3. Design Preferences -->
-          <div class="form-group-block">
-            <div class="group-heading-row">
-              <h3 class="group-title">
-                <span class="group-step">03</span>
-                تفاصيل التصميم
-              </h3>
+          <div class="form-step-block">
+            <div class="step-header">
+              <span class="step-badge">03</span>
+              <h3 class="step-title">تفاصيل التصميم</h3>
             </div>
 
-            <div class="fields-grid">
-              <div class="field">
+            <div class="inputs-grid">
+              <div class="field-group">
                 <label class="field-label" for="preferredColors">
-                  الألوان المفضلة <span class="opt-mark">(اختياري)</span>
+                  الألوان المفضلة <span class="opt">(اختياري)</span>
                 </label>
-                <input class="field-input" type="text" id="preferredColors" name="preferredColors" placeholder="مثال: أسود وذهبي، أو أزرق داكن وأبيض" oninput="onFormChange()">
-                <div class="color-presets" aria-label="اختيارات ألوان سريعة">
-                  <button type="button" class="preset-btn" onclick="applyColorPreset('أسود وذهبي فاخر')">أسود وذهبي</button>
-                  <button type="button" class="preset-btn" onclick="applyColorPreset('أزرق كحلي وأبيض')">كحلي وأبيض</button>
-                  <button type="button" class="preset-btn" onclick="applyColorPreset('أخضر زمردي وبيج')">زمردي وبيج</button>
-                  <button type="button" class="preset-btn" onclick="applyColorPreset('على ذوق المصمم')">ذوق المصمم</button>
+                <input class="input-control" type="text" id="preferredColors" name="preferredColors" placeholder="مثال: أسود وذهبي، أو أزرق داكن وأبيض" oninput="onFormChange()">
+                <div class="palette-row" aria-label="اختيارات ألوان سريعة">
+                  <button type="button" class="palette-btn" onclick="applyColorPreset('أسود وذهبي فاخر')">أسود وذهبي</button>
+                  <button type="button" class="palette-btn" onclick="applyColorPreset('أزرق كحلي وأبيض')">كحلي وأبيض</button>
+                  <button type="button" class="palette-btn" onclick="applyColorPreset('أخضر زمردي وبيج')">زمردي وبيج</button>
+                  <button type="button" class="palette-btn" onclick="applyColorPreset('على ذوق المصمم')">ذوق المصمم</button>
                 </div>
               </div>
 
-              <div class="field">
+              <div class="field-group">
                 <label class="field-label" for="pageOrientation">
-                  اتجاه الصفحة <span class="opt-mark">(المقاس الافتراضي <bdi dir="ltr">A4</bdi>)</span>
+                  اتجاه الصفحة <span class="opt">(المقاس الافتراضي <bdi dir="ltr">A4</bdi>)</span>
                 </label>
-                <select class="field-select" id="pageOrientation" name="pageOrientation" onchange="onFormChange()">
+                <select class="select-control" id="pageOrientation" name="pageOrientation" onchange="onFormChange()">
                   <option value="عمودي (Portrait - A4)">عمودي (Portrait — A4)</option>
                   <option value="أفقي (Landscape - A4)">أفقي (Landscape — A4)</option>
                 </select>
               </div>
 
-              <div class="field field--full">
+              <div class="field-group field-group--wide">
                 <label class="field-label" for="specialNotes">
-                  ملاحظات خاصة <span class="opt-mark">(نمط التصميم، رابط QR، أو أي تعليمات إضافية)</span>
+                  ملاحظات خاصة <span class="opt">(نمط التصميم، رابط QR، أو أي تعليمات إضافية)</span>
                 </label>
-                <textarea class="field-textarea" id="specialNotes" name="specialNotes" placeholder="أضف هنا أي تفاصيل حول أسلوب التصميم المطلوب، رابط قناة يوتيوب أو تيليجرام لـ QR، أو ملاحظات الترتيب..." oninput="onFormChange()"></textarea>
+                <textarea class="textarea-control" id="specialNotes" name="specialNotes" placeholder="أضف هنا أي تفاصيل حول أسلوب التصميم المطلوب، رابط قناة يوتيوب أو تيليجرام لـ QR، أو ملاحظات الترتيب..." oninput="onFormChange()"></textarea>
               </div>
             </div>
           </div>
 
-          <!-- 4. File Attachments -->
-          <div class="form-group-block">
-            <div class="group-heading-row">
-              <h3 class="group-title">
-                <span class="group-step">04</span>
-                رفع الملفات التجهيزية
-              </h3>
+          <!-- 4. Files Upload -->
+          <div class="form-step-block">
+            <div class="step-header">
+              <span class="step-badge">04</span>
+              <h3 class="step-title">رفع الملفات التجهيزية</h3>
             </div>
 
             <div class="uploads-grid">
-              <!-- Word File -->
-              <div class="upload-box" id="upload-box-word">
-                <span class="upload-label">ملف الوورد (<bdi dir="ltr">.docx</bdi>)</span>
-                <span class="upload-hint">ملف الدروس النهائي المنظم</span>
-                <label class="upload-trigger">
+              <div class="drop-card" id="upload-box-word">
+                <span class="drop-title">ملف الوورد (<bdi dir="ltr">.docx</bdi>)</span>
+                <span class="drop-sub">ملف الدروس النهائي المنظم</span>
+                <label class="pick-file-btn">
                   اختيار ملف الوورد
                   <input type="file" id="file-word" name="word_file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onchange="handleFilesSelected('word', this)">
                 </label>
                 <ul class="file-list" id="list-word"></ul>
               </div>
 
-              <!-- Logo File -->
-              <div class="upload-box" id="upload-box-logo">
-                <span class="upload-label">اللوجو / الشعار</span>
-                <span class="upload-hint"><bdi dir="ltr">PNG / SVG / PDF</bdi></span>
-                <label class="upload-trigger">
+              <div class="drop-card" id="upload-box-logo">
+                <span class="drop-title">اللوجو / الشعار</span>
+                <span class="drop-sub"><bdi dir="ltr">PNG / SVG / PDF</bdi></span>
+                <label class="pick-file-btn">
                   اختيار اللوجو
                   <input type="file" id="file-logo" name="logo_file" accept=".png,.jpg,.jpeg,.svg,.pdf" onchange="handleFilesSelected('logo', this)">
                 </label>
                 <ul class="file-list" id="list-logo"></ul>
               </div>
 
-              <!-- Images Files -->
-              <div class="upload-box" id="upload-box-images">
-                <span class="upload-label">الصور والرسومات</span>
-                <span class="upload-hint"><bdi dir="ltr">PNG / JPG</bdi> (متعدد)</span>
-                <label class="upload-trigger">
+              <div class="drop-card" id="upload-box-images">
+                <span class="drop-title">الصور والرسومات</span>
+                <span class="drop-sub"><bdi dir="ltr">PNG / JPG</bdi> (متعدد)</span>
+                <label class="pick-file-btn">
                   اختيار الصور
                   <input type="file" id="file-images" name="design_images" accept="image/png,image/jpeg,image/webp" multiple onchange="handleFilesSelected('images', this)">
                 </label>
@@ -1717,35 +1651,35 @@
               </div>
             </div>
 
-            <div class="upload-honest-note">
+            <div class="info-strip">
               ملاحظة تقنية: تُدرج أسماء الملفات المختارة هنا تلقائياً في نص طلبك لتوثيقها، ويُرجى إرفاق الملفات الفعلية مباشرة داخل نافذة محادثة الواتساب بعد فتحها لضمان وصولها بدقتها الكاملة.
             </div>
 
-            <div id="prep-reminder-note" class="prep-reminder-note" role="note">
+            <div id="prep-reminder-note" class="warn-strip" role="note">
               تنويه: لم يتم تأكيد جميع بنود التجهيز الأربعة في القسم الأول؛ يُفضل مراجعة جاهزية ملف الوورد والشعار والصور لتسريع بدء التنفيذ.
             </div>
           </div>
 
           <!-- 5. Confirmation & Submit -->
-          <div class="form-group-block">
-            <label class="terms-box" id="wrap-terms">
+          <div class="form-step-block">
+            <label class="terms-card" id="wrap-terms">
               <input type="checkbox" id="termsAccepted" onchange="onFormChange()">
-              <span class="terms-text">
+              <span class="terms-copy">
                 أؤكد أن المحتوى التعليمي المقدم كامل ومنظم وجاهز للتنسيق، وأوافق على أن الخدمة تشمل التصميم والتنسيق البصري وتسليم ملف <bdi dir="ltr">PDF</bdi> فقط، ولا تشمل كتابة المحتوى أو المراجعة العلمية أو التدقيق اللغوي.
               </span>
             </label>
-            <span class="field-error" id="err-termsAccepted">يجب تأكيد الموافقة على الشروط ومسؤولية المحتوى قبل إرسال الطلب.</span>
+            <span class="error-msg" id="err-termsAccepted">يجب تأكيد الموافقة على الشروط ومسؤولية المحتوى قبل إرسال الطلب.</span>
 
-            <div id="form-status-banner" class="form-status-banner" role="status" aria-live="polite"></div>
+            <div id="form-status-banner" class="status-box" role="status" aria-live="polite"></div>
 
-            <div class="form-actions">
-              <button type="submit" class="btn-whatsapp-submit">
+            <div class="submit-row">
+              <button type="submit" class="btn-submit-main">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                 </svg>
                 إرسال الطلب عبر الواتساب
               </button>
-              <button type="button" class="btn-secondary" id="reset-form-btn" onclick="resetOrderForm(this)">
+              <button type="button" class="btn-ghost-action" id="reset-form-btn" onclick="resetOrderForm(this)">
                 مسح النموذج
               </button>
             </div>
@@ -1753,40 +1687,40 @@
 
         </form>
 
-        <!-- Live WhatsApp Message & Order Summary Panel -->
-        <aside class="summary-panel" aria-labelledby="summary-heading">
-          <div class="summary-header">
-            <h3 id="summary-heading" class="summary-title">معاينة رسالة الطلب</h3>
-            <span class="completion-badge" id="completion-badge">0 / 7 مكتمل</span>
+        <!-- Live Preview Panel -->
+        <aside class="preview-card" aria-labelledby="summary-heading">
+          <div class="preview-head">
+            <h3 id="summary-heading" class="preview-title">معاينة رسالة الطلب</h3>
+            <span class="preview-count" id="completion-badge">0 / 7 مكتمل</span>
           </div>
 
-          <div class="summary-meta-grid">
-            <div class="summary-stat">
-              <span class="summary-stat-label">المدرس والمادة</span>
-              <span class="summary-stat-val" id="stat-teacher">لم يُحدَّد بعد</span>
+          <div class="stats-row">
+            <div class="stat-box">
+              <span class="stat-label">المدرس والمادة</span>
+              <span class="stat-value" id="stat-teacher">لم يُحدَّد بعد</span>
             </div>
-            <div class="summary-stat">
-              <span class="summary-stat-label">الباقة والصفحات</span>
-              <span class="summary-stat-val" id="stat-package">الباقة المتوسطة</span>
+            <div class="stat-box">
+              <span class="stat-label">الباقة والصفحات</span>
+              <span class="stat-value" id="stat-package">الباقة المتوسطة</span>
             </div>
           </div>
 
-          <div class="message-preview-box" id="message-preview" aria-label="نص رسالة الواتساب المجهزة"></div>
+          <div class="preview-box" id="message-preview" aria-label="نص رسالة الواتساب المجهزة"></div>
 
-          <div class="summary-tools">
-            <button type="button" class="btn-secondary" onclick="copyOrderMessage()">
+          <div class="preview-actions">
+            <button type="button" class="btn-ghost-action" onclick="copyOrderMessage()">
               نسخ نص الطلب
             </button>
-            <button type="button" class="btn-secondary" onclick="downloadOrderSummary()">
+            <button type="button" class="btn-ghost-action" onclick="downloadOrderSummary()">
               حفظ كملف نصي
             </button>
           </div>
-          <div class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></div>
+          <div class="feedback-note" id="copy-feedback" role="status" aria-live="polite"></div>
         </aside>
       </div>
     </section>
 
-    <footer class="site-footer">
+    <footer class="footer-card">
       <p style="margin: 0;"><strong><bdi dir="ltr">3laa Designs</bdi></strong> — تصميم وتنسيق الملازم والكتب التعليمية باحترافية</p>
       <p style="margin: 0;">واتساب استقبال الطلبات: <bdi dir="ltr">+20 115 162 0464</bdi> · <bdi dir="ltr">wa.me/201151620464</bdi></p>
     </footer>
@@ -1863,9 +1797,7 @@
         const checked = Boolean(appState.prepChecks[i]);
         const card = document.getElementById(`prep-card-${i}`);
         const btn = document.getElementById(`prep-btn-${i}`);
-        if (card) {
-          card.classList.toggle(`is-checked`, checked);
-        }
+        if (card) card.classList.toggle(`is-checked`, checked);
         if (btn) {
           btn.setAttribute(`aria-pressed`, checked ? `true` : `false`);
           btn.textContent = checked ? `تم التجهيز ✓` : `تأكيد التجهيز`;
@@ -1905,13 +1837,9 @@
       const serviceInputs = document.querySelectorAll(`input[name="services"]`);
       const selectedServices = [];
       serviceInputs.forEach(function (cb) {
-        const label = cb.closest(`.check-chip`);
-        if (cb.checked) {
-          selectedServices.push(cb.value);
-        }
-        if (label) {
-          label.classList.toggle(`is-selected`, cb.checked);
-        }
+        const label = cb.closest(`.service-item`);
+        if (cb.checked) selectedServices.push(cb.value);
+        if (label) label.classList.toggle(`is-selected`, cb.checked);
       });
       appState.fields.services = selectedServices;
 
@@ -1939,7 +1867,7 @@
       const pkgRadios = document.querySelectorAll(`input[name="selectedPackage"]`);
       pkgRadios.forEach(function (radio) {
         radio.checked = radio.value === appState.fields.selectedPackage;
-        const card = radio.closest(`.pkg-option`);
+        const card = radio.closest(`.pkg-card`);
         if (card) card.classList.toggle(`is-selected`, radio.checked);
       });
 
@@ -1947,7 +1875,7 @@
       const activeServices = Array.isArray(appState.fields.services) ? appState.fields.services : [];
       serviceInputs.forEach(function (cb) {
         cb.checked = activeServices.includes(cb.value);
-        const label = cb.closest(`.check-chip`);
+        const label = cb.closest(`.service-item`);
         if (label) label.classList.toggle(`is-selected`, cb.checked);
       });
 
@@ -1971,7 +1899,7 @@
     function onPackageChange() {
       const pkgRadios = document.querySelectorAll(`input[name="selectedPackage"]`);
       pkgRadios.forEach(function (radio) {
-        const card = radio.closest(`.pkg-option`);
+        const card = radio.closest(`.pkg-card`);
         if (card) card.classList.toggle(`is-selected`, radio.checked);
       });
       onFormChange();
@@ -2023,9 +1951,7 @@
       const boxEl = document.getElementById(`upload-box-${category}`);
       if (!listEl) return;
       const items = appState.filesMeta[category] || [];
-      if (boxEl) {
-        boxEl.classList.toggle(`has-files`, items.length > 0);
-      }
+      if (boxEl) boxEl.classList.toggle(`has-files`, items.length > 0);
       listEl.innerHTML = ``;
       items.forEach(function (item, idx) {
         const li = document.createElement(`li`);
@@ -2123,11 +2049,9 @@
 
       const statTeacher = document.getElementById(`stat-teacher`);
       if (statTeacher) {
-        if (f.teacherName || f.subject) {
-          statTeacher.textContent = [f.teacherName, f.subject].filter(Boolean).join(` — `);
-        } else {
-          statTeacher.textContent = `لم يُحدَّد بعد`;
-        }
+        statTeacher.textContent = (f.teacherName || f.subject)
+          ? [f.teacherName, f.subject].filter(Boolean).join(` — `)
+          : `لم يُحدَّد بعد`;
       }
 
       const statPkg = document.getElementById(`stat-package`);
@@ -2138,14 +2062,11 @@
       }
 
       const preview = document.getElementById(`message-preview`);
-      if (preview) {
-        preview.textContent = buildWhatsAppMessage();
-      }
+      if (preview) preview.textContent = buildWhatsAppMessage();
     }
 
     function clearFieldErrors() {
-      const errorWraps = document.querySelectorAll(`.has-error`);
-      errorWraps.forEach(function (el) {
+      document.querySelectorAll(`.has-error`).forEach(function (el) {
         el.classList.remove(`has-error`);
       });
       const termsErr = document.getElementById(`err-termsAccepted`);
@@ -2192,9 +2113,6 @@
         const termsErr = document.getElementById(`err-termsAccepted`);
         if (termsWrap) termsWrap.classList.add(`has-error`);
         if (termsErr) termsErr.style.display = `block`;
-      } else {
-        const termsErr = document.getElementById(`err-termsAccepted`);
-        if (termsErr) termsErr.style.display = `none`;
       }
 
       return missing;
@@ -2210,7 +2128,7 @@
 
       if (missing.length > 0) {
         if (banner) {
-          banner.className = `form-status-banner is-error`;
+          banner.className = `status-box is-error`;
           banner.textContent = `يرجى استكمال الحقول المطلوبة والمحددة باللون الأحمر وتأكيد الموافقة على الشروط قبل الإرسال.`;
         }
         const firstInvalid = document.getElementById(missing[0]);
@@ -2265,7 +2183,7 @@
       }
 
       if (banner) {
-        banner.className = `form-status-banner is-success`;
+        banner.className = `status-box is-success`;
         banner.innerHTML = ``;
 
         const titleP = document.createElement(`strong`);
@@ -2278,15 +2196,14 @@
           : `قد يكون المتصفح حجب نافذة الواتساب؛ اضغط على الزر أدناه لفتح المحادثة على ${WHATSAPP_DISPLAY}:`;
 
         const attachTip = document.createElement(`div`);
-        attachTip.className = `attach-highlight`;
+        attachTip.className = `tip-pill`;
         attachTip.textContent = `تُرسل الملفات عبر Gmail تلقائياً مع الطلب، ويمكنك أيضاً إرفاقها يدوياً داخل شات الواتساب (📎) عند الحاجة.`;
 
         const actionsDiv = document.createElement(`div`);
-        actionsDiv.className = `success-actions`;
+        actionsDiv.className = `result-links`;
 
         const waLink = document.createElement(`a`);
-        waLink.id = `whatsapp-direct-link`;
-        waLink.className = `whatsapp-direct-link`;
+        waLink.className = `wa-link-btn`;
         waLink.href = whatsappUrl;
         waLink.target = `_blank`;
         waLink.rel = `noopener noreferrer`;
@@ -2294,7 +2211,7 @@
 
         const copyBtn = document.createElement(`button`);
         copyBtn.type = `button`;
-        copyBtn.className = `btn-secondary`;
+        copyBtn.className = `btn-ghost-action`;
         copyBtn.textContent = `إعادة نسخ النص`;
         copyBtn.onclick = function () {
           copyOrderMessage();
@@ -2439,7 +2356,7 @@
 
       const banner = document.getElementById(`form-status-banner`);
       if (banner) {
-        banner.className = `form-status-banner`;
+        banner.className = `status-box`;
         banner.innerHTML = ``;
       }
 
