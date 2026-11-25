@@ -8,7 +8,7 @@
   <title>3laa Designs — بوابة طلبات تصميم وتنسيق الملازم التعليمية</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
@@ -45,6 +45,7 @@
       --data-context: #726a58;
 
       /* Fonts (Arabic-first RTL stack) */
+      --font-basmala: 'Amiri', 'Cairo', serif;
       --font-headline: 'Cairo', 'Tajawal', sans-serif;
       --font-body: 'Tajawal', 'Cairo', sans-serif;
       --font-label: 'Cairo', 'IBM Plex Mono', monospace;
@@ -66,8 +67,8 @@
       );
       --hero-glow: radial-gradient(
         ellipse at 50% 0%,
-        rgba(201, 161, 74, 0.14) 0%,
-        rgba(11, 10, 8, 0) 68%
+        rgba(201, 161, 74, 0.16) 0%,
+        rgba(11, 10, 8, 0) 70%
       );
       --surface-tint-gold: rgba(201, 161, 74, 0.08);
       --surface-tint-warning: rgba(226, 180, 90, 0.10);
@@ -170,6 +171,31 @@
       animation: fadeUp var(--dur-long) var(--ease-out) both;
     }
 
+    .basmala-banner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding-bottom: var(--space-xs);
+    }
+
+    .basmala-text {
+      font-family: var(--font-basmala);
+      font-size: clamp(1.5rem, 1.25rem + 1vw, 2.05rem);
+      line-height: 1.5;
+      color: var(--tertiary);
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .salutation-text {
+      font-family: var(--font-headline);
+      font-size: clamp(1rem, 0.92rem + 0.35vw, 1.22rem);
+      font-weight: 700;
+      color: var(--on-surface);
+      margin: 0;
+    }
+
     .logo-lockup {
       display: flex;
       flex-direction: column;
@@ -177,9 +203,23 @@
       gap: var(--space-sm);
     }
 
-    .brand-emblem {
-      width: 96px;
-      height: 96px;
+    .logo-frame {
+      width: 132px;
+      height: 132px;
+      background-color: #ffffff;
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 0 4px var(--surface-container), 0 8px 24px rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      overflow: hidden;
+    }
+
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       display: block;
     }
 
@@ -217,7 +257,7 @@
       font-family: var(--font-headline);
       font-weight: 300;
       font-size: var(--display-size);
-      line-height: 1.25;
+      line-height: 1.28;
       color: var(--on-surface);
       margin: 0;
     }
@@ -229,9 +269,10 @@
 
     .hero-subtitle {
       margin: 0;
-      max-width: 58ch;
+      max-width: 62ch;
       color: var(--on-surface-variant);
       font-size: var(--subhead-size);
+      line-height: 1.7;
     }
 
     .hero-actions {
@@ -1276,25 +1317,28 @@
 <body>
   <div class="page-grid">
 
-    <!-- Prominent Brand Header with 3laa Designs Emblem -->
+    <!-- Prominent Brand Header with 3laa Designs Logo & Spiritual Welcome -->
     <header class="brand-header">
+      <div class="basmala-banner">
+        <p class="basmala-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+        <p class="salutation-text">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</p>
+      </div>
+
       <div class="logo-lockup">
-        <svg class="brand-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="6" y="6" width="108" height="108" stroke="#c9a14a" stroke-width="1.5"/>
-          <rect x="13" y="13" width="94" height="94" stroke="#5d4e2b" stroke-width="1"/>
-          <path d="M32 34H58C66 34 71 38 71 45C71 50 67 54 61 55C68 56 72 61 72 68C72 76 66 82 57 82H32" stroke="#c9a14a" stroke-width="3" stroke-linecap="square"/>
-          <path d="M40 55H59" stroke="#e0c175" stroke-width="2.5"/>
-          <path d="M60 34H76C86 34 92 42 92 58C92 74 86 82 76 82H60" stroke="#e0c175" stroke-width="2"/>
-          <polygon points="60,21 63,25 60,29 57,25" fill="#c9a14a"/>
-          <line x1="28" y1="93" x2="92" y2="93" stroke="#c9a14a" stroke-width="1.2"/>
-        </svg>
+        <div class="logo-frame">
+          <img
+            class="brand-logo-img"
+            src="343957859_196088886585178_782823656211394208_n.jpg"
+            alt="شعار 3laa Designs"
+          >
+        </div>
         <p class="brand-name"><bdi dir="ltr">3laa Designs</bdi></p>
       </div>
 
-      <p class="flanked-kicker">بوابة تسجيل طلبات المدرسين</p>
-      <h1 class="hero-title">جهّز ملفاتك وسجّل <b>طلب مذكرتك التعليمية</b></h1>
+      <p class="flanked-kicker">أهلاً ومرحباً بصُنّاع العلم والهداية</p>
+      <h1 class="hero-title">نُرحّب بكم في بوابة <b>إخراج الملازم التعليمية</b></h1>
       <p class="hero-subtitle">
-        أنت تركّز على التدريس والمحتوى العلمي، ونحن نركّز على تقديم مذكرتك بأرقى تصميم وتنسيق بصري جاهز للطباعة والنشر الرقمي.
+        اللهم بارك في علمكم وجهدكم واجعله علماً يُنتفع به. أتمّوا رسالتكم التعليمية بكل طمأنينة، ونتولّى نحن تنسيق مذكرتكم وإخراجها بحُلّة بهية ومرتبة تليق بأهل العلم وطلّابه.
       </p>
 
       <nav class="hero-actions" aria-label="التنقل السريع">
@@ -1444,13 +1488,13 @@
           <span class="section-kicker">القسم الثاني</span>
           <h2 id="order-heading" class="section-title">نموذج تقديم طلب مشروع جديد</h2>
           <p class="section-lede">
-            املأ بياناتك وتفاصيل المذكرة أدناه ليتم تجهيز طلبك تلقائياً وإرساله مباشرة عبر الواتساب إلى <bdi dir="ltr">+20 115 162 0464</bdi>.
+            املأ بياناتك وتفاصيل المذكرة أدناه ليتم تجهيز طلبك تلقائياً وإرساله إلى البريد والواتساب على <bdi dir="ltr">+20 115 162 0464</bdi>.
           </p>
         </div>
       </div>
 
       <div class="order-layout">
-        <form id="project-form" class="form-frame" novalidate onsubmit="handleOrderSubmit(event)">
+        <form id="project-form" class="form-frame" enctype="multipart/form-data" novalidate onsubmit="handleOrderSubmit(event)">
 
           <!-- 1. Personal Information -->
           <div class="form-group-block">
@@ -1645,7 +1689,7 @@
                 <span class="upload-hint">ملف الدروس النهائي المنظم</span>
                 <label class="upload-trigger">
                   اختيار ملف الوورد
-                  <input type="file" id="file-word" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onchange="handleFilesSelected('word', this)">
+                  <input type="file" id="file-word" name="word_file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onchange="handleFilesSelected('word', this)">
                 </label>
                 <ul class="file-list" id="list-word"></ul>
               </div>
@@ -1656,7 +1700,7 @@
                 <span class="upload-hint"><bdi dir="ltr">PNG / SVG / PDF</bdi></span>
                 <label class="upload-trigger">
                   اختيار اللوجو
-                  <input type="file" id="file-logo" accept=".png,.jpg,.jpeg,.svg,.pdf" onchange="handleFilesSelected('logo', this)">
+                  <input type="file" id="file-logo" name="logo_file" accept=".png,.jpg,.jpeg,.svg,.pdf" onchange="handleFilesSelected('logo', this)">
                 </label>
                 <ul class="file-list" id="list-logo"></ul>
               </div>
@@ -1667,7 +1711,7 @@
                 <span class="upload-hint"><bdi dir="ltr">PNG / JPG</bdi> (متعدد)</span>
                 <label class="upload-trigger">
                   اختيار الصور
-                  <input type="file" id="file-images" accept="image/png,image/jpeg,image/webp" multiple onchange="handleFilesSelected('images', this)">
+                  <input type="file" id="file-images" name="design_images" accept="image/png,image/jpeg,image/webp" multiple onchange="handleFilesSelected('images', this)">
                 </label>
                 <ul class="file-list" id="list-images"></ul>
               </div>
@@ -1753,6 +1797,7 @@
   <script>
     const WHATSAPP_NUMBER_INTL = `201151620464`;
     const WHATSAPP_DISPLAY = `+20 115 162 0464`;
+    const GMAIL_FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/alaa.ali133445@gmail.com`;
 
     let appState = {
       prepChecks: { 1: false, 2: false, 3: false, 4: false },
@@ -2183,22 +2228,58 @@
         navigator.clipboard.writeText(message).catch(function () {});
       }
 
-      // فتح رابط الواتساب مباشرة لتجنب حظر النوافذ المنبثقة وضمان فتح التطبيق أو الويب
-      window.location.href = whatsappUrl;
+      const waWindow = window.open(whatsappUrl, `_blank`, `noopener,noreferrer`);
+
+      const formData = new FormData();
+      formData.append(`_subject`, `طلب مشروع جديد — 3laa Designs (${appState.fields.teacherName})`);
+      formData.append(`_template`, `table`);
+      formData.append(`الرسالة_المنسقة`, message);
+      formData.append(`اسم_المدرس`, appState.fields.teacherName);
+      formData.append(`رقم_الواتساب`, formatPhoneForDisplay(appState.fields.whatsappNumber));
+      formData.append(`المادة`, appState.fields.subject);
+      formData.append(`الصف_الدراسي`, appState.fields.grade);
+      formData.append(`السنة_الدراسية`, appState.fields.academicYear);
+      formData.append(`عنوان_المذكرة`, appState.fields.bookletTitle);
+      formData.append(`عدد_الصفحات`, appState.fields.pageCount);
+      formData.append(`الباقة`, appState.fields.selectedPackage);
+      formData.append(`الخدمات`, appState.fields.services.join(`، `));
+      formData.append(`الألوان`, appState.fields.preferredColors || `حسب رؤية المصمم`);
+      formData.append(`اتجاه_الصفحة`, appState.fields.pageOrientation);
+      formData.append(`ملاحظات`, appState.fields.specialNotes || `لا توجد`);
+
+      const wordInput = document.getElementById(`file-word`);
+      if (wordInput && wordInput.files[0]) {
+        formData.append(`ملف_الوورد`, wordInput.files[0]);
+      }
+
+      const logoInput = document.getElementById(`file-logo`);
+      if (logoInput && logoInput.files[0]) {
+        formData.append(`الشعار_اللوجو`, logoInput.files[0]);
+      }
+
+      const imagesInput = document.getElementById(`file-images`);
+      if (imagesInput && imagesInput.files.length > 0) {
+        Array.from(imagesInput.files).forEach(function (img, idx) {
+          formData.append(`صورة_${idx + 1}`, img);
+        });
+      }
 
       if (banner) {
         banner.className = `form-status-banner is-success`;
         banner.innerHTML = ``;
 
         const titleP = document.createElement(`strong`);
-        titleP.textContent = `تم تجهيز طلبك ونسخ تفاصيله بنجاح!`;
+        titleP.id = `gmail-send-status`;
+        titleP.textContent = `جاري إرسال الطلب والملفات إلى Gmail وتجهيز الواتساب...`;
 
         const descP = document.createElement(`span`);
-        descP.textContent = `جاري توجيهك إلى الواتساب على الرقم ${WHATSAPP_DISPLAY}، ويمكنك أيضاً الضغط على الزر أدناه لفتح المحادثة مباشرة:`;
+        descP.textContent = waWindow
+          ? `تم فتح الواتساب على الرقم ${WHATSAPP_DISPLAY}، وإذا لم يظهر التبويب استخدم الزر أدناه:`
+          : `قد يكون المتصفح حجب نافذة الواتساب؛ اضغط على الزر أدناه لفتح المحادثة على ${WHATSAPP_DISPLAY}:`;
 
         const attachTip = document.createElement(`div`);
         attachTip.className = `attach-highlight`;
-        attachTip.textContent = `الخطوة الأخيرة: بعد فتح شات الواتساب وإرسال النص، ارفق ملف الوورد (.docx) والشعار والصور من أيقونة الإرفاق (📎).`;
+        attachTip.textContent = `تُرسل الملفات عبر Gmail تلقائياً مع الطلب، ويمكنك أيضاً إرفاقها يدوياً داخل شات الواتساب (📎) عند الحاجة.`;
 
         const actionsDiv = document.createElement(`div`);
         actionsDiv.className = `success-actions`;
@@ -2209,7 +2290,7 @@
         waLink.href = whatsappUrl;
         waLink.target = `_blank`;
         waLink.rel = `noopener noreferrer`;
-        waLink.textContent = `فتح الواتساب وإرسال الطلب الآن`;
+        waLink.textContent = `فتح الواتساب بالمختصر`;
 
         const copyBtn = document.createElement(`button`);
         copyBtn.type = `button`;
@@ -2222,17 +2303,32 @@
         actionsDiv.appendChild(waLink);
         actionsDiv.appendChild(copyBtn);
 
-        const fallbackNote = document.createElement(`span`);
-        fallbackNote.style.fontSize = `0.82rem`;
-        fallbackNote.style.color = `var(--on-surface-variant)`;
-        fallbackNote.textContent = `تم نسخ نص الطلب في الحافظة كنسخة احتياطية لإرساله إلى ${WHATSAPP_DISPLAY} (wa.me/201151620464).`;
-
         banner.appendChild(titleP);
         banner.appendChild(descP);
         banner.appendChild(attachTip);
         banner.appendChild(actionsDiv);
-        banner.appendChild(fallbackNote);
       }
+
+      fetch(GMAIL_FORMSUBMIT_ENDPOINT, {
+        method: `POST`,
+        body: formData
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error(`Network response was not ok`);
+          return res.json();
+        })
+        .then(function () {
+          const statusEl = document.getElementById(`gmail-send-status`);
+          if (statusEl) {
+            statusEl.textContent = `تم إرسال الطلب والملفات إلى Gmail بنجاح وتجهيز مختصر الواتساب!`;
+          }
+        })
+        .catch(function () {
+          const statusEl = document.getElementById(`gmail-send-status`);
+          if (statusEl) {
+            statusEl.textContent = `تم تجهيز مختصر الواتساب ونسخ النص؛ تعذر إرسال البريد حالياً (تأكد من تفعيل FormSubmit أو حجم الملفات).`;
+          }
+        });
 
       persistState();
     }
