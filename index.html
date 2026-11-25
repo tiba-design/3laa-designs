@@ -12,35 +12,34 @@
     :root {
       color-scheme: dark;
 
-      /* Core Surfaces */
-      --bg-base: #090b0f;
-      --bg-elevated: #10141c;
-      --bg-card: rgba(18, 23, 33, 0.86);
-      --bg-card-solid: #121721;
-      --bg-card-hover: rgba(25, 32, 46, 0.94);
-      --bg-input: rgba(9, 12, 18, 0.78);
+      /* Royal Navy, Luminous Gold & Warm Ivory Palette */
+      --bg-base: #070d1c;
+      --bg-elevated: #0d172e;
+      --bg-card: rgba(15, 26, 48, 0.88);
+      --bg-card-solid: #0f1a30;
+      --bg-card-hover: rgba(21, 36, 66, 0.96);
+      --bg-input: rgba(7, 13, 26, 0.82);
 
-      /* Typography Ink */
-      --ink-primary: #f6f1e4;
-      --ink-secondary: #b9c1d1;
-      --ink-muted: #7f899d;
+      /* High-Contrast Warm Ivory Ink */
+      --ink-primary: #fdfbf7;
+      --ink-secondary: #cfd7e8;
+      --ink-muted: #8b98b4;
 
-      /* Brand & Accents (Harmonized with 3laa Designs Logo + Royal Gold & Emerald) */
-      --gold: #d4af5a;
-      --gold-soft: #ebd08b;
-      --gold-dim: rgba(212, 175, 90, 0.24);
-      --gold-glow: rgba(212, 175, 90, 0.14);
-      --royal-blue: #274b8e;
-      --emerald: #3da57a;
-      --emerald-soft: rgba(61, 165, 122, 0.14);
-      --amber: #e5b557;
-      --amber-soft: rgba(229, 181, 87, 0.12);
-      --danger: #eb7c68;
-      --danger-soft: rgba(235, 124, 104, 0.14);
+      /* Brand & Conversion Accents */
+      --gold: #e5b94c;
+      --gold-soft: #f7d77c;
+      --gold-glow: rgba(229, 185, 76, 0.16);
+      --royal-blue: #254e96;
+      --emerald: #2fa676;
+      --emerald-soft: rgba(47, 166, 118, 0.16);
+      --amber: #f2be54;
+      --amber-soft: rgba(242, 190, 84, 0.14);
+      --danger: #f07d68;
+      --danger-soft: rgba(240, 125, 104, 0.16);
 
-      /* Borders & Radii */
-      --border-subtle: rgba(212, 175, 90, 0.16);
-      --border-accent: rgba(212, 175, 90, 0.45);
+      /* Borders & Soft Radii */
+      --border-subtle: rgba(229, 185, 76, 0.18);
+      --border-accent: rgba(247, 215, 124, 0.48);
       --radius-xl: 24px;
       --radius-lg: 18px;
       --radius-md: 14px;
@@ -74,9 +73,9 @@
     body {
       background-color: var(--bg-base);
       background-image:
-        radial-gradient(ellipse 80% 45% at 50% -6%, rgba(212, 175, 90, 0.16), transparent 70%),
-        radial-gradient(ellipse 55% 35% at 88% 18%, rgba(39, 75, 142, 0.16), transparent 72%),
-        radial-gradient(ellipse 50% 35% at 12% 35%, rgba(61, 165, 122, 0.09), transparent 70%);
+        radial-gradient(ellipse 85% 48% at 50% -6%, rgba(229, 185, 76, 0.18), transparent 72%),
+        radial-gradient(ellipse 60% 40% at 88% 18%, rgba(37, 78, 150, 0.26), transparent 72%),
+        radial-gradient(ellipse 52% 36% at 12% 38%, rgba(47, 166, 118, 0.12), transparent 72%);
       color: var(--ink-primary);
       font-family: var(--font-body);
       font-size: clamp(0.96rem, 0.92rem + 0.18vw, 1.04rem);
@@ -105,7 +104,7 @@
     /* Hero / Spiritual Welcome & Brand Showcase */
     .hero-card {
       position: relative;
-      background: linear-gradient(165deg, rgba(22, 28, 40, 0.92) 0%, rgba(12, 15, 22, 0.95) 100%);
+      background: linear-gradient(160deg, rgba(18, 32, 60, 0.95) 0%, rgba(10, 18, 34, 0.97) 100%);
       border: 1px solid var(--border-accent);
       border-radius: var(--radius-xl);
       padding: clamp(1.75rem, 4vw, 3rem) clamp(1.25rem, 3.5vw, 2.5rem);
@@ -114,7 +113,7 @@
       flex-direction: column;
       align-items: center;
       gap: 1.15rem;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(253, 251, 247, 0.08);
       animation: riseIn var(--dur-slow) var(--ease-out) both;
     }
 
@@ -124,7 +123,7 @@
       inset: 0;
       border-radius: inherit;
       padding: 1px;
-      background: linear-gradient(135deg, rgba(235, 208, 139, 0.35), transparent 45%, rgba(61, 165, 122, 0.25));
+      background: linear-gradient(135deg, rgba(247, 215, 124, 0.42), transparent 46%, rgba(47, 166, 118, 0.3));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -174,16 +173,16 @@
       justify-content: center;
       border: 2px solid var(--gold);
       box-shadow:
-        0 0 0 6px rgba(212, 175, 90, 0.12),
-        0 16px 34px rgba(0, 0, 0, 0.5);
+        0 0 0 6px rgba(229, 185, 76, 0.14),
+        0 16px 34px rgba(0, 0, 0, 0.45);
       transition: transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out);
     }
 
     .logo-medallion:hover {
       transform: translateY(-2px);
       box-shadow:
-        0 0 0 8px rgba(212, 175, 90, 0.18),
-        0 20px 40px rgba(0, 0, 0, 0.58);
+        0 0 0 8px rgba(229, 185, 76, 0.22),
+        0 20px 40px rgba(0, 0, 0, 0.55);
     }
 
     .brand-logo-img {
@@ -198,7 +197,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.28rem 0.9rem;
+      padding: 0.28rem 0.95rem;
       border-radius: var(--radius-pill);
       background: var(--gold-glow);
       border: 1px solid var(--border-subtle);
@@ -214,12 +213,12 @@
       gap: 0.5rem;
       padding: 0.35rem 1rem;
       border-radius: var(--radius-pill);
-      background: rgba(61, 165, 122, 0.12);
-      border: 1px solid rgba(61, 165, 122, 0.32);
+      background: var(--emerald-soft);
+      border: 1px solid rgba(47, 166, 118, 0.38);
       font-family: var(--font-headline);
       font-size: 0.85rem;
       font-weight: 700;
-      color: #8fd6b7;
+      color: #96e0c0;
     }
 
     .hero-title {
@@ -275,17 +274,17 @@
 
     .btn-cta-primary {
       background: linear-gradient(135deg, var(--gold-soft), var(--gold));
-      color: #0b0e14;
-      box-shadow: 0 8px 24px rgba(212, 175, 90, 0.28);
+      color: #070d1c;
+      box-shadow: 0 8px 24px rgba(229, 185, 76, 0.28);
     }
 
     .btn-cta-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(212, 175, 90, 0.38);
+      box-shadow: 0 12px 28px rgba(229, 185, 76, 0.4);
     }
 
     .btn-cta-secondary {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.04);
       color: var(--ink-primary);
       border: 1px solid var(--border-accent);
     }
@@ -371,8 +370,8 @@
 
     .progress-chip.is-complete {
       background: var(--emerald-soft);
-      border-color: rgba(61, 165, 122, 0.55);
-      color: #8fd6b7;
+      border-color: rgba(47, 166, 118, 0.58);
+      color: #96e0c0;
     }
 
     /* Preparation Cards */
@@ -403,8 +402,8 @@
     }
 
     .prep-card.is-checked {
-      border-color: rgba(61, 165, 122, 0.5);
-      box-shadow: inset 0 0 0 1px rgba(61, 165, 122, 0.16);
+      border-color: rgba(47, 166, 118, 0.55);
+      box-shadow: inset 0 0 0 1px rgba(47, 166, 118, 0.18);
     }
 
     .prep-top {
@@ -413,7 +412,7 @@
       justify-content: space-between;
       gap: 0.75rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(253, 251, 247, 0.08);
     }
 
     .prep-title-group {
@@ -470,8 +469,8 @@
 
     .prep-btn[aria-pressed="true"] {
       background: var(--emerald-soft);
-      border-color: rgba(61, 165, 122, 0.6);
-      color: #93dfc0;
+      border-color: rgba(47, 166, 118, 0.62);
+      color: #96e0c0;
     }
 
     .prep-points {
@@ -508,7 +507,7 @@
     .prep-badges {
       margin-top: auto;
       padding-top: 0.7rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid rgba(253, 251, 247, 0.08);
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
@@ -532,7 +531,7 @@
       padding: 1.2rem 1.35rem;
       border-radius: var(--radius-lg);
       background: var(--amber-soft);
-      border: 1px solid rgba(229, 181, 87, 0.35);
+      border: 1px solid rgba(242, 190, 84, 0.36);
     }
 
     .notice-icon {
@@ -572,7 +571,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.85rem;
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.38);
     }
 
     .form-step-block {
@@ -693,8 +692,8 @@
     .select-control:focus,
     .textarea-control:focus {
       border-color: var(--gold);
-      background: rgba(16, 21, 31, 0.95);
-      box-shadow: 0 0 0 3px rgba(212, 175, 90, 0.14);
+      background: rgba(13, 23, 46, 0.95);
+      box-shadow: 0 0 0 3px rgba(229, 185, 76, 0.16);
     }
 
     .field-group.has-error .input-control,
@@ -736,7 +735,7 @@
 
     .pkg-card:hover {
       border-color: var(--border-accent);
-      background: rgba(212, 175, 90, 0.06);
+      background: rgba(229, 185, 76, 0.07);
     }
 
     .pkg-card input[type="radio"] {
@@ -748,7 +747,7 @@
 
     .pkg-card.is-selected {
       border-color: var(--gold);
-      background: linear-gradient(155deg, rgba(212, 175, 90, 0.16), rgba(39, 75, 142, 0.12));
+      background: linear-gradient(155deg, rgba(229, 185, 76, 0.18), rgba(37, 78, 150, 0.22));
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
 
@@ -806,8 +805,8 @@
     }
 
     .service-item.is-selected {
-      border-color: rgba(212, 175, 90, 0.55);
-      background: rgba(212, 175, 90, 0.11);
+      border-color: rgba(229, 185, 76, 0.58);
+      background: rgba(229, 185, 76, 0.12);
       color: var(--ink-primary);
     }
 
@@ -856,7 +855,7 @@
     .drop-card.has-files {
       border-style: solid;
       border-color: var(--gold);
-      background: rgba(212, 175, 90, 0.07);
+      background: rgba(229, 185, 76, 0.08);
     }
 
     .drop-title {
@@ -891,7 +890,7 @@
     }
 
     .pick-file-btn:hover {
-      background: rgba(212, 175, 90, 0.22);
+      background: rgba(229, 185, 76, 0.24);
     }
 
     .pick-file-btn input[type="file"] {
@@ -1005,7 +1004,7 @@
       border-radius: var(--radius-pill);
       border: none;
       background: linear-gradient(135deg, var(--gold-soft), var(--gold));
-      color: #0b0e14;
+      color: #070d1c;
       font-family: var(--font-headline);
       font-size: 0.98rem;
       font-weight: 800;
@@ -1014,13 +1013,13 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      box-shadow: 0 10px 26px rgba(212, 175, 90, 0.25);
+      box-shadow: 0 10px 26px rgba(229, 185, 76, 0.26);
       transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
     }
 
     .btn-submit-main:hover {
       transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(212, 175, 90, 0.35);
+      box-shadow: 0 14px 30px rgba(229, 185, 76, 0.38);
     }
 
     .btn-ghost-action {
@@ -1063,7 +1062,7 @@
     .status-box.is-error {
       display: block;
       background: var(--danger-soft);
-      border: 1px solid rgba(235, 124, 104, 0.5);
+      border: 1px solid rgba(240, 125, 104, 0.5);
       color: var(--danger);
     }
 
@@ -1072,14 +1071,14 @@
       flex-direction: column;
       gap: 0.65rem;
       background: var(--emerald-soft);
-      border: 1px solid rgba(61, 165, 122, 0.5);
+      border: 1px solid rgba(47, 166, 118, 0.52);
       color: var(--ink-primary);
     }
 
     .tip-pill {
       padding: 0.55rem 0.8rem;
       border-radius: var(--radius-sm);
-      background: rgba(9, 12, 18, 0.65);
+      background: rgba(7, 13, 26, 0.72);
       border-right: 3px solid var(--gold);
       font-size: 0.84rem;
       color: var(--gold-soft);
@@ -1099,7 +1098,7 @@
       padding: 0.45rem 1.1rem;
       border-radius: var(--radius-pill);
       background: linear-gradient(135deg, var(--gold-soft), var(--gold));
-      color: #0b0e14;
+      color: #070d1c;
       text-decoration: none;
       font-family: var(--font-headline);
       font-weight: 800;
@@ -1118,7 +1117,7 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.38);
     }
 
     .preview-head {
@@ -1206,7 +1205,7 @@
 
     .feedback-note {
       font-size: 0.84rem;
-      color: #93dfc0;
+      color: #96e0c0;
       min-height: 1.2em;
     }
 
@@ -1584,11 +1583,11 @@
                 <label class="field-label" for="preferredColors">
                   الألوان المفضلة <span class="opt">(اختياري)</span>
                 </label>
-                <input class="input-control" type="text" id="preferredColors" name="preferredColors" placeholder="مثال: أسود وذهبي، أو أزرق داكن وأبيض" oninput="onFormChange()">
+                <input class="input-control" type="text" id="preferredColors" name="preferredColors" placeholder="مثال: كحلي ملكي وذهبي مشرق" oninput="onFormChange()">
                 <div class="palette-row" aria-label="اختيارات ألوان سريعة">
-                  <button type="button" class="palette-btn" onclick="applyColorPreset('أسود وذهبي فاخر')">أسود وذهبي</button>
-                  <button type="button" class="palette-btn" onclick="applyColorPreset('أزرق كحلي وأبيض')">كحلي وأبيض</button>
-                  <button type="button" class="palette-btn" onclick="applyColorPreset('أخضر زمردي وبيج')">زمردي وبيج</button>
+                  <button type="button" class="palette-btn" onclick="applyColorPreset('كحلي ملكي وذهبي مشرق')">كحلي وذهبي</button>
+                  <button type="button" class="palette-btn" onclick="applyColorPreset('زمردي وعنبري دافئ')">زمردي وعنبري</button>
+                  <button type="button" class="palette-btn" onclick="applyColorPreset('أزرق كحلي وأبيض عاجي')">كحلي وعاجي</button>
                   <button type="button" class="palette-btn" onclick="applyColorPreset('على ذوق المصمم')">ذوق المصمم</button>
                 </div>
               </div>
